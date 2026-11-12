@@ -1,0 +1,276 @@
+{
+  "candidate": "current",
+  "overall": {
+    "source_games": 934,
+    "forecast_games": 647,
+    "binary_probability_games": 647,
+    "ties_excluded_from_conditional_metrics": 0,
+    "margin_mae": 14.738082092721262,
+    "margin_rmse": 18.36416717890991,
+    "margin_mean_error": -6.334831457471812,
+    "baseline_margin_mae": 15.341576506955178,
+    "closing_margin_games": 0,
+    "closing_margin_mae": null,
+    "model_margin_mae_on_market_sample": null,
+    "margin_mae_interval": {
+      "low": 13.84653853823445,
+      "high": 15.593216886808678,
+      "level": 0.95,
+      "cluster": "league_week",
+      "clusters": 18,
+      "bootstrap_samples": 500,
+      "seed": 20261112
+    },
+    "total_mae": 12.608154655750981,
+    "total_rmse": 15.685273557775293,
+    "total_mean_error": -0.8345437692114862,
+    "baseline_total_mae": 13.130589970221799,
+    "closing_total_games": 0,
+    "closing_total_mae": null,
+    "model_total_mae_on_market_sample": null,
+    "total_mae_interval": {
+      "low": 11.850097872218141,
+      "high": 13.362382250902288,
+      "level": 0.95,
+      "cluster": "league_week",
+      "clusters": 18,
+      "bootstrap_samples": 500,
+      "seed": 20261112
+    },
+    "brier": 0.22180114104589724,
+    "log_loss": 0.630408656102129,
+    "mean_home_probability": 0.6751743108374327,
+    "observed_home_win_rate": 0.5795981452859351,
+    "closing_moneyline_games": 0,
+    "closing_moneyline_brier": null,
+    "closing_moneyline_log_loss": null,
+    "model_brier_on_closing_moneyline_sample": null,
+    "brier_interval": {
+      "low": 0.20666777130981462,
+      "high": 0.23646399879538454,
+      "level": 0.95,
+      "cluster": "league_week",
+      "clusters": 18,
+      "bootstrap_samples": 500,
+      "seed": 20261112
+    },
+    "calibration_bins": [
+      {
+        "lower": 0.2,
+        "upper": 0.3,
+        "n": 1,
+        "mean_probability": 0.2980693614271113,
+        "observed_rate": 0
+      },
+      {
+        "lower": 0.3,
+        "upper": 0.4,
+        "n": 10,
+        "mean_probability": 0.37714233645257805,
+        "observed_rate": 0.1
+      },
+      {
+        "lower": 0.4,
+        "upper": 0.5,
+        "n": 51,
+        "mean_probability": 0.45695502535295884,
+        "observed_rate": 0.3333333333333333
+      },
+      {
+        "lower": 0.5,
+        "upper": 0.6,
+        "n": 101,
+        "mean_probability": 0.5549758223977918,
+        "observed_rate": 0.37623762376237624
+      },
+      {
+        "lower": 0.6,
+        "upper": 0.7,
+        "n": 194,
+        "mean_probability": 0.6577558509944728,
+        "observed_rate": 0.4896907216494845
+      },
+      {
+        "lower": 0.7,
+        "upper": 0.8,
+        "n": 200,
+        "mean_probability": 0.7496387307465382,
+        "observed_rate": 0.71
+      },
+      {
+        "lower": 0.8,
+        "upper": 0.9,
+        "n": 83,
+        "mean_probability": 0.8366543328008145,
+        "observed_rate": 0.9036144578313253
+      },
+      {
+        "lower": 0.9,
+        "upper": 1.0,
+        "n": 7,
+        "mean_probability": 0.9194758808550393,
+        "observed_rate": 1
+      }
+    ],
+    "betting": {
+      "priced_bets": 0,
+      "staked_units": 0,
+      "profit_units": null,
+      "roi": null,
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "roi_interval": null,
+      "comparable_clv_bets": 0,
+      "mean_closing_no_vig_ev_conditional": null,
+      "status": "not_tested_no_qualifying_exact_price_bets"
+    },
+    "no_bet_reason_counts": {
+      "insufficient_prior_forecast_validation": 364,
+      "insufficient_team_history": 483,
+      "insufficient_training_history": 179,
+      "no_executable_asof_quote": 934
+    }
+  },
+  "seasons": {
+    "2025": {
+      "source_games": 934,
+      "forecast_games": 647,
+      "binary_probability_games": 647,
+      "ties_excluded_from_conditional_metrics": 0,
+      "margin_mae": 14.738082092721262,
+      "margin_rmse": 18.36416717890991,
+      "margin_mean_error": -6.334831457471812,
+      "baseline_margin_mae": 15.341576506955178,
+      "closing_margin_games": 0,
+      "closing_margin_mae": null,
+      "model_margin_mae_on_market_sample": null,
+      "margin_mae_interval": {
+        "low": 13.84653853823445,
+        "high": 15.593216886808678,
+        "level": 0.95,
+        "cluster": "league_week",
+        "clusters": 18,
+        "bootstrap_samples": 500,
+        "seed": 20261112
+      },
+      "total_mae": 12.608154655750981,
+      "total_rmse": 15.685273557775293,
+      "total_mean_error": -0.8345437692114862,
+      "baseline_total_mae": 13.130589970221799,
+      "closing_total_games": 0,
+      "closing_total_mae": null,
+      "model_total_mae_on_market_sample": null,
+      "total_mae_interval": {
+        "low": 11.850097872218141,
+        "high": 13.362382250902288,
+        "level": 0.95,
+        "cluster": "league_week",
+        "clusters": 18,
+        "bootstrap_samples": 500,
+        "seed": 20261112
+      },
+      "brier": 0.22180114104589724,
+      "log_loss": 0.630408656102129,
+      "mean_home_probability": 0.6751743108374327,
+      "observed_home_win_rate": 0.5795981452859351,
+      "closing_moneyline_games": 0,
+      "closing_moneyline_brier": null,
+      "closing_moneyline_log_loss": null,
+      "model_brier_on_closing_moneyline_sample": null,
+      "brier_interval": {
+        "low": 0.20666777130981462,
+        "high": 0.23646399879538454,
+        "level": 0.95,
+        "cluster": "league_week",
+        "clusters": 18,
+        "bootstrap_samples": 500,
+        "seed": 20261112
+      },
+      "calibration_bins": [
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "n": 1,
+          "mean_probability": 0.2980693614271113,
+          "observed_rate": 0
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "n": 10,
+          "mean_probability": 0.37714233645257805,
+          "observed_rate": 0.1
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 51,
+          "mean_probability": 0.45695502535295884,
+          "observed_rate": 0.3333333333333333
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "n": 101,
+          "mean_probability": 0.5549758223977918,
+          "observed_rate": 0.37623762376237624
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "n": 194,
+          "mean_probability": 0.6577558509944728,
+          "observed_rate": 0.4896907216494845
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "n": 200,
+          "mean_probability": 0.7496387307465382,
+          "observed_rate": 0.71
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 83,
+          "mean_probability": 0.8366543328008145,
+          "observed_rate": 0.9036144578313253
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 7,
+          "mean_probability": 0.9194758808550393,
+          "observed_rate": 1
+        }
+      ],
+      "betting": {
+        "priced_bets": 0,
+        "staked_units": 0,
+        "profit_units": null,
+        "roi": null,
+        "wins": 0,
+        "losses": 0,
+        "pushes": 0,
+        "roi_interval": null,
+        "comparable_clv_bets": 0,
+        "mean_closing_no_vig_ev_conditional": null,
+        "status": "not_tested_no_qualifying_exact_price_bets"
+      },
+      "no_bet_reason_counts": {
+        "insufficient_prior_forecast_validation": 364,
+        "insufficient_team_history": 483,
+        "insufficient_training_history": 179,
+        "no_executable_asof_quote": 934
+      }
+    }
+  },
+  "notes": [
+    "Forecast metrics use all forecast-eligible held-out games, not just selected bets.",
+    "Win probabilities are evaluated conditional on no tie; actual ties are excluded from binary metrics.",
+    "Intervals resample complete league weeks; they do not correct model-selection bias.",
+    "Returns require an exact timestamped quoted contract. Missing odds do not become assumed -110 bets.",
+    "Historical reconstruction may contain revised source editions; it is not exact archived feed replay."
+  ]
+}

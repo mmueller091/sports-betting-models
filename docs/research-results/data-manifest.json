@@ -1,0 +1,98 @@
+{
+  "files": [
+    {
+      "completed": 887,
+      "file": "normalized/cfb_2021.jsonl",
+      "records": 887,
+      "sha256": "69246a499efcfd2938fb74338c823db14224c9a38e5e5929eacc7af599120c5b"
+    },
+    {
+      "completed": 896,
+      "file": "normalized/cfb_2022.jsonl",
+      "records": 896,
+      "sha256": "ab465f5afa2a3eb4d60bb51e6dfe03553e9a8a4616b05b14c79db04b44ceb60c"
+    },
+    {
+      "completed": 910,
+      "file": "normalized/cfb_2023.jsonl",
+      "records": 910,
+      "sha256": "3e74a3a090b6d619aed99da4802db232728e2bcf205e272c219fbe48e43d252c"
+    },
+    {
+      "completed": 919,
+      "file": "normalized/cfb_2024.jsonl",
+      "records": 920,
+      "sha256": "b7c2e06fdc528315bcf53f759edd2e17cd4461f4be68fa7d5c7b54fd1f09622e"
+    },
+    {
+      "completed": 934,
+      "file": "normalized/cfb_2025.jsonl",
+      "records": 934,
+      "sha256": "4090893fdf98912a3a9b22ef12142d83afa9666f0b25d98ffa444049978de342"
+    },
+    {
+      "completed": 285,
+      "file": "normalized/nfl_2021.jsonl",
+      "records": 285,
+      "sha256": "7520a708fafeb0a1b31d2de787d19ee76106f0542cf6a6b6bb23158baa611bf5"
+    },
+    {
+      "completed": 284,
+      "file": "normalized/nfl_2022.jsonl",
+      "records": 284,
+      "sha256": "574c8e4a109bcf45ae868899fa978264e87a1caec0e09274a35ee5ffe1659fac"
+    },
+    {
+      "completed": 285,
+      "file": "normalized/nfl_2023.jsonl",
+      "records": 285,
+      "sha256": "50e4486536336b5ec6c2987a0bfd644d2774671533d6f5a7e7e5f0c81a6f9c99"
+    },
+    {
+      "completed": 285,
+      "file": "normalized/nfl_2024.jsonl",
+      "records": 285,
+      "sha256": "04d3bbe1ce45e1ff1a169f3467e221cf588b6f554c2e5269f667350543e9382a"
+    },
+    {
+      "completed": 285,
+      "file": "normalized/nfl_2025.jsonl",
+      "records": 285,
+      "sha256": "647067f0d9d8310d7b751c15061f4fb2b8681d4070a4c25796d24f1ef7d9ab74"
+    },
+    {
+      "completed": 1401,
+      "file": "normalized/nhl_2021.jsonl",
+      "records": 1500,
+      "sha256": "2c5274969c04adf8b1a7597843fc2dedf1bab768c3f531a4019d6d72bb89f229"
+    },
+    {
+      "completed": 1400,
+      "file": "normalized/nhl_2022.jsonl",
+      "records": 1405,
+      "sha256": "f4acf76f322b870af70de874e05182625dbc4e955bfc021c66872dc089dbc0eb"
+    },
+    {
+      "completed": 1400,
+      "file": "normalized/nhl_2023.jsonl",
+      "records": 1401,
+      "sha256": "896aa71ddac33317fb13012b9c83e2936896b2f0729e077cd4fd04418f300a32"
+    },
+    {
+      "completed": 1398,
+      "file": "normalized/nhl_2024.jsonl",
+      "records": 1400,
+      "sha256": "efef28c12b2d166c1e10cb833d54fd2dab08046a9fddd923396a289988f3327d"
+    },
+    {
+      "completed": 1394,
+      "file": "normalized/nhl_2025.jsonl",
+      "records": 1395,
+      "sha256": "4c2a2a587da46209ba1a1d5e99c56d87a3d80957e8b3bbc3500d7a46419c8a11"
+    }
+  ],
+  "forecasts_and_normalized_inputs": "Provided in the portable research archive; free source downloads are reproducible through the CLI.",
+  "generated_at": "2026-11-12",
+  "raw_source_data_committed": false,
+  "source_type": "retrospective source editions with explicit reconstructed availability"
+}

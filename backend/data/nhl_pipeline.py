@@ -5,7 +5,7 @@ Fetches: games, team stats, standings, odds, confirmed goalies,
 """
 
 import asyncio
-from datetime import date
+from datetime import date, datetime, timedelta
 from typing import Optional
 
 from data.nhl_stats import (
@@ -15,9 +15,10 @@ from data.nhl_stats import (
     get_schedule_spot_metrics,
     check_back_to_back,
     get_standings,
+    season_start,
 )
 from data.odds import get_game_odds
-from data.source_health import safe_fetch
+from data.source_health import safe_fetch, warn
 from data.nhl_goalies import get_confirmed_goalies, apply_confirmed_goalies
 from data.moneypuck import get_team_xg_stats, get_goalie_xg_stats, get_skater_xg_stats, apply_xg_to_games
 from data.natural_stat_trick import get_team_corsi_xg, apply_nst_to_games
@@ -30,6 +31,7 @@ async def build_nhl_snapshot(game_date: Optional[date] = None) -> dict:
     Full NHL pipeline. Returns enriched game data for analysis.
     """
     target_date = game_date or date.today()
+    year = season_start(target_date)
 
     # All top-level fetches in parallel
     (
@@ -38,13 +40,13 @@ async def build_nhl_snapshot(game_date: Optional[date] = None) -> dict:
         skater_xg, nst_data, injuries
     ) = await asyncio.gather(
         _safe(get_todays_nhl_games(target_date), []),
-        _safe(get_standings(), {}),
+        _safe(get_standings(target_date - timedelta(days=1)), {}),
         _safe(get_game_odds(sport="icehockey_nhl"), []),
         _safe(get_confirmed_goalies(target_date), {}),
-        _safe(get_team_xg_stats(), {}),
-        _safe(get_goalie_xg_stats(), {}),
-        _safe(get_skater_xg_stats(), {}),
-        _safe(get_team_corsi_xg(), {}),
+        _safe(get_team_xg_stats(year), {}),
+        _safe(get_goalie_xg_stats(year), {}),
+        _safe(get_skater_xg_stats(year), {}),
+        _safe(get_team_corsi_xg(year), {}),
         _safe(get_nhl_injuries(), {}),
         return_exceptions=False,
     )
@@ -101,12 +103,14 @@ async def _enrich_nhl_game(
 ) -> dict:
     away_abbrev = game["away_team_abbrev"]
     home_abbrev = game["home_team_abbrev"]
+    year = season_start(game_date)
+    season = f"{year}{year + 1}"
 
     results = await asyncio.gather(
-        _safe(get_team_stats(away_abbrev), {}),
-        _safe(get_team_stats(home_abbrev), {}),
-        _safe(get_team_schedule_last_n(away_abbrev, 5), []),
-        _safe(get_team_schedule_last_n(home_abbrev, 5), []),
+        _safe(get_team_stats(away_abbrev, season), {}),
+        _safe(get_team_stats(home_abbrev, season), {}),
+        _safe(get_team_schedule_last_n(away_abbrev, 5, game_date), []),
+        _safe(get_team_schedule_last_n(home_abbrev, 5, game_date), []),
         _safe(get_schedule_spot_metrics(away_abbrev, game_date), {}),
         _safe(get_schedule_spot_metrics(home_abbrev, game_date), {}),
         _safe(check_back_to_back(away_abbrev, game_date), False),
@@ -149,19 +153,34 @@ async def _enrich_nhl_game(
 def _index_nhl_odds(odds_list: list[dict]) -> dict:
     index = {}
     for g in odds_list:
-        key = (g["away_team"], g["home_team"])
-        index[key] = g
-        index[(g["away_team"].split()[-1], g["home_team"].split()[-1])] = g
+        key = (_canonical_team(g["away_team"]), _canonical_team(g["home_team"]))
+        index.setdefault(key, []).append(g)
     return index
 
 
 def _find_nhl_odds(game: dict, odds_index: dict) -> dict:
-    away = game["away_team"]
-    home = game["home_team"]
-    odds = odds_index.get((away, home))
-    if not odds:
-        odds = odds_index.get((away.split()[-1], home.split()[-1]), {})
-    return odds or {}
+    away = _canonical_team(game["away_team"])
+    home = _canonical_team(game["home_team"])
+    candidates = odds_index.get((away, home), [])
+    matching = []
+    for odds in candidates:
+        try:
+            game_start = datetime.fromisoformat(game["game_time"].replace("Z", "+00:00"))
+            odds_start = datetime.fromisoformat(odds["commence_time"].replace("Z", "+00:00"))
+            if abs((game_start - odds_start).total_seconds()) <= 15 * 60:
+                matching.append(odds)
+        except (KeyError, TypeError, ValueError):
+            continue
+    if len(matching) == 1:
+        return matching[0]
+    if candidates:
+        warn(f"NHL odds for {game['away_team']} at {game['home_team']} have no unique matching start time")
+    return {}
+
+
+def _canonical_team(name):
+    # The NHL and market provider can use different names for the same Utah team.
+    return {"Utah Mammoth": "Utah Hockey Club", "Montréal Canadiens": "Montreal Canadiens"}.get(name, name)
 
 
 async def _safe(coro, default):

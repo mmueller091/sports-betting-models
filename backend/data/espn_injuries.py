@@ -104,8 +104,9 @@ def injury_impact_nhl(injuries: dict[str, list[dict]], team: str) -> dict:
             xg_lost += 0.08   # Defensemen score less
             notes.append(f"{p['name']} (D) {p['status']}")
         elif pos == "G":
-            xg_lost += 0.35   # Backup goalie facing starter
-            notes.append(f"{p['name']} (G) {p['status']} — backup likely")
+            # Goalie quality belongs to the opposing scoring environment and
+            # is handled by the actual starter. Do not subtract own-team xG.
+            notes.append(f"{p['name']} (G) {p['status']}; starter evaluated separately")
 
     return {
         "total_xg_lost": round(xg_lost, 2),

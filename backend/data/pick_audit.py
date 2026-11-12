@@ -95,7 +95,7 @@ def record_bundle(bundle, ledger, source_url=None):
                     continue
                 if source_url:
                     row['snapshot_source_url'] = source_url
-                row['model_version'] = weekly.get('model_version') or 'nhl-existing-model'
+                row['model_version'] = weekly.get('model_version') or row.get('model_version') or 'nhl-existing-model'
                 records = ledger['records']
                 existing = records.get(row['id'])
                 if existing:

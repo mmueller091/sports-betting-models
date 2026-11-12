@@ -7,15 +7,26 @@ Inputs:
 - Goalie quality including GSAx
 - Recent form and schedule density
 - Injury impact
-- Market structure and line movement
+- Quoted bookmaker prices
 """
 
-from math import erf, sqrt
+from functools import lru_cache
+from math import exp, isfinite
+from datetime import datetime, timezone
 
-from data.odds import american_to_implied_prob, no_vig_prob
+from data.odds import american_to_implied_prob
 
+MODEL_VERSION = "nhl-2026-11-12.correctness.1"
 LEAGUE_AVG_GOALS = 6.10
 HOME_WIN_ADVANTAGE = 0.055
+
+
+def _number(value, default):
+    try:
+        value = float(value)
+        return value if isfinite(value) else default
+    except (TypeError, ValueError):
+        return default
 
 
 def _recent_win_pct(recent_games: list[dict]) -> float:
@@ -40,19 +51,19 @@ def _goalie_score(team_stats: dict) -> float:
     if not goalie:
         return 0.0
 
-    save_pct = goalie.get("save_pct", 0.906)
-    gaa = goalie.get("gaa", 3.00)
+    save_pct = _number(goalie.get("save_pct"), 0.906)
+    gaa = _number(goalie.get("gaa"), 3.00)
     xg_stats = goalie.get("xg_stats", {})
-    gsax = xg_stats.get("gsax", 0.0)
-    games_played = max(xg_stats.get("games_played", goalie.get("games_started", 1)), 1)
-    hd_sv_pct = xg_stats.get("hd_sv_pct", 0.82)
-    quality_starts = xg_stats.get("quality_starts_pct", 0.5)
+    gsax = _number(xg_stats.get("gsax"), 0.0)
+    games_played = max(_number(xg_stats.get("games_played", goalie.get("games_started")), 1), 1)
+    hd_sv_pct = _number(xg_stats.get("hd_sv_pct"), 0.82)
+    quality_starts = _number(xg_stats.get("quality_starts_pct"), 0.5)
 
     save_adj = (0.906 - save_pct) * 20
     gaa_adj = (gaa - 3.00) * 0.15
     gsax_adj = -(gsax / games_played) * 1.1
-    hd_adj = (0.82 - hd_sv_pct) * 7.0 if hd_sv_pct else 0.0
-    qs_adj = -(quality_starts - 0.5) * 0.8 if quality_starts else 0.0
+    hd_adj = (0.82 - hd_sv_pct) * 7.0
+    qs_adj = -(quality_starts - 0.5) * 0.8
 
     return round(save_adj + gaa_adj + gsax_adj + hd_adj + qs_adj, 3)
 
@@ -65,15 +76,15 @@ def estimate_nhl_total(game: dict) -> float:
     away_stats = game.get("away_team_stats", {})
     home_stats = game.get("home_team_stats", {})
 
-    away_gf = away_standings.get("goals_for_per_game", base / 2)
-    home_gf = home_standings.get("goals_for_per_game", base / 2)
-    away_ga = away_standings.get("goals_against_per_game", base / 2)
-    home_ga = home_standings.get("goals_against_per_game", base / 2)
+    away_gf = _number(away_standings.get("goals_for_per_game"), base / 2)
+    home_gf = _number(home_standings.get("goals_for_per_game"), base / 2)
+    away_ga = _number(away_standings.get("goals_against_per_game"), base / 2)
+    home_ga = _number(home_standings.get("goals_against_per_game"), base / 2)
 
-    away_xgf = away_stats.get("xg", {}).get("xgf_per_game", away_gf)
-    home_xgf = home_stats.get("xg", {}).get("xgf_per_game", home_gf)
-    away_xga = away_stats.get("xg", {}).get("xga_per_game", away_ga)
-    home_xga = home_stats.get("xg", {}).get("xga_per_game", home_ga)
+    away_xgf = _number(away_stats.get("xg", {}).get("xgf_per_game"), away_gf)
+    home_xgf = _number(home_stats.get("xg", {}).get("xgf_per_game"), home_gf)
+    away_xga = _number(away_stats.get("xg", {}).get("xga_per_game"), away_ga)
+    home_xga = _number(home_stats.get("xg", {}).get("xga_per_game"), home_ga)
 
     expected = ((away_xgf + home_xga) / 2 + (home_xgf + away_xga) / 2)
     our_total = round(base * 0.25 + expected * 0.75, 2)
@@ -135,8 +146,8 @@ def estimate_nhl_win_prob(game: dict) -> tuple[float, float]:
     away_goalie_adj = _goalie_score(away_stats)
     home_goalie_adj = _goalie_score(home_stats)
     net_goalie = (home_goalie_adj - away_goalie_adj) * 0.035
-    home_prob += net_goalie
-    away_prob -= net_goalie
+    home_prob -= net_goalie
+    away_prob += net_goalie
 
     away_schedule = game.get("away_schedule_spot", {})
     home_schedule = game.get("home_schedule_spot", {})
@@ -150,13 +161,13 @@ def estimate_nhl_win_prob(game: dict) -> tuple[float, float]:
     home_prob -= injury_diff
     away_prob += injury_diff
 
-    away_pp = away_standings.get("pp_pct", 20.0)
-    home_pp = home_standings.get("pp_pct", 20.0)
+    away_pp = _number(away_standings.get("pp_pct"), 20.0)
+    home_pp = _number(home_standings.get("pp_pct"), 20.0)
     pp_diff = (home_pp - away_pp) / 100 * 0.15
     home_prob += pp_diff
     away_prob -= pp_diff
 
-    pdo_diff = (home_stats.get("xg", {}).get("pdo", 1.0) - away_stats.get("xg", {}).get("pdo", 1.0))
+    pdo_diff = (_number(home_stats.get("xg", {}).get("pdo"), 1.0) - _number(away_stats.get("xg", {}).get("pdo"), 1.0))
     home_prob -= pdo_diff * 0.04
     away_prob += pdo_diff * 0.04
 
@@ -172,207 +183,214 @@ def estimate_puckline_cover_probability(
     side: str,
     line: float,
 ) -> float:
-    home_margin_mean = (home_prob - away_prob) * max(total_goals * 0.95, 4.0)
-    margin_sd = max(1.55, total_goals * 0.24)
-    mean = home_margin_mean if side == "home" else -home_margin_mean
-    threshold = -line
-    cover_prob = 1 - _normal_cdf(threshold, mean, margin_sd)
-    return round(max(0.08, min(0.92, cover_prob)), 3)
+    distribution = nhl_score_distribution(home_prob, total_goals)
+    return round(market_probabilities(distribution, "spread", side, line)["win"], 6)
 
 
-def calculate_ev(our_prob: float, american_odds: int) -> float:
+def calculate_ev(our_prob: float, american_odds: int, push_prob: float = 0.0) -> float:
     if american_odds is None:
         return -999.0
     profit_if_win = american_odds if american_odds > 0 else 10000 / abs(american_odds)
-    return round((our_prob * profit_if_win) - ((1 - our_prob) * 100), 2)
+    return round((our_prob * profit_if_win) - ((1 - our_prob - push_prob) * 100), 2)
 
 
-def find_nhl_best_bets(snapshot: dict, top_n: int = 5) -> list[dict]:
+def _poisson_probabilities(mean: float) -> tuple[float, ...]:
+    probabilities = [exp(-mean)]
+    total = probabilities[0]
+    while total < 1 - 1e-13:
+        probabilities.append(probabilities[-1] * mean / len(probabilities))
+        total += probabilities[-1]
+        if len(probabilities) > 250:
+            raise ValueError("NHL expected goal rate is outside the supported range")
+    return tuple(probabilities)
+
+
+def _regulation_rates(total: float, target_home_win: float):
+    """Find a Poisson goal split with 50/50 resolution of regulation ties."""
+    lower, upper = 0.0, total
+    for _ in range(38):
+        home_rate = (lower + upper) / 2
+        home = _poisson_probabilities(home_rate)
+        away = _poisson_probabilities(total - home_rate)
+        away_below = 0.0
+        home_win = tie = 0.0
+        for goals, home_p in enumerate(home):
+            away_equal = away[goals] if goals < len(away) else 0.0
+            home_win += home_p * away_below
+            tie += home_p * away_equal
+            away_below += away_equal
+        if home_win + tie / 2 < target_home_win:
+            lower = home_rate
+        else:
+            upper = home_rate
+    return home, away, tie
+
+
+@lru_cache(maxsize=256)
+def nhl_score_distribution(home_win_probability: float, expected_total: float) -> tuple:
+    """Return (home final goals, away final goals, probability) outcomes.
+
+    This is a coherent provisional distribution, not a fitted NHL model.
+    Independent Poisson regulation goals are numerically matched to the existing
+    win forecast and final-score total. Every regulation tie resolves 50/50 with
+    one deciding scoreboard goal, matching full-game OT/shootout settlement.
+    Empty-net dynamics and a learned overtime advantage are not inferred here.
+    """
+    if not (isfinite(home_win_probability) and 0 < home_win_probability < 1):
+        raise ValueError("Home win probability must be between zero and one")
+    if not (isfinite(expected_total) and expected_total > 1):
+        raise ValueError("Expected NHL final total must exceed one goal")
+    lower, upper = expected_total - 1, expected_total
+    for _ in range(30):
+        regulation_total = (lower + upper) / 2
+        home, away, tie = _regulation_rates(regulation_total, home_win_probability)
+        if regulation_total + tie < expected_total:
+            lower = regulation_total
+        else:
+            upper = regulation_total
+    outcomes = {}
+    for h, hp in enumerate(home):
+        for a, ap in enumerate(away):
+            probability = hp * ap
+            if h == a:
+                for final in ((h + 1, a), (h, a + 1)):
+                    outcomes[final] = outcomes.get(final, 0.0) + probability / 2
+            else:
+                outcomes[(h, a)] = outcomes.get((h, a), 0.0) + probability
+    mass = sum(outcomes.values())
+    distribution = tuple((h, a, p / mass) for (h, a), p in sorted(outcomes.items()))
+    realized_home_win = sum(p for h, a, p in distribution if h > a)
+    realized_total = sum((h + a) * p for h, a, p in distribution)
+    if abs(realized_home_win - home_win_probability) > 1e-8 or abs(realized_total - expected_total) > 1e-7:
+        raise ValueError("Requested NHL win probability and total are incompatible with this score distribution")
+    return distribution
+
+
+def market_probabilities(distribution: tuple, market: str, side: str, line=None) -> dict:
+    """Settle each final-score outcome under the same win/push/loss rules."""
+    probabilities = {"win": 0.0, "push": 0.0, "loss": 0.0}
+    if market not in ("moneyline", "spread", "total"):
+        raise ValueError("Unsupported NHL market")
+    if side not in (("over", "under") if market == "total" else ("home", "away")):
+        raise ValueError("Unsupported NHL market side")
+    for home, away, probability in distribution:
+        if market == "total":
+            difference = (home + away - line) * (1 if side == "over" else -1)
+        else:
+            difference = (home - away) * (1 if side == "home" else -1)
+            if market == "spread":
+                difference += line
+        result = "push" if abs(difference) < 1e-12 else "win" if difference > 0 else "loss"
+        probabilities[result] += probability
+    return probabilities
+
+
+def find_nhl_best_bets(snapshot: dict, top_n: int = 5, now: datetime | None = None) -> list[dict]:
     candidates = []
-
+    now = now or datetime.now(timezone.utc)
     for game in snapshot.get("games", []):
+        try:
+            start = datetime.fromisoformat(game["game_time"].replace("Z", "+00:00"))
+            if start.tzinfo is None or start <= now or game.get("status") in ("LIVE", "CRIT", "FINAL", "OFF"):
+                continue
+        except (KeyError, TypeError, ValueError):
+            continue
         odds = game.get("odds", {})
         if not odds:
             continue
-
-        away = game["away_team"]
-        home = game["home_team"]
+        away, home = game["away_team"], game["home_team"]
         matchup = f"{away} @ {home}"
-        venue = game.get("venue", "")
-        game_time = game.get("game_time", "")
-        market = odds.get("market_metrics", {})
-        line_move = game.get("line_movement", {})
-
         away_prob, home_prob = estimate_nhl_win_prob(game)
         our_total = estimate_nhl_total(game)
+        distribution = nhl_score_distribution(home_prob, our_total)
+        common = {
+            "game_id": game.get("game_id"), "matchup": matchup,
+            "venue": game.get("venue", ""), "game_time": game.get("game_time", ""),
+            "away_goalie": game.get("away_team_stats", {}).get("starting_goalie", {}).get("name", "TBD"),
+            "home_goalie": game.get("home_team_stats", {}).get("starting_goalie", {}).get("name", "TBD"),
+            "away_back_to_back": game.get("away_back_to_back", False),
+            "home_back_to_back": game.get("home_back_to_back", False),
+            "model_version": MODEL_VERSION,
+            "odds_event_id": odds.get("game_id_ext"),
+            "model_source": "provisional_score_distribution",
+            "probability_method": "Poisson regulation scores; ties resolve equally with one deciding goal. Not historically calibrated.",
+        }
 
-        away_goalie = game.get("away_team_stats", {}).get("starting_goalie", {})
-        home_goalie = game.get("home_team_stats", {}).get("starting_goalie", {})
-        away_goalie_name = away_goalie.get("name", "TBD")
-        home_goalie_name = home_goalie.get("name", "TBD")
-
-        sharp_signal = line_move.get("sharp_signal")
-        sharp_desc = line_move.get("sharp_signal_desc", "")
-        sharp_boost_away = 0.015 if sharp_signal == "away" else 0.0
-        sharp_boost_home = 0.015 if sharp_signal == "home" else 0.0
-        sharp_boost_over = 0.012 if sharp_signal == "over" else 0.0
-        sharp_boost_under = 0.012 if sharp_signal == "under" else 0.0
-
-        ml_away = odds.get("best_moneyline_away")
-        ml_home = odds.get("best_moneyline_home")
-
-        if ml_away:
-            market_prob = american_to_implied_prob(ml_away)
-            market_support = _market_support_boost(market.get("best_vs_consensus_away", 0.0))
-            ev = calculate_ev(away_prob + sharp_boost_away + market_support, ml_away)
-            edge = away_prob - market_prob
-            if edge > 0:
-                candidates.append({
-                    "_market_key": f"moneyline:{matchup}:away",
-                    "bet_type": "Moneyline",
-                    "pick": f"{away} ML",
-                    "team": away,
-                    "odds": ml_away,
-                    "our_prob": away_prob,
-                    "market_prob": round(market_prob, 3),
-                    "edge": round(edge, 3),
-                    "ev_per_100": ev,
-                    "matchup": matchup,
-                    "venue": venue,
-                    "game_time": game_time,
-                    "away_goalie": away_goalie_name,
-                    "home_goalie": home_goalie_name,
-                    "away_back_to_back": game.get("away_back_to_back", False),
-                    "home_back_to_back": game.get("home_back_to_back", False),
-                    "sharp_signal": sharp_desc if sharp_signal == "away" else None,
-                    "market_support": round(market.get("best_vs_consensus_away", 0.0), 3),
-                    "books_available": market.get("books_h2h", 0),
-                    "reasoning": _ml_reasoning(game, away, "away", away_prob, market_prob),
+        def add_candidate(market, side, line, side_odds, book):
+            side_odds = _number(side_odds, None)
+            if side_odds is None or abs(side_odds) < 100:
+                return
+            if side_odds.is_integer():
+                side_odds = int(side_odds)
+            if market != "moneyline":
+                line = _number(line, None)
+                if line is None or abs(line * 2 - round(line * 2)) > 1e-8:
+                    return
+                if market == "total" and line <= 0:
+                    return
+            probabilities = market_probabilities(distribution, market, side, line)
+            # The published probabilities also drive published EV, avoiding a
+            # hidden market-movement or best-price probability bonus.
+            our_prob = round(probabilities["win"], 6)
+            push_prob = round(probabilities["push"], 6)
+            loss_prob = round(1 - our_prob - push_prob, 6)
+            implied = american_to_implied_prob(side_odds)
+            break_even = implied * (1 - push_prob)
+            edge = our_prob - break_even
+            ev = calculate_ev(our_prob, side_odds, push_prob)
+            if ev <= 0 or edge <= (0.0 if market == "moneyline" else 0.02):
+                return
+            team = away if side == "away" else home
+            market_key = {"moneyline": "h2h", "spread": "spreads", "total": "totals"}[market]
+            candidate = {
+                **common,
+                "_market_key": f"{market}:{game.get('game_id', matchup)}:{side}",
+                "bet_type": {"moneyline": "Moneyline", "spread": "Spread", "total": "Total"}[market],
+                "market": market, "side": side, "line": line,
+                "team": team, "odds": side_odds, "book": book,
+                "odds_updated_at": odds.get("market_updated_at", {}).get(market_key, {}).get(book),
+                "our_prob": our_prob, "push_probability": push_prob, "loss_probability": loss_prob,
+                "market_prob": round(break_even, 6),
+                "quoted_implied_probability": round(implied, 6),
+                "edge": round(edge, 6), "ev_per_100": ev,
+            }
+            if market == "moneyline":
+                candidate.update({
+                    "pick": f"{team} ML", "books_available": len(odds.get("moneylines", {})),
+                    "reasoning": _ml_reasoning(game, team, side, our_prob, break_even),
                 })
-
-        if ml_home:
-            market_prob = american_to_implied_prob(ml_home)
-            market_support = _market_support_boost(market.get("best_vs_consensus_home", 0.0))
-            ev = calculate_ev(home_prob + sharp_boost_home + market_support, ml_home)
-            edge = home_prob - market_prob
-            if edge > 0:
-                candidates.append({
-                    "_market_key": f"moneyline:{matchup}:home",
-                    "bet_type": "Moneyline",
-                    "pick": f"{home} ML",
-                    "team": home,
-                    "odds": ml_home,
-                    "our_prob": home_prob,
-                    "market_prob": round(market_prob, 3),
-                    "edge": round(edge, 3),
-                    "ev_per_100": ev,
-                    "matchup": matchup,
-                    "venue": venue,
-                    "game_time": game_time,
-                    "away_goalie": away_goalie_name,
-                    "home_goalie": home_goalie_name,
-                    "away_back_to_back": game.get("away_back_to_back", False),
-                    "home_back_to_back": game.get("home_back_to_back", False),
-                    "sharp_signal": sharp_desc if sharp_signal == "home" else None,
-                    "market_support": round(market.get("best_vs_consensus_home", 0.0), 3),
-                    "books_available": market.get("books_h2h", 0),
-                    "reasoning": _ml_reasoning(game, home, "home", home_prob, market_prob),
+            elif market == "total":
+                candidate.update({
+                    "pick": f"{side.title()} {line} ({book})", "team": f"{away} vs {home}",
+                    "our_estimated_total": our_total, "market_line": line,
+                    "reasoning": _total_reasoning(game, our_total, line),
                 })
+            else:
+                margin = sum((h - a) * probability for h, a, probability in distribution)
+                if side == "away":
+                    margin *= -1
+                candidate.update({
+                    "pick": f"{team} {line:+.1f} ({book})",
+                    "reasoning": f"Projected goal margin for {team}: {margin:+.2f} vs line {line:+.1f}",
+                })
+            candidates.append(candidate)
 
-        for book, total_data in odds.get("totals", {}).items():
-            if "over" not in total_data or "under" not in total_data:
-                continue
-            line = total_data["over"]["line"]
-            over_odds = total_data["over"]["odds"]
-            under_odds = total_data["under"]["odds"]
-            market_over, market_under = no_vig_prob(over_odds, under_odds)
+        for book, pair in odds.get("moneylines", {}).items():
+            for side in ("away", "home"):
+                add_candidate("moneyline", side, None, pair.get(side), book)
+        for book, pair in odds.get("totals", {}).items():
+            for side in ("over", "under"):
+                quote = pair.get(side, {})
+                if quote.get("line") is not None:
+                    add_candidate("total", side, quote["line"], quote.get("odds"), book)
+        for book, pair in odds.get("run_lines", {}).items():
+            for side in ("away", "home"):
+                quote = pair.get(side, {})
+                if quote.get("line") is not None:
+                    add_candidate("spread", side, quote["line"], quote.get("odds"), book)
 
-            diff = our_total - line
-            line_value_over = max(0.0, (odds.get("consensus_total", line) - line) * 0.03)
-            line_value_under = max(0.0, (line - odds.get("consensus_total", line)) * 0.03)
-            our_over = max(0.30, min(0.74, 0.50 + diff * 0.08 + sharp_boost_over + line_value_over))
-            our_under = max(0.26, min(0.70, 1 - our_over + sharp_boost_under + line_value_under))
-
-            for side, our_prob, market_prob, side_odds, label in [
-                ("over", our_over, market_over, over_odds, "Over"),
-                ("under", our_under, market_under, under_odds, "Under"),
-            ]:
-                edge = our_prob - market_prob
-                ev = calculate_ev(our_prob, side_odds)
-                if edge > 0.02:
-                    candidates.append({
-                        "_market_key": f"total:{matchup}:{side}",
-                        "bet_type": "Total",
-                        "pick": f"{label} {line} ({book})",
-                        "team": f"{away} vs {home}",
-                        "odds": side_odds,
-                        "our_prob": round(our_prob, 3),
-                        "market_prob": round(market_prob, 3),
-                        "edge": round(edge, 3),
-                        "ev_per_100": ev,
-                        "matchup": matchup,
-                        "venue": venue,
-                        "game_time": game_time,
-                        "away_goalie": away_goalie_name,
-                        "home_goalie": home_goalie_name,
-                        "our_estimated_total": our_total,
-                        "market_line": line,
-                        "away_back_to_back": game.get("away_back_to_back", False),
-                        "home_back_to_back": game.get("home_back_to_back", False),
-                        "reasoning": _total_reasoning(game, our_total, line),
-                    })
-
-        for book, spread_data in odds.get("run_lines", {}).items():
-            for side, team, data in [
-                ("away", away, spread_data.get("away")),
-                ("home", home, spread_data.get("home")),
-            ]:
-                if not data:
-                    continue
-                line = data.get("line")
-                side_odds = data.get("odds")
-                if line is None or side_odds is None:
-                    continue
-                our_prob = estimate_puckline_cover_probability(away_prob, home_prob, our_total, side, line)
-                market_prob = american_to_implied_prob(side_odds)
-                edge = our_prob - market_prob
-                ev = calculate_ev(our_prob, side_odds)
-                if edge > 0.02:
-                    candidates.append({
-                        "_market_key": f"spread:{matchup}:{side}",
-                        "bet_type": "Spread",
-                        "pick": f"{team} {line:+.1f} ({book})",
-                        "team": team,
-                        "odds": side_odds,
-                        "our_prob": round(our_prob, 3),
-                        "market_prob": round(market_prob, 3),
-                        "edge": round(edge, 3),
-                        "ev_per_100": ev,
-                        "matchup": matchup,
-                        "venue": venue,
-                        "game_time": game_time,
-                        "away_goalie": away_goalie_name,
-                        "home_goalie": home_goalie_name,
-                        "reasoning": _spread_reasoning(team, line, away_prob, home_prob, our_total, side),
-                    })
-
-    candidates.sort(key=lambda x: x["ev_per_100"], reverse=True)
-    selected = _top_unique_candidates(candidates, top_n)
-    for pick in selected:
-        game = next((g for g in snapshot.get('games', []) if f"{g['away_team']} @ {g['home_team']}" == pick['matchup']), {})
-        pick['game_id'] = game.get('game_id')
-        odds = game.get('odds', {})
-        side = 'away' if pick.get('team') == game.get('away_team') else 'home'
-        market = {'Moneyline': 'h2h', 'Spread': 'spreads', 'Total': 'totals'}[pick['bet_type']]
-        if pick['bet_type'] == 'Moneyline':
-            book = next((b for b, pair in odds.get('moneylines', {}).items() if pair.get(side) == pick['odds']), None)
-        else:
-            book = pick['pick'].rsplit('(', 1)[-1].rstrip(')') if '(' in pick['pick'] else None
-        pick['book'] = book
-        pick['odds_updated_at'] = odds.get('market_updated_at', {}).get(market, {}).get(book)
-        if pick['bet_type'] == 'Spread':
-            pick['line'] = odds.get('run_lines', {}).get(book, {}).get(side, {}).get('line')
-    return selected
+    candidates.sort(key=lambda candidate: candidate["ev_per_100"], reverse=True)
+    return _top_unique_candidates(candidates, top_n)
 
 
 def _schedule_total_penalty(schedule_spot: dict) -> float:
@@ -397,17 +415,6 @@ def _schedule_win_penalty(schedule_spot: dict) -> float:
     if schedule_spot.get("rest_days", 1) >= 2:
         penalty -= 0.01
     return penalty
-
-
-def _market_support_boost(best_vs_consensus: float) -> float:
-    return max(0.0, min(best_vs_consensus * 0.35, 0.01))
-
-
-def _normal_cdf(x: float, mean: float, std_dev: float) -> float:
-    if std_dev <= 0:
-        return 0.5
-    z = (x - mean) / (std_dev * sqrt(2))
-    return 0.5 * (1 + erf(z))
 
 
 def _top_unique_candidates(candidates: list[dict], top_n: int) -> list[dict]:
@@ -445,8 +452,11 @@ def _ml_reasoning(game: dict, team: str, side: str, our_prob: float, market_prob
         sv = goalie.get("save_pct", 0)
         gaa = goalie.get("gaa", 0)
         gsax = goalie_xg.get("gsax")
-        if sv:
-            parts.append(f"G: {goalie.get('name', '?')} .{int(sv*1000)} / {gaa:.2f} GAA")
+        if sv is not None:
+            goalie_detail = f"G: {goalie.get('name', '?')} .{int(sv*1000)}"
+            if gaa is not None:
+                goalie_detail += f" / {gaa:.2f} GAA"
+            parts.append(goalie_detail)
         if gsax is not None:
             parts.append(f"GSAx: {gsax:+.1f}")
 
@@ -471,10 +481,3 @@ def _total_reasoning(game: dict, our_total: float, line: float) -> str:
     if away_schedule.get("games_last_6", 0) >= 4 or home_schedule.get("games_last_6", 0) >= 4:
         parts.append("Compressed schedule")
     return " | ".join(parts)
-
-
-def _spread_reasoning(team: str, line: float, away_prob: float, home_prob: float, total: float, side: str) -> str:
-    margin_mean = (home_prob - away_prob) * max(total * 0.95, 4.0)
-    if side == "away":
-        margin_mean *= -1
-    return f"Projected goal margin for {team}: {margin_mean:+.2f} vs line {line:+.1f}"

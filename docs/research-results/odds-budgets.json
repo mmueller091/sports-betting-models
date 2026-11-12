@@ -1,0 +1,104 @@
+{
+  "cfb": {
+    "2021_2025": {
+      "closing_minutes": 5,
+      "decision_minutes": 60,
+      "estimated_credits": 103500,
+      "manifest_id": "3127451c023feded2db4c37a20f1e4e2bb563c5d945c09b919bf83e91440c3e9",
+      "markets": [
+        "h2h",
+        "spreads",
+        "totals"
+      ],
+      "paid_fetch_performed": false,
+      "regions": [
+        "us"
+      ],
+      "request_count": 3450
+    },
+    "2025": {
+      "closing_minutes": 5,
+      "decision_minutes": 60,
+      "estimated_credits": 22860,
+      "manifest_id": "ffe689ba4143b14620111bae6ddc5e1ca28d170a9ca489a0787df517b95eb89c",
+      "markets": [
+        "h2h",
+        "spreads",
+        "totals"
+      ],
+      "paid_fetch_performed": false,
+      "regions": [
+        "us"
+      ],
+      "request_count": 762
+    }
+  },
+  "nfl": {
+    "2021_2025": {
+      "closing_minutes": 5,
+      "decision_minutes": 60,
+      "estimated_credits": 40320,
+      "manifest_id": "ef8abed3a0bcf078fa905e4d2a435443cb27fce0f204ab5e4780111cc771f738",
+      "markets": [
+        "h2h",
+        "spreads",
+        "totals"
+      ],
+      "paid_fetch_performed": false,
+      "regions": [
+        "us"
+      ],
+      "request_count": 1344
+    },
+    "2025": {
+      "closing_minutes": 5,
+      "decision_minutes": 60,
+      "estimated_credits": 8340,
+      "manifest_id": "7492a0abcff20ed215a652d59608e4f7890d17aa0311c722487514b0b6ef40a2",
+      "markets": [
+        "h2h",
+        "spreads",
+        "totals"
+      ],
+      "paid_fetch_performed": false,
+      "regions": [
+        "us"
+      ],
+      "request_count": 278
+    }
+  },
+  "nhl": {
+    "2021_2025": {
+      "closing_minutes": 5,
+      "decision_minutes": 60,
+      "estimated_credits": 256440,
+      "manifest_id": "090a4da665476202e712b75c2df9dc2571aaeaa11a971c0f07ae8afe3febf304",
+      "markets": [
+        "h2h",
+        "spreads",
+        "totals"
+      ],
+      "paid_fetch_performed": false,
+      "regions": [
+        "us"
+      ],
+      "request_count": 8548
+    },
+    "2025": {
+      "closing_minutes": 5,
+      "decision_minutes": 60,
+      "estimated_credits": 49800,
+      "manifest_id": "1512513537c3a62de787488edc50e33956cfa7b8f76674b3b7b10b765d65ba1b",
+      "markets": [
+        "h2h",
+        "spreads",
+        "totals"
+      ],
+      "paid_fetch_performed": false,
+      "regions": [
+        "us"
+      ],
+      "request_count": 1660
+    }
+  }
+}

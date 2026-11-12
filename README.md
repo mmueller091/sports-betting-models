@@ -27,6 +27,49 @@ The college model uses opponent-adjusted scoring ratings. Current passing/rushin
 
 The Model inputs view shows the measured variables, coverage, sources, chronological validation error, and selection rules. Every validation week is predicted from earlier weeks. Estimates are provisional: scoring error and a theoretical positive expected value do not establish profitable historical betting or calibrated probabilities. No actual wagers are placed.
 
+## Historical training and testing
+
+The offline research commands download old games, rebuild features from prior
+games, refit models chronologically, and evaluate every eligible forecast.
+They run independently of the live pick ledger. A date parameter on a live API
+route is not a historical backtest.
+
+The initial research corpus contains **12,963 completed games** across five
+seasons: 1,424 NFL, 4,546 college football, and 6,993 NHL. NFL play metrics are
+available for all 1,424 games. Source snapshots, hashes, availability conventions,
+and incomplete-game records are retained. Prediction accuracy can be tested
+immediately; betting returns require exact timestamped historical prices.
+
+- [Commands and research workflow](docs/historical-replay.md)
+- [Source coverage and historical odds budgets](docs/historical-data.md)
+- [Frozen experiment protocol](docs/research-protocol.md)
+- [Measured football results](docs/football-research-results.md)
+- [Measured NHL results](docs/nhl-research-results.md)
+
+The experimental candidates do not automatically replace production weights.
+The 2025 season is a reserved chronological comparison after 2021-2024
+development. Each weekly fit uses only outcomes and features available before
+its first decision. A replay preserves no-bet reasons, quote rejections, and
+one exact-priced selection per game. The repository contains derived aggregate
+results; large source archives and licensed odds stay outside public source.
+
+## NHL model correctness
+
+Version `nhl-2026-11-12.correctness.1` derives moneyline, puckline, and total
+probabilities from one final-score distribution. Full-game score outcomes include
+overtime and the deciding shootout goal; integer lines retain push mass. The
+displayed win probability is the one used in expected-value calculations at
+the named bookmaker's actual payout. Unsupported price-movement probability
+bonuses have been removed. The score distribution is coherent but remains a
+provisional assumption until validated against historical prices and outcomes.
+
+Goalie quality has the correct direction, confirmed starter changes preserve
+player identity, missing statistics remain missing, and xG/ice-time units and
+season/situation selection are explicit. Data-source failures produce warnings.
+Both NHL best bets and scorer recommendations stop after puck drop. Original
+audit selections remain immutable; model changes create new revisions with the
+new version identifier.
+
 ## Updates and data
 
 - Models refresh hourly, at 23 minutes past the hour. GitHub may delay scheduled jobs.

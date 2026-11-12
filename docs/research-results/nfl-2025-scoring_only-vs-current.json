@@ -1,0 +1,40 @@
+{
+  "matched_games": 237,
+  "margin": {
+    "mean_absolute_error_difference": -0.09584541390913275,
+    "interval": {
+      "low": -0.3867356738674728,
+      "high": 0.1664902122908467,
+      "level": 0.95,
+      "cluster": "league_week",
+      "clusters": 19,
+      "bootstrap_samples": 500,
+      "seed": 20261112
+    }
+  },
+  "total": {
+    "mean_absolute_error_difference": -0.13661410416063619,
+    "interval": {
+      "low": -0.43837542690188686,
+      "high": 0.1276109563806895,
+      "level": 0.95,
+      "cluster": "league_week",
+      "clusters": 19,
+      "bootstrap_samples": 500,
+      "seed": 20261112
+    }
+  },
+  "brier": {
+    "mean_difference": -0.000930774161901286,
+    "interval": {
+      "low": -0.007448993253214754,
+      "high": 0.004768221517586703,
+      "level": 0.95,
+      "cluster": "league_week",
+      "clusters": 19,
+      "bootstrap_samples": 500,
+      "seed": 20261112
+    }
+  },
+  "interpretation": "Negative differences favor the first candidate; discovery comparisons still require untouched validation."
+}

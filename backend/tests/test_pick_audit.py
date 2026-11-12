@@ -51,6 +51,20 @@ class AuditTests(unittest.IsolatedAsyncioTestCase):
             r['settlement'] = {'result': 'WIN', 'profit': 100}
         self.assertEqual(audit.audit_summary(ledger)['summary']['profit'], 100)
 
+    def test_nhl_model_change_appends_revision_and_keeps_original(self):
+        ledger = self.ledger()
+        pick = {'game_id': '99', 'game_time': '2026-11-14T00:00:00Z',
+                'matchup': 'Away @ Home', 'market': 'moneyline', 'side': 'home',
+                'pick': 'Home moneyline', 'odds': 110, 'our_prob': .55}
+        data = {'bets': {'bets': [pick]}, 'games': {'games': [
+            {'game_id': '99', 'home_team': 'Home', 'away_team': 'Away'}]}}
+        audit.record_bundle({'nhl': {'status': 'ok', 'generated_at': '2026-11-12T10:00:00Z', 'data': data}}, ledger)
+        pick['model_version'] = 'nhl-corrected-test'
+        audit.record_bundle({'nhl': {'status': 'ok', 'generated_at': '2026-11-12T11:00:00Z', 'data': data}}, ledger)
+        record = next(iter(ledger['records'].values()))
+        self.assertEqual(record['original']['model_version'], 'nhl-existing-model')
+        self.assertEqual(record['revisions'][0]['model_version'], 'nhl-corrected-test')
+
     def test_stale_and_after_kickoff_picks_never_become_pregame_records(self):
         ledger = self.ledger()
         late = bundle('2026-11-14T18:00:00Z')

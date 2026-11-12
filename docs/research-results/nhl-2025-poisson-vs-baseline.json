@@ -1,0 +1,40 @@
+{
+  "brier": {
+    "interval": {
+      "bootstrap_samples": 500,
+      "cluster": "league_week",
+      "clusters": 34,
+      "high": 0.00024541813659688844,
+      "level": 0.95,
+      "low": -0.006154958601313334,
+      "seed": 20261112
+    },
+    "mean_difference": -0.0030196506561810167
+  },
+  "interpretation": "Negative differences favor the first candidate; discovery comparisons still require untouched validation.",
+  "margin": {
+    "interval": {
+      "bootstrap_samples": 500,
+      "cluster": "league_week",
+      "clusters": 34,
+      "high": -0.02252818542501664,
+      "level": 0.95,
+      "low": -0.06244634454000449,
+      "seed": 20261112
+    },
+    "mean_absolute_error_difference": -0.04255240021462699
+  },
+  "matched_games": 1394,
+  "total": {
+    "interval": {
+      "bootstrap_samples": 500,
+      "cluster": "league_week",
+      "clusters": 34,
+      "high": 0.007295306725850993,
+      "level": 0.95,
+      "low": -0.015785068006437246,
+      "seed": 20261112
+    },
+    "mean_absolute_error_difference": -0.004630557366419306
+  }
+}

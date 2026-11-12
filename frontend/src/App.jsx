@@ -1,12 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import BestBets from './components/BestBets';
-import HitProps from './components/HitProps';
-import GameList from './components/GameList';
-import Performance from './components/Performance';
 import NHLBestBets from './components/NHLBestBets';
 import NHLGoalScorers from './components/NHLGoalScorers';
 import NHLGameList from './components/NHLGameList';
 import FootballDashboard from './components/FootballDashboard';
+import PickHistory from './components/PickHistory';
 import './App.css';
 
 const STATIC = process.env.REACT_APP_STATIC_DATA === 'true';
@@ -17,16 +14,12 @@ const TABS = [
   { id: 'nhl-bets', label: 'NHL Best Bets', sport: 'nhl', key: 'bets', component: NHLBestBets },
   { id: 'nhl-scorers', label: 'Goal Scorers', sport: 'nhl', key: 'scorers', component: NHLGoalScorers },
   { id: 'nhl-games', label: 'NHL Games', sport: 'nhl', key: 'games', component: NHLGameList },
-  { id: 'mlb-bets', label: 'MLB Best Bets', sport: 'mlb', key: 'bets', component: BestBets },
-  { id: 'mlb-hits', label: 'Beat the Streak', sport: 'mlb', key: 'hits', component: HitProps },
-  { id: 'mlb-games', label: 'MLB Games', sport: 'mlb', key: 'games', component: GameList },
-  { id: 'performance', label: 'MLB Performance' },
+  { id: 'pick-history', label: 'Pick History', component: PickHistory },
 ];
 const SPORT_ENDPOINTS = {
   nfl: { prefix: '/api/nfl', endpoints: { weekly: 'weekly' } },
   cfb: { prefix: '/api/cfb', endpoints: { weekly: 'weekly' } },
   nhl: { prefix: '/api/nhl', endpoints: { bets: 'best-bets', scorers: 'goal-scorers', games: 'daily' } },
-  mlb: { prefix: '/api', endpoints: { bets: 'best-bets', hits: 'hit-props', games: 'daily' } },
 };
 
 async function getJson(url) {
@@ -44,7 +37,7 @@ export default function App() {
     const saved = window.location.hash.slice(1);
     if (TABS.some(t => t.id === saved)) return saved;
     const month = new Date().getMonth();
-    return month >= 8 || month <= 1 ? 'nfl-week' : month >= 3 && month <= 7 ? 'mlb-hits' : 'nhl-bets';
+    return month >= 8 || month <= 1 ? 'nfl-week' : 'nhl-bets';
   });
   const [bundle, setBundle] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -62,8 +55,8 @@ export default function App() {
         const data = Object.fromEntries(entries);
         setBundle(old => ({ ...old, [active.sport]: { status: 'ok', generated_at: new Date().toISOString(), date: data.games?.date || data.weekly?.date, odds: data.weekly?.odds_status, warnings: data.weekly?.warnings || [], data } }));
       } else {
-        const performance = await getJson('/api/performance');
-        setBundle(old => ({ ...old, performance }));
+        const audit = await getJson('/api/pick-history');
+        setBundle(old => ({ ...old, audit }));
       }
       setError(null);
     } catch {
@@ -96,7 +89,7 @@ export default function App() {
   }
 
   const sport = bundle?.[active.sport];
-  const data = sport?.data?.[active.key];
+  const data = tab === 'pick-history' ? bundle?.audit : sport?.data?.[active.key];
   const age = sport?.generated_at ? Date.now() - Date.parse(sport.generated_at) : Infinity;
   const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York' }).format(new Date());
   const stale = sport && (sport.status === 'stale' || age > 3 * 60 * 60 * 1000 || sport.date !== today);
@@ -108,7 +101,7 @@ export default function App() {
         <div className="header-inner">
           <div>
             <h1 className="header-title">Sports Betting Models</h1>
-            <p className="header-date">Weekly NFL and college football picks · MLB and NHL analysis</p>
+            <p className="header-date">Weekly NFL and college football picks · NHL analysis and pick history</p>
           </div>
           <button className="btn-refresh" onClick={refresh} disabled={refreshing || loading}>
             {refreshing ? 'Checking...' : STATIC ? 'Check for updates' : 'Refresh models'}
@@ -130,7 +123,6 @@ export default function App() {
         {sport?.warnings?.length > 0 && (!data || sport.status === 'stale' || !['nfl', 'cfb'].includes(active.sport)) && <details className="data-warning"><summary>Some data sources could not be refreshed ({sport.warnings.length})</summary><ul>{sport.warnings.map(w => <li key={w}>{w}</li>)}</ul></details>}
         {error && <div className="error" role="alert">{error}</div>}
         {loading && !data && <div className="loading">Loading the latest model results...</div>}
-        {!loading && tab === 'performance' && (bundle?.performance ? <Performance data={bundle.performance} /> : <div className="card">Performance history is not available yet.</div>)}
         {Component && data && <Component data={data} />}
         {!loading && Component && !data && <div className="card">Results are not available yet. The next successful model update will appear here.</div>}
       </main>

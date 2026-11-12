@@ -13,6 +13,7 @@ from pathlib import Path
 import httpx
 from typing import Optional
 from data.source_health import warn
+from data.sports_config import mlb_enabled
 
 ODDS_BASE = "https://api.the-odds-api.com/v4"
 SPORT = "baseball_mlb"
@@ -34,6 +35,9 @@ async def get_game_odds(regions: str = "us", markets: str = "h2h,spreads,totals"
     Returns a list of games with their odds across books.
     sport: 'baseball_mlb' or 'icehockey_nhl'
     """
+    if sport == SPORT and not mlb_enabled():
+        ODDS_STATUS[sport] = {"status": "paused"}
+        return []
     cache_hours = float(os.getenv("ODDS_CACHE_HOURS", "0"))
     cache_key = hashlib.sha256(f"{sport}:{regions}:{markets}".encode()).hexdigest()[:16]
     cache_path = CACHE_DIR / f"{cache_key}.json"
@@ -149,6 +153,8 @@ async def get_props(event_id: str, markets: str = "batter_hits") -> list[dict]:
     Fetch player prop odds for a specific game event.
     market options: batter_hits, batter_total_bases, pitcher_strikeouts, etc.
     """
+    if not mlb_enabled():
+        return []
     url = f"{ODDS_BASE}/sports/{SPORT}/events/{event_id}/odds"
     params = {
         "apiKey": _api_key(),

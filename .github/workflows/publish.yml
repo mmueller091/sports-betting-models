@@ -28,6 +28,7 @@ jobs:
       ODDS_CACHE_HOURS: '24'
       PAGES_ARTIFACT_NAME: pages-${{ github.run_id }}-${{ github.run_attempt }}
       ENABLE_HIT_PROP_ODDS: 'false'
+      ENABLE_MLB: 'false'
       SPORTS_DATA_DIR: ${{ github.workspace }}/.model-state/data_store
       BTS_ARTIFACT_PATH: ${{ github.workspace }}/.model-state/artifacts/bts_model.pkl
     steps:

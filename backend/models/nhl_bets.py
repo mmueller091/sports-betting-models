@@ -357,7 +357,22 @@ def find_nhl_best_bets(snapshot: dict, top_n: int = 5) -> list[dict]:
                     })
 
     candidates.sort(key=lambda x: x["ev_per_100"], reverse=True)
-    return _top_unique_candidates(candidates, top_n)
+    selected = _top_unique_candidates(candidates, top_n)
+    for pick in selected:
+        game = next((g for g in snapshot.get('games', []) if f"{g['away_team']} @ {g['home_team']}" == pick['matchup']), {})
+        pick['game_id'] = game.get('game_id')
+        odds = game.get('odds', {})
+        side = 'away' if pick.get('team') == game.get('away_team') else 'home'
+        market = {'Moneyline': 'h2h', 'Spread': 'spreads', 'Total': 'totals'}[pick['bet_type']]
+        if pick['bet_type'] == 'Moneyline':
+            book = next((b for b, pair in odds.get('moneylines', {}).items() if pair.get(side) == pick['odds']), None)
+        else:
+            book = pick['pick'].rsplit('(', 1)[-1].rstrip(')') if '(' in pick['pick'] else None
+        pick['book'] = book
+        pick['odds_updated_at'] = odds.get('market_updated_at', {}).get(market, {}).get(book)
+        if pick['bet_type'] == 'Spread':
+            pick['line'] = odds.get('run_lines', {}).get(book, {}).get(side, {}).get('line')
+    return selected
 
 
 def _schedule_total_penalty(schedule_spot: dict) -> float:

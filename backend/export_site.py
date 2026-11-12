@@ -15,6 +15,8 @@ from api.main import app
 from data.odds import ODDS_STATUS
 from data.source_health import begin_collection, end_collection
 from train_bts_model import train_if_ready
+from data.sports_config import mlb_enabled
+from data.pick_audit import load_ledger, save_ledger, record_bundle, grade_ledger, audit_summary
 
 ENDPOINTS = {
     "mlb": {"bets": "/api/best-bets", "hits": "/api/hit-props", "games": "/api/daily"},
@@ -31,6 +33,8 @@ def read_previous(path):
         return {}
 
 async def export_sport(client, sport, target_date, previous):
+    if sport == 'mlb' and not mlb_enabled():
+        return {'status': 'paused', 'warnings': [], 'data': {}}
     token = begin_collection()
     data, failure = {}, None
     try:
@@ -62,24 +66,35 @@ async def export(output, previous_path=None):
     target_date = datetime.now(ZoneInfo("America/New_York")).date().isoformat()
     transport = httpx.ASGITransport(app=app)
     async with httpx.AsyncClient(transport=transport, base_url="http://snapshot", timeout=900) as client:
-        try:
-            response = await client.get("/api/performance")
-            response.raise_for_status()
-            performance = response.json()
-        except Exception:
-            performance = previous.get("performance")
-        try:
-            await asyncio.to_thread(train_if_ready)
-        except Exception:
-            pass  # Insufficient history must not stop baseline predictions.
+        performance = previous.get('performance')
+        if mlb_enabled():
+            try:
+                response = await client.get("/api/performance")
+                response.raise_for_status()
+                performance = response.json()
+                await asyncio.to_thread(train_if_ready)
+            except Exception:
+                pass
+        active_sports = [sport for sport in ENDPOINTS if sport != 'mlb' or mlb_enabled()]
         sports = await asyncio.gather(*(
-            export_sport(client, sport, target_date, previous.get(sport, {})) for sport in ENDPOINTS
+            export_sport(client, sport, target_date, previous.get(sport, {})) for sport in active_sports
         ))
     bundle = {
         "generated_at": datetime.now(timezone.utc).isoformat(), "date": target_date,
         "timezone": "America/New_York", "refresh_minutes": 60, "odds_cache_hours": float(os.getenv("ODDS_CACHE_HOURS", "24")),
-        "performance": performance, **dict(zip(ENDPOINTS, sports)),
+        "performance": performance, **dict(zip(active_sports, sports)),
     }
+    if not mlb_enabled():
+        bundle['mlb'] = {'status': 'paused', 'warnings': [], 'data': {}}
+        bundle['performance'] = None
+    ledger = load_ledger()
+    # Import only the last actually saved snapshot, retaining its original time.
+    # This never reconstructs old picks with today's model or today's prices.
+    record_bundle(previous, ledger)
+    record_bundle(bundle, ledger)
+    await grade_ledger(ledger)
+    save_ledger(ledger)
+    bundle['audit'] = audit_summary(ledger)
     output.parent.mkdir(parents=True, exist_ok=True)
     temporary = output.with_suffix(".tmp")
     temporary.write_text(json.dumps(bundle, ensure_ascii=False, allow_nan=False), encoding="utf-8")

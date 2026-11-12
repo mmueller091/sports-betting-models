@@ -388,7 +388,7 @@ def _candidates(game, snapshot, prediction, margin_sigma, total_sigma, now):
         age = (now - quote_dt).total_seconds() / 3600 if quote_dt else None
         candidates.append({
             "game_id": str(game["game_id"]), "matchup": matchup, "game_time": game["game_time"],
-            "pick": label, "market": market, "line": line, "odds": int(price),
+            "pick": label, "market": market, "side": side, "line": line, "odds": int(price),
             "book": odds.get("book_titles", {}).get(book, book), "book_key": book,
             "model_probability": round(win, 4), "push_probability": round(push, 4),
             "conditional_probability": round(conditional, 4), "market_probability": round(break_even, 4),

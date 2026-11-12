@@ -55,6 +55,9 @@ from models.nhl_bets import find_nhl_best_bets
 from models.nhl_goals import find_nhl_goal_scorers
 from train_bts_model import train_if_ready
 from api.football import router as football_router
+from data.sports_config import mlb_enabled
+from data.pick_audit import audit_summary
+from fastapi.responses import JSONResponse
 
 # ─── Background prop polling ──────────────────────────────────────────────────
 
@@ -118,6 +121,8 @@ async def _daily_refresh_loop():
 
 async def _grade_history_once():
     """Grade completed games without making any request path wait for it."""
+    if not mlb_enabled():
+        return
     try:
         await grade_pending()
     except Exception:
@@ -135,13 +140,13 @@ async def _grade_history_once():
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    prop_task = asyncio.create_task(_poll_props_loop())
-    refresh_task = asyncio.create_task(_daily_refresh_loop())
-    grade_task = asyncio.create_task(_grade_history_once())
+    tasks = []
+    if mlb_enabled():
+        tasks = [asyncio.create_task(_poll_props_loop()), asyncio.create_task(_daily_refresh_loop()),
+                 asyncio.create_task(_grade_history_once())]
     yield
-    prop_task.cancel()
-    refresh_task.cancel()
-    grade_task.cancel()
+    for task in tasks:
+        task.cancel()
 
 
 app = FastAPI(
@@ -151,6 +156,21 @@ app = FastAPI(
     lifespan=lifespan,
 )
 app.include_router(football_router)
+
+
+@app.middleware("http")
+async def pause_baseball(request, call_next):
+    path = request.url.path
+    active = ('/api/nhl/', '/api/nfl/', '/api/cfb/')
+    allowed = ('/api/health', '/api/pick-history')
+    if path.startswith('/api/') and not path.startswith(active) and path not in allowed and not mlb_enabled():
+        return JSONResponse(status_code=503, content={'detail': 'Baseball is paused for the offseason.'})
+    return await call_next(request)
+
+
+@app.get('/api/pick-history')
+async def pick_history():
+    return audit_summary()
 
 app.add_middleware(
     CORSMiddleware,
@@ -171,6 +191,8 @@ MLB_CACHE_TTL_SECONDS = 15 * 60
 
 async def get_snapshot(game_date: Optional[date] = None, sport: str = "mlb") -> dict:
     """Get or build a daily snapshot (cached by sport+date)."""
+    if sport == 'mlb' and not mlb_enabled():
+        raise HTTPException(status_code=503, detail='Baseball is paused for the offseason.')
     d = game_date or date.today()
     key = f"{sport}:{d.isoformat()}"
 

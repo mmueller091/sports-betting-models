@@ -2,7 +2,17 @@
 
 Dashboard: https://mmueller091.github.io/sports-betting-models/
 
-The Python models run in GitHub Actions and publish a React dashboard to GitHub Pages. The website stays available without a home computer or a continuously running Python server. It includes weekly NFL and college football boards alongside the existing MLB and NHL analysis.
+The Python models run in GitHub Actions and publish a React dashboard to GitHub Pages. The website stays available without a home computer or a continuously running Python server. It includes NFL, college football, NHL, and a pick-history audit. Baseball is paused and hidden for the offseason.
+
+## Pick history and offseason controls
+
+[Pick History](https://mmueller091.github.io/sports-betting-models/#pick-history) saves the original pregame selection, line, American price, bookmaker, quote/snapshot timestamps, model probability, version, and reasoning. Later updates append revisions without overwriting the original. Each selection has a stable ID. Repeat hourly exports do not create new bets. Later opposing selections remain visible but are excluded from return summaries; summaries count the first selection per game and market. Different markets on the same game are correlated and are not independent evidence.
+
+The ledger lives in `data_store/pick_audit.json` on the persistent `model-state` branch; GitHub commits provide file version history. Tracking starts with the last retained snapshot and continues on each export. Earlier picks are not reconstructed from later model runs. The audit records saved model snapshots, not proof of a placed bet or a successful website deployment. Watchlists and selections first generated after kickoff are excluded. CSV exports contain the filtered original selections and settlements; JSON also contains all revisions and original reasoning.
+
+NFL/CFB results use ESPN final game summaries. NHL uses official NHL final box scores, including player participation for goal predictions. Result checks use free feeds and no Odds API credits. Missing, postponed, or failed result checks remain pending; explicit cancellations are void. Grading assumes full-game markets including overtime and the NHL final scoreboard's shootout deciding goal. Verify individual bookmaker rules. No closing-line value is claimed. Profit/ROI use a hypothetical $100 stake at each original quoted price; unpriced goal predictions and voids are excluded from returns.
+
+`ENABLE_MLB=false` is the default in both local code and the hosted workflow. It blocks MLB routes, snapshot construction and odds/prop requests, skips background baseball polling/grading/training, and omits MLB from publishing. Existing baseball history remains stored. Re-enabling later requires setting `ENABLE_MLB=true` and restoring the desired frontend tabs; the current UI stays focused on active sports.
 
 ## Weekly football dashboards
 
@@ -20,8 +30,8 @@ The Model inputs view shows the measured variables, coverage, sources, chronolog
 ## Updates and data
 
 - Models refresh hourly, at 23 minutes past the hour. GitHub may delay scheduled jobs.
-- Market odds are cached for 24 hours. With four sports and three markets this normally uses at most about 372 credits per 31-day month. Other use of the same API key counts toward its quota too. Model refreshes do not guarantee fresh market prices; a recommendation applies only at the quoted line and payout.
-- Paid batter-hit prop lookups are disabled in hosted jobs. Beat the Streak still uses the statistical model. Local runs retain the existing prop behavior.
+- Market odds are cached for 24 hours. With three active sports and three markets this normally uses at most about 279 credits per 31-day month. Other use of the same API key counts toward its quota too. Model refreshes do not guarantee fresh market prices; a recommendation applies only at the quoted line and payout.
+- Baseball is fully paused: no baseball schedule, statistics, grading, training, game odds, or batter-hit prop requests run in the hosted job.
 - Model history, grading, odds cache, trained artifacts, and the last published snapshot live on the `model-state` branch. They survive fresh runners and deploys.
 - Source failures are shown on the dashboard. A failed schedule fetch preserves the last good results and their original timestamp. Old results are labeled clearly. Football uses the league's own week calendar and checks team identities and kickoff time before matching odds.
 - The website's update button downloads the latest published results. It does not trigger paid API requests. Owners can run the publishing workflow manually from Actions.

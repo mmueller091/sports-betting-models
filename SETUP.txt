@@ -1,0 +1,88 @@
+SPORTS BETTING ANALYZER - SETUP GUIDE
+====================================
+
+This project is a local MLB + NHL betting dashboard.
+Backend: FastAPI
+Frontend: React
+
+PREREQUISITES
+  - Python 3.11+
+  - Node.js 18+
+  - The Odds API key
+
+STEP 1: BACKEND SETUP
+  cd backend
+  python -m venv venv
+  venv\Scripts\activate
+  pip install -r requirements.txt
+
+  Create backend\.env:
+    ODDS_API_KEY=your_key_here
+
+  Start backend manually:
+    python run.py
+
+  Dev mode with reload:
+    python run.py --dev
+
+  Backend URL:
+    http://localhost:8000
+
+STEP 2: FRONTEND SETUP
+  cd frontend
+  npm install
+
+  Dev server:
+    npm start
+    Opens at http://localhost:3000
+
+  Production build for launch.bat:
+    npm run build
+
+STEP 3: EASY LOCAL LAUNCH
+  From the repo root:
+    launch.bat
+
+  launch.bat expects:
+    - backend\venv to exist
+    - backend\.env to exist
+    - frontend\build\index.html to exist
+
+HEALTH CHECKS
+  - http://localhost:8000/api/health
+  - http://localhost:8000/api/best-bets
+  - http://localhost:8000/api/hit-props
+  - http://localhost:8000/api/daily
+  - http://localhost:8000/api/performance
+  - http://localhost:8000/api/nhl/best-bets
+  - http://localhost:8000/api/nhl/goal-scorers
+  - http://localhost:8000/api/nhl/daily
+
+WHAT THE APP SHOWS
+  MLB
+  - Best Bets
+  - Beat the Streak hit probabilities
+  - Game Slate
+
+  NHL
+  - Best Bets
+  - Goal Scorers
+  - Game Slate
+
+NOTES
+  - The app depends on live internet access for stats, odds, weather, injuries, and NHL advanced data.
+  - Best bets use model probability vs market probability and rank by expected value.
+  - Beat the Streak predictions refresh from live lineup data every 15 minutes while the app is open.
+  - Every eligible batter-game is recorded in backend\data_store\bts_history.sqlite3 and graded automatically.
+  - The model uses a Bayesian baseline until at least 2,000 settled batter-games are available.
+  - Training starts automatically at 2,000 settled rows and refreshes every 250 new rows.
+  - To train manually once that minimum is available, run:
+      python train_bts_model.py
+  - The trained artifact is loaded automatically on the next prediction request.
+  - Goal scorer props depend heavily on confirmed goalies and get better closer to game time.
+  - If launch.bat exits immediately, it usually means the venv, .env, or frontend build is missing.
+
+IMPORTANT DISCLAIMER
+  This tool generates model-based estimates only.
+  It is not a guarantee of profit.
+  Bet responsibly.

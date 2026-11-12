@@ -1,0 +1,19 @@
+.env
+.env.*
+!.env.example
+venv/
+.venv/
+node_modules/
+build/
+__pycache__/
+*.pyc
+backend/data_store/
+backend/models/artifacts/
+.claude/
+.codex/
+.publish/
+.preview/
+.model-state/
+Fantasy football/
+*.log
+

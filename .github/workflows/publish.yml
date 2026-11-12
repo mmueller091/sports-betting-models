@@ -1,0 +1,96 @@
+name: Update models and publish dashboard
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '23 * * * *'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: sports-dashboard
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      TZ: America/New_York
+      ODDS_CACHE_HOURS: '12'
+      ENABLE_HIT_PROP_ODDS: 'false'
+      SPORTS_DATA_DIR: ${{ github.workspace }}/.model-state/data_store
+      BTS_ARTIFACT_PATH: ${{ github.workspace }}/.model-state/artifacts/bts_model.pkl
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore persistent prediction history
+        uses: actions/checkout@v4
+        with:
+          ref: model-state
+          path: .model-state
+      - name: Import the original prediction history on first run
+        run: |
+          if [ ! -d .model-state/data_store ]; then
+            tar -xzf .model-state/seed-state.tar.gz -C .model-state
+          fi
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Install Python dependencies
+        run: python -m pip install -r backend/requirements.txt
+      - name: Verify model and publishing behavior
+        working-directory: backend
+        run: python -m unittest discover -s tests
+      - name: Update models
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python backend/export_site.py --output .model-state/public/dashboard.json
+      - name: Save prediction history and last successful results
+        working-directory: .model-state
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data_store public
+          if [ -d artifacts ]; then git add artifacts; fi
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh sports model state'
+            git push origin HEAD:model-state
+          fi
+      - name: Install frontend dependencies
+        working-directory: frontend
+        run: npm ci --no-audit --no-fund
+      - name: Build dashboard
+        working-directory: frontend
+        env:
+          REACT_APP_STATIC_DATA: 'true'
+          PUBLIC_URL: /${{ github.event.repository.name }}
+          GENERATE_SOURCEMAP: 'false'
+          CI: 'true'
+        run: npm run build
+      - name: Add published model results
+        run: |
+          mkdir -p frontend/build/data
+          cp .model-state/public/dashboard.json frontend/build/data/dashboard.json
+          touch frontend/build/.nojekyll
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: frontend/build
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

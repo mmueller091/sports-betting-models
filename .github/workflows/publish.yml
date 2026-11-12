@@ -26,6 +26,7 @@ jobs:
     env:
       TZ: America/New_York
       ODDS_CACHE_HOURS: '24'
+      PAGES_ARTIFACT_NAME: pages-${{ github.run_id }}-${{ github.run_attempt }}
       ENABLE_HIT_PROP_ODDS: 'false'
       SPORTS_DATA_DIR: ${{ github.workspace }}/.model-state/data_store
       BTS_ARTIFACT_PATH: ${{ github.workspace }}/.model-state/artifacts/bts_model.pkl
@@ -59,7 +60,12 @@ jobs:
       - name: Update models
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
-        run: python backend/export_site.py --output .model-state/public/dashboard.json
+        run: |
+          if [ -z "$ODDS_API_KEY" ]; then
+            echo '::error::ODDS_API_KEY is missing. Add it under repository Settings > Secrets and variables > Actions > Repository secrets.'
+            exit 1
+          fi
+          python backend/export_site.py --output .model-state/public/dashboard.json
       - name: Save prediction history and last successful results
         working-directory: .model-state
         run: |
@@ -90,7 +96,10 @@ jobs:
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
+          name: ${{ env.PAGES_ARTIFACT_NAME }}
           path: frontend/build
       - name: Deploy GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: ${{ env.PAGES_ARTIFACT_NAME }}

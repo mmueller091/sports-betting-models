@@ -1,0 +1,4275 @@
+{
+ "2026-06-11": {
+  "bets": {
+   "Moneyline:Atlanta Braves @ Chicago White Sox:Chicago White Sox ML": {
+    "bet_type": "Moneyline",
+    "pick": "Chicago White Sox ML",
+    "team": "Chicago White Sox",
+    "matchup": "Atlanta Braves @ Chicago White Sox",
+    "odds": 105,
+    "our_prob": 0.527,
+    "market_prob": 0.488,
+    "edge": 0.039,
+    "market_line": null,
+    "closing_odds": 105,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Spread:Atlanta Braves @ Chicago White Sox:Chicago White Sox +1.5 (lowvig)": {
+    "bet_type": "Spread",
+    "pick": "Chicago White Sox +1.5 (lowvig)",
+    "team": "Chicago White Sox",
+    "matchup": "Atlanta Braves @ Chicago White Sox",
+    "odds": -160,
+    "our_prob": 0.652,
+    "market_prob": 0.615,
+    "edge": 0.037,
+    "market_line": null,
+    "closing_odds": -170,
+    "result": "win",
+    "profit": 62.5
+   }
+  },
+  "props": {
+   "671739": {
+    "name": "Michael Harris II",
+    "team": "Atlanta Braves",
+    "matchup": "Atlanta Braves @ Chicago White Sox",
+    "hit_probability": 0.7632,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "695731": {
+    "name": "Braden Montgomery",
+    "team": "Chicago White Sox",
+    "matchup": "Atlanta Braves @ Chicago White Sox",
+    "hit_probability": 0.7381,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "622761": {
+    "name": "Jorge Mateo",
+    "team": "Atlanta Braves",
+    "matchup": "Atlanta Braves @ Chicago White Sox",
+    "hit_probability": 0.701,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "621566": {
+    "name": "Matt Olson",
+    "team": "Atlanta Braves",
+    "matchup": "Atlanta Braves @ Chicago White Sox",
+    "hit_probability": 0.6963,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "643289": {
+    "name": "Mauricio Dub\u00f3n",
+    "team": "Atlanta Braves",
+    "matchup": "Atlanta Braves @ Chicago White Sox",
+    "hit_probability": 0.6927,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   }
+  }
+ },
+ "2026-06-12": {
+  "bets": {
+   "Moneyline:Philadelphia Phillies @ Milwaukee Brewers:Philadelphia Phillies ML": {
+    "bet_type": "Moneyline",
+    "pick": "Philadelphia Phillies ML",
+    "team": "Philadelphia Phillies",
+    "matchup": "Philadelphia Phillies @ Milwaukee Brewers",
+    "odds": 212,
+    "our_prob": 0.457,
+    "market_prob": 0.321,
+    "edge": 0.136,
+    "market_line": null,
+    "closing_odds": 215,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Seattle Mariners @ Washington Nationals:Washington Nationals ML": {
+    "bet_type": "Moneyline",
+    "pick": "Washington Nationals ML",
+    "team": "Washington Nationals",
+    "matchup": "Seattle Mariners @ Washington Nationals",
+    "odds": 129,
+    "our_prob": 0.521,
+    "market_prob": 0.437,
+    "edge": 0.084,
+    "market_line": null,
+    "closing_odds": 129,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:Colorado Rockies @ Athletics:Under 13.5 (lowvig)": {
+    "bet_type": "Total",
+    "pick": "Under 13.5 (lowvig)",
+    "team": "Colorado Rockies vs Athletics",
+    "matchup": "Colorado Rockies @ Athletics",
+    "odds": 107,
+    "our_prob": 0.56,
+    "market_prob": 0.467,
+    "edge": 0.093,
+    "market_line": 13.5,
+    "closing_odds": 100,
+    "result": "win",
+    "profit": 107
+   },
+   "Moneyline:St. Louis Cardinals @ Minnesota Twins:St. Louis Cardinals ML": {
+    "bet_type": "Moneyline",
+    "pick": "St. Louis Cardinals ML",
+    "team": "St. Louis Cardinals",
+    "matchup": "St. Louis Cardinals @ Minnesota Twins",
+    "odds": 120,
+    "our_prob": 0.508,
+    "market_prob": 0.455,
+    "edge": 0.053,
+    "market_line": null,
+    "closing_odds": 120,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Colorado Rockies @ Athletics:Colorado Rockies ML": {
+    "bet_type": "Moneyline",
+    "pick": "Colorado Rockies ML",
+    "team": "Colorado Rockies",
+    "matchup": "Colorado Rockies @ Athletics",
+    "odds": 176,
+    "our_prob": 0.403,
+    "market_prob": 0.362,
+    "edge": 0.041,
+    "market_line": null,
+    "closing_odds": 180,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:San Diego Padres @ Baltimore Orioles:San Diego Padres ML": {
+    "bet_type": "Moneyline",
+    "pick": "San Diego Padres ML",
+    "team": "San Diego Padres",
+    "matchup": "San Diego Padres @ Baltimore Orioles",
+    "odds": 115,
+    "our_prob": 0.503,
+    "market_prob": 0.465,
+    "edge": 0.038,
+    "market_line": null,
+    "closing_odds": 115,
+    "result": "loss",
+    "profit": -100.0
+   }
+  },
+  "props": {
+   "804668": {
+    "name": "Rafael Flores Jr.",
+    "team": "Pittsburgh Pirates",
+    "matchup": "Miami Marlins @ Pittsburgh Pirates",
+    "hit_probability": 0.8628,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "592885": {
+    "name": "Christian Yelich",
+    "team": "Milwaukee Brewers",
+    "matchup": "Philadelphia Phillies @ Milwaukee Brewers",
+    "hit_probability": 0.7727,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "650490": {
+    "name": "Yandy D\u00edaz",
+    "team": "Tampa Bay Rays",
+    "matchup": "Tampa Bay Rays @ Los Angeles Angels",
+    "hit_probability": 0.7713,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "685133": {
+    "name": "Wade Meckler",
+    "team": "Los Angeles Angels",
+    "matchup": "Tampa Bay Rays @ Los Angeles Angels",
+    "hit_probability": 0.7586,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "683734": {
+    "name": "Andrew Vaughn",
+    "team": "Milwaukee Brewers",
+    "matchup": "Philadelphia Phillies @ Milwaukee Brewers",
+    "hit_probability": 0.7566,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "650333": {
+    "name": "Luis Arraez",
+    "team": "San Francisco Giants",
+    "matchup": "Chicago Cubs @ San Francisco Giants",
+    "hit_probability": 0.7508,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "808982": {
+    "name": "Jung Hoo Lee",
+    "team": "San Francisco Giants",
+    "matchup": "Chicago Cubs @ San Francisco Giants",
+    "hit_probability": 0.7458,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "682998": {
+    "name": "Corbin Carroll",
+    "team": "Arizona Diamondbacks",
+    "matchup": "Arizona Diamondbacks @ Cincinnati Reds",
+    "hit_probability": 0.7474,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   }
+  }
+ },
+ "2026-06-13": {
+  "bets": {
+   "Moneyline:Los Angeles Dodgers @ Chicago White Sox:Chicago White Sox ML": {
+    "bet_type": "Moneyline",
+    "pick": "Chicago White Sox ML",
+    "team": "Chicago White Sox",
+    "matchup": "Los Angeles Dodgers @ Chicago White Sox",
+    "odds": 178,
+    "our_prob": 0.442,
+    "market_prob": 0.36,
+    "edge": 0.082,
+    "market_line": null,
+    "closing_odds": 178,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:Colorado Rockies @ Athletics:Under 14.5 (lowvig)": {
+    "bet_type": "Total",
+    "pick": "Under 14.5 (lowvig)",
+    "team": "Colorado Rockies vs Athletics",
+    "matchup": "Colorado Rockies @ Athletics",
+    "odds": -102,
+    "our_prob": 0.57,
+    "market_prob": 0.488,
+    "edge": 0.082,
+    "market_line": 14.5,
+    "closing_odds": -115,
+    "result": "win",
+    "profit": 98.04
+   },
+   "Moneyline:Detroit Tigers @ Cleveland Guardians:Cleveland Guardians ML": {
+    "bet_type": "Moneyline",
+    "pick": "Cleveland Guardians ML",
+    "team": "Cleveland Guardians",
+    "matchup": "Detroit Tigers @ Cleveland Guardians",
+    "odds": 121,
+    "our_prob": 0.497,
+    "market_prob": 0.452,
+    "edge": 0.045,
+    "market_line": null,
+    "closing_odds": 121,
+    "result": "win",
+    "profit": 121
+   },
+   "Moneyline:Chicago Cubs @ San Francisco Giants:San Francisco Giants ML": {
+    "bet_type": "Moneyline",
+    "pick": "San Francisco Giants ML",
+    "team": "San Francisco Giants",
+    "matchup": "Chicago Cubs @ San Francisco Giants",
+    "odds": 106,
+    "our_prob": 0.528,
+    "market_prob": 0.485,
+    "edge": 0.043,
+    "market_line": null,
+    "closing_odds": 106,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Arizona Diamondbacks @ Cincinnati Reds:Cincinnati Reds ML": {
+    "bet_type": "Moneyline",
+    "pick": "Cincinnati Reds ML",
+    "team": "Cincinnati Reds",
+    "matchup": "Arizona Diamondbacks @ Cincinnati Reds",
+    "odds": 129,
+    "our_prob": 0.473,
+    "market_prob": 0.437,
+    "edge": 0.036,
+    "market_line": null,
+    "closing_odds": 129,
+    "result": "win",
+    "profit": 129
+   }
+  },
+  "props": {
+   "502671": {
+    "name": "Paul Goldschmidt",
+    "team": "New York Yankees",
+    "matchup": "New York Yankees @ Toronto Blue Jays",
+    "hit_probability": 0.784,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "669127": {
+    "name": "Shea Langeliers",
+    "team": "Athletics",
+    "matchup": "Colorado Rockies @ Athletics",
+    "hit_probability": 0.7768,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "800050": {
+    "name": "Chase DeLauter",
+    "team": "Cleveland Guardians",
+    "matchup": "Detroit Tigers @ Cleveland Guardians",
+    "hit_probability": 0.7543,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "701762": {
+    "name": "Nick Kurtz",
+    "team": "Athletics",
+    "matchup": "Colorado Rockies @ Athletics",
+    "hit_probability": 0.7438,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "650333": {
+    "name": "Luis Arraez",
+    "team": "San Francisco Giants",
+    "matchup": "Chicago Cubs @ San Francisco Giants",
+    "hit_probability": 0.7427,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   }
+  }
+ },
+ "2026-06-19": {
+  "bets": {},
+  "props": {}
+ },
+ "2026-06-22": {
+  "bets": {
+   "Moneyline:San Francisco Giants @ Miami Marlins:Miami Marlins ML": {
+    "bet_type": "Moneyline",
+    "pick": "Miami Marlins ML",
+    "team": "Miami Marlins",
+    "matchup": "San Francisco Giants @ Miami Marlins",
+    "odds": 125,
+    "our_prob": 0.522,
+    "market_prob": 0.444,
+    "edge": 0.078,
+    "market_line": null,
+    "closing_odds": 125,
+    "result": "void",
+    "profit": 0.0
+   },
+   "Moneyline:Baltimore Orioles @ Los Angeles Dodgers:Baltimore Orioles ML": {
+    "bet_type": "Moneyline",
+    "pick": "Baltimore Orioles ML",
+    "team": "Baltimore Orioles",
+    "matchup": "Baltimore Orioles @ Los Angeles Dodgers",
+    "odds": 205,
+    "our_prob": 0.374,
+    "market_prob": 0.328,
+    "edge": 0.046,
+    "market_line": null,
+    "closing_odds": 205,
+    "result": "void",
+    "profit": 0.0
+   },
+   "Moneyline:Minnesota Twins @ Arizona Diamondbacks:Minnesota Twins ML": {
+    "bet_type": "Moneyline",
+    "pick": "Minnesota Twins ML",
+    "team": "Minnesota Twins",
+    "matchup": "Minnesota Twins @ Arizona Diamondbacks",
+    "odds": 117,
+    "our_prob": 0.521,
+    "market_prob": 0.461,
+    "edge": 0.06,
+    "market_line": null,
+    "closing_odds": 117,
+    "result": "void",
+    "profit": 0.0
+   },
+   "Total:Minnesota Twins @ Arizona Diamondbacks:Under 9.0 (betmgm)": {
+    "bet_type": "Total",
+    "pick": "Under 9.0 (betmgm)",
+    "team": "Minnesota Twins vs Arizona Diamondbacks",
+    "matchup": "Minnesota Twins @ Arizona Diamondbacks",
+    "odds": 105,
+    "our_prob": 0.526,
+    "market_prob": 0.468,
+    "edge": 0.058,
+    "market_line": 9.0,
+    "closing_odds": 105,
+    "result": "void",
+    "profit": 0.0
+   },
+   "Spread:San Francisco Giants @ Miami Marlins:Miami Marlins +1.5 (lowvig)": {
+    "bet_type": "Spread",
+    "pick": "Miami Marlins +1.5 (lowvig)",
+    "team": "Miami Marlins",
+    "matchup": "San Francisco Giants @ Miami Marlins",
+    "odds": -138,
+    "our_prob": 0.623,
+    "market_prob": 0.58,
+    "edge": 0.043,
+    "market_line": null,
+    "closing_odds": -140,
+    "result": "void",
+    "profit": 0.0
+   },
+   "Moneyline:Chicago Cubs @ New York Mets:New York Mets ML": {
+    "bet_type": "Moneyline",
+    "pick": "New York Mets ML",
+    "team": "New York Mets",
+    "matchup": "Chicago Cubs @ New York Mets",
+    "odds": 112,
+    "our_prob": 0.569,
+    "market_prob": 0.472,
+    "edge": 0.097,
+    "market_line": null,
+    "closing_odds": -142,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Baltimore Orioles @ Los Angeles Angels:Los Angeles Angels ML": {
+    "bet_type": "Moneyline",
+    "pick": "Los Angeles Angels ML",
+    "team": "Los Angeles Angels",
+    "matchup": "Baltimore Orioles @ Los Angeles Angels",
+    "odds": 140,
+    "our_prob": 0.495,
+    "market_prob": 0.417,
+    "edge": 0.078,
+    "market_line": null,
+    "closing_odds": 142,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:New York Yankees @ Detroit Tigers:Detroit Tigers ML": {
+    "bet_type": "Moneyline",
+    "pick": "Detroit Tigers ML",
+    "team": "Detroit Tigers",
+    "matchup": "New York Yankees @ Detroit Tigers",
+    "odds": 115,
+    "our_prob": 0.528,
+    "market_prob": 0.465,
+    "edge": 0.063,
+    "market_line": null,
+    "closing_odds": 100,
+    "result": "win",
+    "profit": 115
+   },
+   "Spread:Texas Rangers @ Miami Marlins:Miami Marlins -1.5 (lowvig)": {
+    "bet_type": "Spread",
+    "pick": "Miami Marlins -1.5 (lowvig)",
+    "team": "Miami Marlins",
+    "matchup": "Texas Rangers @ Miami Marlins",
+    "odds": 165,
+    "our_prob": 0.419,
+    "market_prob": 0.377,
+    "edge": 0.042,
+    "market_line": null,
+    "closing_odds": 172,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Spread:Houston Astros @ Toronto Blue Jays:Toronto Blue Jays -1.5 (lowvig)": {
+    "bet_type": "Spread",
+    "pick": "Toronto Blue Jays -1.5 (lowvig)",
+    "team": "Toronto Blue Jays",
+    "matchup": "Houston Astros @ Toronto Blue Jays",
+    "odds": 171,
+    "our_prob": 0.405,
+    "market_prob": 0.369,
+    "edge": 0.036,
+    "market_line": null,
+    "closing_odds": 164,
+    "result": "win",
+    "profit": 171
+   },
+   "Total:Houston Astros @ Toronto Blue Jays:Over 7.5 (betrivers)": {
+    "bet_type": "Total",
+    "pick": "Over 7.5 (betrivers)",
+    "team": "Houston Astros vs Toronto Blue Jays",
+    "matchup": "Houston Astros @ Toronto Blue Jays",
+    "odds": 102,
+    "our_prob": 0.557,
+    "market_prob": 0.471,
+    "edge": 0.086,
+    "market_line": 7.5,
+    "closing_odds": 102,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:Chicago Cubs @ New York Mets:Over 8.0 (lowvig)": {
+    "bet_type": "Total",
+    "pick": "Over 8.0 (lowvig)",
+    "team": "Chicago Cubs vs New York Mets",
+    "matchup": "Chicago Cubs @ New York Mets",
+    "odds": 117,
+    "our_prob": 0.515,
+    "market_prob": 0.446,
+    "edge": 0.07,
+    "market_line": 8.0,
+    "closing_odds": 115,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Spread:Kansas City Royals @ Tampa Bay Rays:Tampa Bay Rays -1.5 (fanduel)": {
+    "bet_type": "Spread",
+    "pick": "Tampa Bay Rays -1.5 (fanduel)",
+    "team": "Tampa Bay Rays",
+    "matchup": "Kansas City Royals @ Tampa Bay Rays",
+    "odds": 130,
+    "our_prob": 0.475,
+    "market_prob": 0.435,
+    "edge": 0.04,
+    "market_line": null,
+    "closing_odds": 130,
+    "result": "loss",
+    "profit": -100.0
+   }
+  },
+  "props": {
+   "650490": {
+    "name": "Yandy D\u00edaz",
+    "team": "Tampa Bay Rays",
+    "matchup": "Washington Nationals @ Tampa Bay Rays",
+    "hit_probability": 0.7904,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "680869": {
+    "name": "Zack Gelof",
+    "team": "Athletics",
+    "matchup": "Los Angeles Angels @ Athletics",
+    "hit_probability": 0.7819,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "701762": {
+    "name": "Nick Kurtz",
+    "team": "Athletics",
+    "matchup": "Los Angeles Angels @ Athletics",
+    "hit_probability": 0.7465,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "691718": {
+    "name": "Pete Crow-Armstrong",
+    "team": "Chicago Cubs",
+    "matchup": "Toronto Blue Jays @ Chicago Cubs",
+    "hit_probability": 0.7338,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "691406": {
+    "name": "Junior Caminero",
+    "team": "Tampa Bay Rays",
+    "matchup": "Washington Nationals @ Tampa Bay Rays",
+    "hit_probability": 0.702,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "664983": {
+    "name": "Jake McCarthy",
+    "team": "Colorado Rockies",
+    "matchup": "Boston Red Sox @ Colorado Rockies",
+    "hit_probability": 0.7991,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "650489": {
+    "name": "Willi Castro",
+    "team": "Colorado Rockies",
+    "matchup": "Boston Red Sox @ Colorado Rockies",
+    "hit_probability": 0.7794,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "621439": {
+    "name": "Byron Buxton",
+    "team": "Minnesota Twins",
+    "matchup": "Los Angeles Dodgers @ Minnesota Twins",
+    "hit_probability": 0.756,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "671289": {
+    "name": "Tyler Freeman",
+    "team": "Colorado Rockies",
+    "matchup": "Boston Red Sox @ Colorado Rockies",
+    "hit_probability": 0.7409,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 3,
+    "profit": null
+   },
+   "676475": {
+    "name": "Alec Burleson",
+    "team": "St. Louis Cardinals",
+    "matchup": "Arizona Diamondbacks @ St. Louis Cardinals",
+    "hit_probability": 0.7313,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "672640": {
+    "name": "Otto Lopez",
+    "team": "Miami Marlins",
+    "matchup": "Texas Rangers @ Miami Marlins",
+    "hit_probability": 0.7842,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   }
+  }
+ },
+ "2026-06-23": {
+  "bets": {
+   "Moneyline:Philadelphia Phillies @ Washington Nationals:Washington Nationals ML": {
+    "bet_type": "Moneyline",
+    "pick": "Washington Nationals ML",
+    "team": "Washington Nationals",
+    "matchup": "Philadelphia Phillies @ Washington Nationals",
+    "odds": 153,
+    "our_prob": 0.479,
+    "market_prob": 0.395,
+    "edge": 0.084,
+    "market_line": null,
+    "closing_odds": 153,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Kansas City Royals @ Tampa Bay Rays:Kansas City Royals ML": {
+    "bet_type": "Moneyline",
+    "pick": "Kansas City Royals ML",
+    "team": "Kansas City Royals",
+    "matchup": "Kansas City Royals @ Tampa Bay Rays",
+    "odds": 162,
+    "our_prob": 0.444,
+    "market_prob": 0.382,
+    "edge": 0.062,
+    "market_line": null,
+    "closing_odds": 162,
+    "result": "win",
+    "profit": 162
+   },
+   "Moneyline:Los Angeles Dodgers @ Minnesota Twins:Minnesota Twins ML": {
+    "bet_type": "Moneyline",
+    "pick": "Minnesota Twins ML",
+    "team": "Minnesota Twins",
+    "matchup": "Los Angeles Dodgers @ Minnesota Twins",
+    "odds": 157,
+    "our_prob": 0.449,
+    "market_prob": 0.389,
+    "edge": 0.06,
+    "market_line": null,
+    "closing_odds": 157,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Boston Red Sox @ Colorado Rockies:Colorado Rockies ML": {
+    "bet_type": "Moneyline",
+    "pick": "Colorado Rockies ML",
+    "team": "Colorado Rockies",
+    "matchup": "Boston Red Sox @ Colorado Rockies",
+    "odds": 145,
+    "our_prob": 0.448,
+    "market_prob": 0.408,
+    "edge": 0.04,
+    "market_line": null,
+    "closing_odds": 145,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Seattle Mariners @ Pittsburgh Pirates:Pittsburgh Pirates ML": {
+    "bet_type": "Moneyline",
+    "pick": "Pittsburgh Pirates ML",
+    "team": "Pittsburgh Pirates",
+    "matchup": "Seattle Mariners @ Pittsburgh Pirates",
+    "odds": 113,
+    "our_prob": 0.505,
+    "market_prob": 0.469,
+    "edge": 0.036,
+    "market_line": null,
+    "closing_odds": 113,
+    "result": "loss",
+    "profit": -100.0
+   }
+  },
+  "props": {
+   "592885": {
+    "name": "Christian Yelich",
+    "team": "Milwaukee Brewers",
+    "matchup": "Milwaukee Brewers @ Cincinnati Reds",
+    "hit_probability": 0.7509,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "665487": {
+    "name": "Fernando Tatis Jr.",
+    "team": "San Diego Padres",
+    "matchup": "Atlanta Braves @ San Diego Padres",
+    "hit_probability": 0.7242,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   },
+   "695578": {
+    "name": "James Wood",
+    "team": "Washington Nationals",
+    "matchup": "Philadelphia Phillies @ Washington Nationals",
+    "hit_probability": 0.7157,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "660688": {
+    "name": "Keibert Ruiz",
+    "team": "Washington Nationals",
+    "matchup": "Philadelphia Phillies @ Washington Nationals",
+    "hit_probability": 0.7127,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "547180": {
+    "name": "Bryce Harper",
+    "team": "Philadelphia Phillies",
+    "matchup": "Philadelphia Phillies @ Washington Nationals",
+    "hit_probability": 0.6857,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "677800": {
+    "name": "Wilyer Abreu",
+    "team": "Boston Red Sox",
+    "matchup": "Boston Red Sox @ Colorado Rockies",
+    "hit_probability": 0.7999,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   },
+   "671289": {
+    "name": "Tyler Freeman",
+    "team": "Colorado Rockies",
+    "matchup": "Boston Red Sox @ Colorado Rockies",
+    "hit_probability": 0.7881,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "657136": {
+    "name": "Connor Wong",
+    "team": "Boston Red Sox",
+    "matchup": "Boston Red Sox @ Colorado Rockies",
+    "hit_probability": 0.7878,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "650333": {
+    "name": "Luis Arraez",
+    "team": "San Francisco Giants",
+    "matchup": "Athletics @ San Francisco Giants",
+    "hit_probability": 0.7822,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "694192": {
+    "name": "Jackson Chourio",
+    "team": "Milwaukee Brewers",
+    "matchup": "Milwaukee Brewers @ Cincinnati Reds",
+    "hit_probability": 0.7678,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "650490": {
+    "name": "Yandy D\u00edaz",
+    "team": "Tampa Bay Rays",
+    "matchup": "Kansas City Royals @ Tampa Bay Rays",
+    "hit_probability": 0.7763,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "678882": {
+    "name": "Ceddanne Rafaela",
+    "team": "Boston Red Sox",
+    "matchup": "Boston Red Sox @ Colorado Rockies",
+    "hit_probability": 0.7636,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "685133": {
+    "name": "Wade Meckler",
+    "team": "Los Angeles Angels",
+    "matchup": "Baltimore Orioles @ Los Angeles Angels",
+    "hit_probability": 0.7294,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "621439": {
+    "name": "Byron Buxton",
+    "team": "Minnesota Twins",
+    "matchup": "Los Angeles Dodgers @ Minnesota Twins",
+    "hit_probability": 0.728,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "670541": {
+    "name": "Yordan Alvarez",
+    "team": "Houston Astros",
+    "matchup": "Houston Astros @ Toronto Blue Jays",
+    "hit_probability": 0.7145,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   },
+   "694384": {
+    "name": "Nolan Schanuel",
+    "team": "Los Angeles Angels",
+    "matchup": "Baltimore Orioles @ Los Angeles Angels",
+    "hit_probability": 0.7057,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   }
+  }
+ },
+ "2026-07-08": {
+  "bets": {
+   "Spread:Colorado Rockies @ Los Angeles Dodgers:Los Angeles Dodgers -1.5 (lowvig)": {
+    "bet_type": "Spread",
+    "pick": "Los Angeles Dodgers -1.5 (lowvig)",
+    "team": "Los Angeles Dodgers",
+    "matchup": "Colorado Rockies @ Los Angeles Dodgers",
+    "odds": -118,
+    "our_prob": 0.618,
+    "market_prob": 0.541,
+    "edge": 0.077,
+    "market_line": null,
+    "closing_odds": -125,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Athletics @ Detroit Tigers:Athletics ML": {
+    "bet_type": "Moneyline",
+    "pick": "Athletics ML",
+    "team": "Athletics",
+    "matchup": "Athletics @ Detroit Tigers",
+    "odds": 123,
+    "our_prob": 0.495,
+    "market_prob": 0.448,
+    "edge": 0.047,
+    "market_line": null,
+    "closing_odds": 123,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Philadelphia Phillies @ Cincinnati Reds:Philadelphia Phillies ML": {
+    "bet_type": "Moneyline",
+    "pick": "Philadelphia Phillies ML",
+    "team": "Philadelphia Phillies",
+    "matchup": "Philadelphia Phillies @ Cincinnati Reds",
+    "odds": 127,
+    "our_prob": 0.485,
+    "market_prob": 0.441,
+    "edge": 0.044,
+    "market_line": null,
+    "closing_odds": 127,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:New York Yankees @ Tampa Bay Rays:Over 7.5 (bovada)": {
+    "bet_type": "Total",
+    "pick": "Over 7.5 (bovada)",
+    "team": "New York Yankees vs Tampa Bay Rays",
+    "matchup": "New York Yankees @ Tampa Bay Rays",
+    "odds": 105,
+    "our_prob": 0.535,
+    "market_prob": 0.468,
+    "edge": 0.068,
+    "market_line": 7.5,
+    "closing_odds": 100,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Milwaukee Brewers @ St. Louis Cardinals:St. Louis Cardinals ML": {
+    "bet_type": "Moneyline",
+    "pick": "St. Louis Cardinals ML",
+    "team": "St. Louis Cardinals",
+    "matchup": "Milwaukee Brewers @ St. Louis Cardinals",
+    "odds": 131,
+    "our_prob": 0.471,
+    "market_prob": 0.433,
+    "edge": 0.038,
+    "market_line": null,
+    "closing_odds": 131,
+    "result": "win",
+    "profit": 131
+   }
+  },
+  "props": {
+   "650490": {
+    "name": "Yandy D\u00edaz",
+    "team": "Tampa Bay Rays",
+    "matchup": "New York Yankees @ Tampa Bay Rays",
+    "hit_probability": 0.7481,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 4,
+    "profit": null
+   },
+   "663968": {
+    "name": "Jake Mangum",
+    "team": "Pittsburgh Pirates",
+    "matchup": "Atlanta Braves @ Pittsburgh Pirates",
+    "hit_probability": 0.7476,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "676391": {
+    "name": "Ernie Clement",
+    "team": "Toronto Blue Jays",
+    "matchup": "Toronto Blue Jays @ San Francisco Giants",
+    "hit_probability": 0.7295,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "682829": {
+    "name": "Elly De La Cruz",
+    "team": "Cincinnati Reds",
+    "matchup": "Philadelphia Phillies @ Cincinnati Reds",
+    "hit_probability": 0.7289,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   },
+   "805808": {
+    "name": "Kevin McGonigle",
+    "team": "Detroit Tigers",
+    "matchup": "Athletics @ Detroit Tigers",
+    "hit_probability": 0.7263,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   }
+  }
+ },
+ "2026-07-09": {
+  "bets": {
+   "Total:Colorado Rockies @ San Francisco Giants:Over 8.0 (fanduel)": {
+    "bet_type": "Total",
+    "pick": "Over 8.0 (fanduel)",
+    "team": "Colorado Rockies vs San Francisco Giants",
+    "matchup": "Colorado Rockies @ San Francisco Giants",
+    "odds": -110,
+    "our_prob": 0.664,
+    "market_prob": 0.5,
+    "edge": 0.164,
+    "market_line": 8.0,
+    "closing_odds": -110,
+    "result": "win",
+    "profit": 90.91
+   },
+   "Moneyline:Colorado Rockies @ San Francisco Giants:Colorado Rockies ML": {
+    "bet_type": "Moneyline",
+    "pick": "Colorado Rockies ML",
+    "team": "Colorado Rockies",
+    "matchup": "Colorado Rockies @ San Francisco Giants",
+    "odds": 140,
+    "our_prob": 0.469,
+    "market_prob": 0.417,
+    "edge": 0.052,
+    "market_line": null,
+    "closing_odds": 140,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:Arizona Diamondbacks @ San Diego Padres:Over 9.0 (lowvig)": {
+    "bet_type": "Total",
+    "pick": "Over 9.0 (lowvig)",
+    "team": "Arizona Diamondbacks vs San Diego Padres",
+    "matchup": "Arizona Diamondbacks @ San Diego Padres",
+    "odds": 103,
+    "our_prob": 0.533,
+    "market_prob": 0.476,
+    "edge": 0.056,
+    "market_line": 9.0,
+    "closing_odds": 100,
+    "result": "loss",
+    "profit": -100.0
+   }
+  },
+  "props": {
+   "664983": {
+    "name": "Jake McCarthy",
+    "team": "Colorado Rockies",
+    "matchup": "Colorado Rockies @ San Francisco Giants",
+    "hit_probability": 0.7383,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "672515": {
+    "name": "Gabriel Moreno",
+    "team": "Arizona Diamondbacks",
+    "matchup": "Arizona Diamondbacks @ San Diego Padres",
+    "hit_probability": 0.7281,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "650333": {
+    "name": "Luis Arraez",
+    "team": "San Francisco Giants",
+    "matchup": "Colorado Rockies @ San Francisco Giants",
+    "hit_probability": 0.7251,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   },
+   "671218": {
+    "name": "Heliot Ramos",
+    "team": "San Francisco Giants",
+    "matchup": "Colorado Rockies @ San Francisco Giants",
+    "hit_probability": 0.7047,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "694249": {
+    "name": "Cole Carrigg",
+    "team": "Colorado Rockies",
+    "matchup": "Colorado Rockies @ San Francisco Giants",
+    "hit_probability": 0.6894,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   }
+  }
+ },
+ "2026-07-10": {
+  "bets": {},
+  "props": {}
+ },
+ "2026-07-11": {
+  "bets": {
+   "Moneyline:Arizona Diamondbacks @ Los Angeles Dodgers:Arizona Diamondbacks ML": {
+    "bet_type": "Moneyline",
+    "pick": "Arizona Diamondbacks ML",
+    "team": "Arizona Diamondbacks",
+    "matchup": "Arizona Diamondbacks @ Los Angeles Dodgers",
+    "odds": 239,
+    "our_prob": 0.375,
+    "market_prob": 0.295,
+    "edge": 0.08,
+    "market_line": null,
+    "closing_odds": 239,
+    "result": "win",
+    "profit": 239
+   },
+   "Moneyline:New York Yankees @ Washington Nationals:Washington Nationals ML": {
+    "bet_type": "Moneyline",
+    "pick": "Washington Nationals ML",
+    "team": "Washington Nationals",
+    "matchup": "New York Yankees @ Washington Nationals",
+    "odds": 169,
+    "our_prob": 0.467,
+    "market_prob": 0.372,
+    "edge": 0.095,
+    "market_line": null,
+    "closing_odds": 169,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Philadelphia Phillies @ Detroit Tigers:Detroit Tigers ML": {
+    "bet_type": "Moneyline",
+    "pick": "Detroit Tigers ML",
+    "team": "Detroit Tigers",
+    "matchup": "Philadelphia Phillies @ Detroit Tigers",
+    "odds": 123,
+    "our_prob": 0.5,
+    "market_prob": 0.448,
+    "edge": 0.052,
+    "market_line": null,
+    "closing_odds": 123,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:Seattle Mariners @ Tampa Bay Rays:Over 7.0 (lowvig)": {
+    "bet_type": "Total",
+    "pick": "Over 7.0 (lowvig)",
+    "team": "Seattle Mariners vs Tampa Bay Rays",
+    "matchup": "Seattle Mariners @ Tampa Bay Rays",
+    "odds": -107,
+    "our_prob": 0.567,
+    "market_prob": 0.5,
+    "edge": 0.067,
+    "market_line": 7.0,
+    "closing_odds": -112,
+    "result": "push",
+    "profit": 0.0
+   },
+   "Moneyline:Boston Red Sox @ New York Mets:Boston Red Sox ML": {
+    "bet_type": "Moneyline",
+    "pick": "Boston Red Sox ML",
+    "team": "Boston Red Sox",
+    "matchup": "Boston Red Sox @ New York Mets",
+    "odds": 134,
+    "our_prob": 0.467,
+    "market_prob": 0.427,
+    "edge": 0.04,
+    "market_line": null,
+    "closing_odds": 134,
+    "result": "win",
+    "profit": 134
+   }
+  },
+  "props": {
+   "650333": {
+    "name": "Luis Arraez",
+    "team": "San Francisco Giants",
+    "matchup": "Colorado Rockies @ San Francisco Giants",
+    "hit_probability": 0.7634,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   },
+   "663538": {
+    "name": "Nico Hoerner",
+    "team": "Chicago Cubs",
+    "matchup": "Chicago Cubs @ Cincinnati Reds",
+    "hit_probability": 0.746,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "691718": {
+    "name": "Pete Crow-Armstrong",
+    "team": "Chicago Cubs",
+    "matchup": "Chicago Cubs @ Cincinnati Reds",
+    "hit_probability": 0.7441,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "676391": {
+    "name": "Ernie Clement",
+    "team": "Toronto Blue Jays",
+    "matchup": "Toronto Blue Jays @ San Diego Padres",
+    "hit_probability": 0.7378,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "665161": {
+    "name": "Jeremy Pe\u00f1a",
+    "team": "Houston Astros",
+    "matchup": "Houston Astros @ Texas Rangers",
+    "hit_probability": 0.7308,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   }
+  }
+ },
+ "2026-07-12": {
+  "bets": {
+   "Moneyline:Arizona Diamondbacks @ Los Angeles Dodgers:Arizona Diamondbacks ML": {
+    "bet_type": "Moneyline",
+    "pick": "Arizona Diamondbacks ML",
+    "team": "Arizona Diamondbacks",
+    "matchup": "Arizona Diamondbacks @ Los Angeles Dodgers",
+    "odds": 198,
+    "our_prob": 0.376,
+    "market_prob": 0.336,
+    "edge": 0.04,
+    "market_line": null,
+    "closing_odds": 198,
+    "result": "win",
+    "profit": 198
+   },
+   "Total:Colorado Rockies @ San Francisco Giants:Over 9.5 (fanduel)": {
+    "bet_type": "Total",
+    "pick": "Over 9.5 (fanduel)",
+    "team": "Colorado Rockies vs San Francisco Giants",
+    "matchup": "Colorado Rockies @ San Francisco Giants",
+    "odds": 102,
+    "our_prob": 0.545,
+    "market_prob": 0.472,
+    "edge": 0.073,
+    "market_line": 9.5,
+    "closing_odds": 102,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Toronto Blue Jays @ San Diego Padres:San Diego Padres ML": {
+    "bet_type": "Moneyline",
+    "pick": "San Diego Padres ML",
+    "team": "San Diego Padres",
+    "matchup": "Toronto Blue Jays @ San Diego Padres",
+    "odds": 111,
+    "our_prob": 0.509,
+    "market_prob": 0.474,
+    "edge": 0.035,
+    "market_line": null,
+    "closing_odds": 111,
+    "result": "win",
+    "profit": 111
+   },
+   "Total:Toronto Blue Jays @ San Diego Padres:Over 9.0 (mybookieag)": {
+    "bet_type": "Total",
+    "pick": "Over 9.0 (mybookieag)",
+    "team": "Toronto Blue Jays vs San Diego Padres",
+    "matchup": "Toronto Blue Jays @ San Diego Padres",
+    "odds": 101,
+    "our_prob": 0.53,
+    "market_prob": 0.474,
+    "edge": 0.056,
+    "market_line": 9.0,
+    "closing_odds": 101,
+    "result": "push",
+    "profit": 0.0
+   },
+   "Moneyline:Colorado Rockies @ San Francisco Giants:Colorado Rockies ML": {
+    "bet_type": "Moneyline",
+    "pick": "Colorado Rockies ML",
+    "team": "Colorado Rockies",
+    "matchup": "Colorado Rockies @ San Francisco Giants",
+    "odds": 136,
+    "our_prob": 0.45,
+    "market_prob": 0.424,
+    "edge": 0.026,
+    "market_line": null,
+    "closing_odds": 136,
+    "result": "loss",
+    "profit": -100.0
+   }
+  },
+  "props": {
+   "650333": {
+    "name": "Luis Arraez",
+    "team": "San Francisco Giants",
+    "matchup": "Colorado Rockies @ San Francisco Giants",
+    "hit_probability": 0.8008,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "665487": {
+    "name": "Fernando Tatis Jr.",
+    "team": "San Diego Padres",
+    "matchup": "Toronto Blue Jays @ San Diego Padres",
+    "hit_probability": 0.7774,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "672515": {
+    "name": "Gabriel Moreno",
+    "team": "Arizona Diamondbacks",
+    "matchup": "Arizona Diamondbacks @ Los Angeles Dodgers",
+    "hit_probability": 0.7392,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "676391": {
+    "name": "Ernie Clement",
+    "team": "Toronto Blue Jays",
+    "matchup": "Toronto Blue Jays @ San Diego Padres",
+    "hit_probability": 0.7264,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "664770": {
+    "name": "Nathan Lukes",
+    "team": "Toronto Blue Jays",
+    "matchup": "Toronto Blue Jays @ San Diego Padres",
+    "hit_probability": 0.7177,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   }
+  }
+ },
+ "2026-07-13": {
+  "bets": {},
+  "props": {}
+ },
+ "2026-07-16": {
+  "bets": {},
+  "props": {}
+ },
+ "2026-07-19": {
+  "bets": {
+   "Moneyline:Detroit Tigers @ Los Angeles Angels:Los Angeles Angels ML": {
+    "bet_type": "Moneyline",
+    "pick": "Los Angeles Angels ML",
+    "team": "Los Angeles Angels",
+    "matchup": "Detroit Tigers @ Los Angeles Angels",
+    "odds": 133,
+    "our_prob": 0.503,
+    "market_prob": 0.429,
+    "edge": 0.074,
+    "market_line": null,
+    "closing_odds": 133,
+    "result": "win",
+    "profit": 133
+   },
+   "Moneyline:Washington Nationals @ Athletics:Athletics ML": {
+    "bet_type": "Moneyline",
+    "pick": "Athletics ML",
+    "team": "Athletics",
+    "matchup": "Washington Nationals @ Athletics",
+    "odds": 123,
+    "our_prob": 0.516,
+    "market_prob": 0.448,
+    "edge": 0.068,
+    "market_line": null,
+    "closing_odds": 123,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:San Francisco Giants @ Seattle Mariners:San Francisco Giants ML": {
+    "bet_type": "Moneyline",
+    "pick": "San Francisco Giants ML",
+    "team": "San Francisco Giants",
+    "matchup": "San Francisco Giants @ Seattle Mariners",
+    "odds": 155,
+    "our_prob": 0.443,
+    "market_prob": 0.392,
+    "edge": 0.051,
+    "market_line": null,
+    "closing_odds": 155,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:Pittsburgh Pirates @ Cleveland Guardians:Over 7.5 (lowvig)": {
+    "bet_type": "Total",
+    "pick": "Over 7.5 (lowvig)",
+    "team": "Pittsburgh Pirates vs Cleveland Guardians",
+    "matchup": "Pittsburgh Pirates @ Cleveland Guardians",
+    "odds": 106,
+    "our_prob": 0.546,
+    "market_prob": 0.47,
+    "edge": 0.076,
+    "market_line": 7.5,
+    "closing_odds": 106,
+    "result": "win",
+    "profit": 106
+   },
+   "Spread:Minnesota Twins @ Chicago Cubs:Chicago Cubs -1.5 (lowvig)": {
+    "bet_type": "Spread",
+    "pick": "Chicago Cubs -1.5 (lowvig)",
+    "team": "Chicago Cubs",
+    "matchup": "Minnesota Twins @ Chicago Cubs",
+    "odds": 136,
+    "our_prob": 0.475,
+    "market_prob": 0.424,
+    "edge": 0.051,
+    "market_line": null,
+    "closing_odds": 136,
+    "result": "win",
+    "profit": 136
+   }
+  },
+  "props": {
+   "672640": {
+    "name": "Otto Lopez",
+    "team": "Miami Marlins",
+    "matchup": "Miami Marlins @ Milwaukee Brewers",
+    "hit_probability": 0.8014,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "693304": {
+    "name": "Nick Gonzales",
+    "team": "Pittsburgh Pirates",
+    "matchup": "Pittsburgh Pirates @ Cleveland Guardians",
+    "hit_probability": 0.7242,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "663968": {
+    "name": "Jake Mangum",
+    "team": "Pittsburgh Pirates",
+    "matchup": "Pittsburgh Pirates @ Cleveland Guardians",
+    "hit_probability": 0.7239,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "606466": {
+    "name": "Ketel Marte",
+    "team": "Arizona Diamondbacks",
+    "matchup": "St. Louis Cardinals @ Arizona Diamondbacks",
+    "hit_probability": 0.7231,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "682998": {
+    "name": "Corbin Carroll",
+    "team": "Arizona Diamondbacks",
+    "matchup": "St. Louis Cardinals @ Arizona Diamondbacks",
+    "hit_probability": 0.7179,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   }
+  }
+ },
+ "2026-07-21": {
+  "bets": {
+   "Spread:New York Mets @ Milwaukee Brewers:Milwaukee Brewers -1.5 (lowvig)": {
+    "bet_type": "Spread",
+    "pick": "Milwaukee Brewers -1.5 (lowvig)",
+    "team": "Milwaukee Brewers",
+    "matchup": "New York Mets @ Milwaukee Brewers",
+    "odds": 157,
+    "our_prob": 0.437,
+    "market_prob": 0.389,
+    "edge": 0.048,
+    "market_line": null,
+    "closing_odds": 155,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Minnesota Twins @ Cleveland Guardians:Minnesota Twins ML": {
+    "bet_type": "Moneyline",
+    "pick": "Minnesota Twins ML",
+    "team": "Minnesota Twins",
+    "matchup": "Minnesota Twins @ Cleveland Guardians",
+    "odds": 132,
+    "our_prob": 0.48,
+    "market_prob": 0.431,
+    "edge": 0.049,
+    "market_line": null,
+    "closing_odds": 132,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Spread:Cincinnati Reds @ Seattle Mariners:Seattle Mariners -1.5 (lowvig)": {
+    "bet_type": "Spread",
+    "pick": "Seattle Mariners -1.5 (lowvig)",
+    "team": "Seattle Mariners",
+    "matchup": "Cincinnati Reds @ Seattle Mariners",
+    "odds": 179,
+    "our_prob": 0.397,
+    "market_prob": 0.358,
+    "edge": 0.039,
+    "market_line": null,
+    "closing_odds": -200,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Chicago White Sox @ Texas Rangers:Chicago White Sox ML": {
+    "bet_type": "Moneyline",
+    "pick": "Chicago White Sox ML",
+    "team": "Chicago White Sox",
+    "matchup": "Chicago White Sox @ Texas Rangers",
+    "odds": 114,
+    "our_prob": 0.507,
+    "market_prob": 0.467,
+    "edge": 0.04,
+    "market_line": null,
+    "closing_odds": 114,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:Detroit Tigers @ Chicago Cubs:Over 8.0 (fanduel)": {
+    "bet_type": "Total",
+    "pick": "Over 8.0 (fanduel)",
+    "team": "Detroit Tigers vs Chicago Cubs",
+    "matchup": "Detroit Tigers @ Chicago Cubs",
+    "odds": -104,
+    "our_prob": 0.552,
+    "market_prob": 0.485,
+    "edge": 0.067,
+    "market_line": 8.0,
+    "closing_odds": -104,
+    "result": "win",
+    "profit": 96.15
+   }
+  },
+  "props": {
+   "693304": {
+    "name": "Nick Gonzales",
+    "team": "Pittsburgh Pirates",
+    "matchup": "Pittsburgh Pirates @ New York Yankees",
+    "hit_probability": 0.7947,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "670541": {
+    "name": "Yordan Alvarez",
+    "team": "Houston Astros",
+    "matchup": "Miami Marlins @ Houston Astros",
+    "hit_probability": 0.7815,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "664983": {
+    "name": "Jake McCarthy",
+    "team": "Colorado Rockies",
+    "matchup": "Washington Nationals @ Colorado Rockies",
+    "hit_probability": 0.7807,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "694249": {
+    "name": "Cole Carrigg",
+    "team": "Colorado Rockies",
+    "matchup": "Washington Nationals @ Colorado Rockies",
+    "hit_probability": 0.7652,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "669242": {
+    "name": "Tommy Edman",
+    "team": "Los Angeles Dodgers",
+    "matchup": "Los Angeles Dodgers @ Philadelphia Phillies",
+    "hit_probability": 0.7622,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   }
+  }
+ },
+ "2026-07-22": {
+  "bets": {
+   "Moneyline:Pittsburgh Pirates @ New York Yankees:Pittsburgh Pirates ML": {
+    "bet_type": "Moneyline",
+    "pick": "Pittsburgh Pirates ML",
+    "team": "Pittsburgh Pirates",
+    "matchup": "Pittsburgh Pirates @ New York Yankees",
+    "odds": 150,
+    "our_prob": 0.442,
+    "market_prob": 0.4,
+    "edge": 0.042,
+    "market_line": null,
+    "closing_odds": 150,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Spread:Athletics @ Arizona Diamondbacks:Arizona Diamondbacks -1.5 (bovada)": {
+    "bet_type": "Spread",
+    "pick": "Arizona Diamondbacks -1.5 (bovada)",
+    "team": "Arizona Diamondbacks",
+    "matchup": "Athletics @ Arizona Diamondbacks",
+    "odds": 165,
+    "our_prob": 0.416,
+    "market_prob": 0.377,
+    "edge": 0.039,
+    "market_line": null,
+    "closing_odds": 162,
+    "result": "win",
+    "profit": 165
+   },
+   "Spread:Minnesota Twins @ Cleveland Guardians:Cleveland Guardians -1.5 (lowvig)": {
+    "bet_type": "Spread",
+    "pick": "Cleveland Guardians -1.5 (lowvig)",
+    "team": "Cleveland Guardians",
+    "matchup": "Minnesota Twins @ Cleveland Guardians",
+    "odds": 171,
+    "our_prob": 0.395,
+    "market_prob": 0.369,
+    "edge": 0.026,
+    "market_line": null,
+    "closing_odds": 172,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Miami Marlins @ Houston Astros:Miami Marlins ML": {
+    "bet_type": "Moneyline",
+    "pick": "Miami Marlins ML",
+    "team": "Miami Marlins",
+    "matchup": "Miami Marlins @ Houston Astros",
+    "odds": 108,
+    "our_prob": 0.509,
+    "market_prob": 0.481,
+    "edge": 0.028,
+    "market_line": null,
+    "closing_odds": 108,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:Detroit Tigers @ Chicago Cubs:Over 8.0 (lowvig)": {
+    "bet_type": "Total",
+    "pick": "Over 8.0 (lowvig)",
+    "team": "Detroit Tigers vs Chicago Cubs",
+    "matchup": "Detroit Tigers @ Chicago Cubs",
+    "odds": -102,
+    "our_prob": 0.533,
+    "market_prob": 0.488,
+    "edge": 0.045,
+    "market_line": 8.0,
+    "closing_odds": -115,
+    "result": "loss",
+    "profit": -100.0
+   }
+  },
+  "props": {
+   "807799": {
+    "name": "Masataka Yoshida",
+    "team": "Boston Red Sox",
+    "matchup": "Baltimore Orioles @ Boston Red Sox",
+    "hit_probability": 0.8048,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "670541": {
+    "name": "Yordan Alvarez",
+    "team": "Houston Astros",
+    "matchup": "Miami Marlins @ Houston Astros",
+    "hit_probability": 0.7816,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   },
+   "641355": {
+    "name": "Cody Bellinger",
+    "team": "New York Yankees",
+    "matchup": "Pittsburgh Pirates @ New York Yankees",
+    "hit_probability": 0.7654,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "663968": {
+    "name": "Jake Mangum",
+    "team": "Pittsburgh Pirates",
+    "matchup": "Pittsburgh Pirates @ New York Yankees",
+    "hit_probability": 0.7624,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "665161": {
+    "name": "Jeremy Pe\u00f1a",
+    "team": "Houston Astros",
+    "matchup": "Miami Marlins @ Houston Astros",
+    "hit_probability": 0.7579,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 3,
+    "profit": null
+   }
+  }
+ },
+ "2026-07-28": {
+  "bets": {
+   "Moneyline:Colorado Rockies @ San Diego Padres:Colorado Rockies ML": {
+    "bet_type": "Moneyline",
+    "pick": "Colorado Rockies ML",
+    "team": "Colorado Rockies",
+    "matchup": "Colorado Rockies @ San Diego Padres",
+    "odds": 185,
+    "our_prob": 0.413,
+    "market_prob": 0.351,
+    "edge": 0.062,
+    "market_line": null,
+    "closing_odds": 185,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Atlanta Braves @ New York Mets:New York Mets ML": {
+    "bet_type": "Moneyline",
+    "pick": "New York Mets ML",
+    "team": "New York Mets",
+    "matchup": "Atlanta Braves @ New York Mets",
+    "odds": 139,
+    "our_prob": 0.475,
+    "market_prob": 0.418,
+    "edge": 0.057,
+    "market_line": null,
+    "closing_odds": 139,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:Philadelphia Phillies @ Miami Marlins:Over 8.5 (betrivers)": {
+    "bet_type": "Total",
+    "pick": "Over 8.5 (betrivers)",
+    "team": "Philadelphia Phillies vs Miami Marlins",
+    "matchup": "Philadelphia Phillies @ Miami Marlins",
+    "odds": 100,
+    "our_prob": 0.552,
+    "market_prob": 0.48,
+    "edge": 0.072,
+    "market_line": 8.5,
+    "closing_odds": 100,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:Colorado Rockies @ San Diego Padres:Over 8.5 (fanduel)": {
+    "bet_type": "Total",
+    "pick": "Over 8.5 (fanduel)",
+    "team": "Colorado Rockies vs San Diego Padres",
+    "matchup": "Colorado Rockies @ San Diego Padres",
+    "odds": 100,
+    "our_prob": 0.546,
+    "market_prob": 0.476,
+    "edge": 0.07,
+    "market_line": 8.5,
+    "closing_odds": 100,
+    "result": "win",
+    "profit": 100
+   },
+   "Moneyline:Milwaukee Brewers @ San Francisco Giants:San Francisco Giants ML": {
+    "bet_type": "Moneyline",
+    "pick": "San Francisco Giants ML",
+    "team": "San Francisco Giants",
+    "matchup": "Milwaukee Brewers @ San Francisco Giants",
+    "odds": 133,
+    "our_prob": 0.469,
+    "market_prob": 0.429,
+    "edge": 0.04,
+    "market_line": null,
+    "closing_odds": 133,
+    "result": "loss",
+    "profit": -100.0
+   }
+  },
+  "props": {
+   "650333": {
+    "name": "Luis Arraez",
+    "team": "San Francisco Giants",
+    "matchup": "Milwaukee Brewers @ San Francisco Giants",
+    "hit_probability": 0.7535,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "672515": {
+    "name": "Gabriel Moreno",
+    "team": "Arizona Diamondbacks",
+    "matchup": "Arizona Diamondbacks @ Pittsburgh Pirates",
+    "hit_probability": 0.7436,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "663968": {
+    "name": "Jake Mangum",
+    "team": "Pittsburgh Pirates",
+    "matchup": "Arizona Diamondbacks @ Pittsburgh Pirates",
+    "hit_probability": 0.741,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   },
+   "650490": {
+    "name": "Yandy D\u00edaz",
+    "team": "Tampa Bay Rays",
+    "matchup": "Texas Rangers @ Tampa Bay Rays",
+    "hit_probability": 0.7366,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "680757": {
+    "name": "Steven Kwan",
+    "team": "Cleveland Guardians",
+    "matchup": "Cleveland Guardians @ Cincinnati Reds",
+    "hit_probability": 0.7347,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   }
+  }
+ },
+ "2026-08-07": {
+  "bets": {},
+  "props": {}
+ },
+ "2026-08-08": {
+  "bets": {},
+  "props": {}
+ },
+ "2026-08-14": {
+  "bets": {},
+  "props": {}
+ },
+ "2026-08-15": {
+  "bets": {},
+  "props": {}
+ },
+ "2026-08-16": {
+  "bets": {},
+  "props": {}
+ },
+ "2026-08-17": {
+  "bets": {},
+  "props": {}
+ },
+ "2026-08-18": {
+  "bets": {
+   "Moneyline:Miami Marlins @ Philadelphia Phillies:Miami Marlins ML": {
+    "bet_type": "Moneyline",
+    "pick": "Miami Marlins ML",
+    "team": "Miami Marlins",
+    "matchup": "Miami Marlins @ Philadelphia Phillies",
+    "odds": 198,
+    "our_prob": 0.43,
+    "market_prob": 0.336,
+    "edge": 0.094,
+    "market_line": null,
+    "closing_odds": 103,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:San Francisco Giants @ Cleveland Guardians:San Francisco Giants ML": {
+    "bet_type": "Moneyline",
+    "pick": "San Francisco Giants ML",
+    "team": "San Francisco Giants",
+    "matchup": "San Francisco Giants @ Cleveland Guardians",
+    "odds": 173,
+    "our_prob": 0.443,
+    "market_prob": 0.366,
+    "edge": 0.077,
+    "market_line": null,
+    "closing_odds": 173,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Washington Nationals @ Texas Rangers:Washington Nationals ML": {
+    "bet_type": "Moneyline",
+    "pick": "Washington Nationals ML",
+    "team": "Washington Nationals",
+    "matchup": "Washington Nationals @ Texas Rangers",
+    "odds": 140,
+    "our_prob": 0.491,
+    "market_prob": 0.417,
+    "edge": 0.074,
+    "market_line": null,
+    "closing_odds": 138,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:Washington Nationals @ Texas Rangers:Over 8.0 (bovada)": {
+    "bet_type": "Total",
+    "pick": "Over 8.0 (bovada)",
+    "team": "Washington Nationals vs Texas Rangers",
+    "matchup": "Washington Nationals @ Texas Rangers",
+    "odds": 100,
+    "our_prob": 0.568,
+    "market_prob": 0.478,
+    "edge": 0.09,
+    "market_line": 8.0,
+    "closing_odds": -105,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Los Angeles Dodgers @ Colorado Rockies:Colorado Rockies ML": {
+    "bet_type": "Moneyline",
+    "pick": "Colorado Rockies ML",
+    "team": "Colorado Rockies",
+    "matchup": "Los Angeles Dodgers @ Colorado Rockies",
+    "odds": 172,
+    "our_prob": 0.412,
+    "market_prob": 0.368,
+    "edge": 0.044,
+    "market_line": null,
+    "closing_odds": 165,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Atlanta Braves @ Minnesota Twins:Minnesota Twins ML": {
+    "bet_type": "Moneyline",
+    "pick": "Minnesota Twins ML",
+    "team": "Minnesota Twins",
+    "matchup": "Atlanta Braves @ Minnesota Twins",
+    "odds": 111,
+    "our_prob": 0.527,
+    "market_prob": 0.474,
+    "edge": 0.053,
+    "market_line": null,
+    "closing_odds": 122,
+    "result": "win",
+    "profit": 111
+   },
+   "Spread:Seattle Mariners @ Milwaukee Brewers:Milwaukee Brewers -1.5 (bovada)": {
+    "bet_type": "Spread",
+    "pick": "Milwaukee Brewers -1.5 (bovada)",
+    "team": "Milwaukee Brewers",
+    "matchup": "Seattle Mariners @ Milwaukee Brewers",
+    "odds": 130,
+    "our_prob": 0.483,
+    "market_prob": 0.435,
+    "edge": 0.048,
+    "market_line": null,
+    "closing_odds": 163,
+    "result": "win",
+    "profit": 130
+   },
+   "Moneyline:Arizona Diamondbacks @ Boston Red Sox:Arizona Diamondbacks ML": {
+    "bet_type": "Moneyline",
+    "pick": "Arizona Diamondbacks ML",
+    "team": "Arizona Diamondbacks",
+    "matchup": "Arizona Diamondbacks @ Boston Red Sox",
+    "odds": 153,
+    "our_prob": 0.456,
+    "market_prob": 0.395,
+    "edge": 0.061,
+    "market_line": null,
+    "closing_odds": 122,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Athletics @ Kansas City Royals:Athletics ML": {
+    "bet_type": "Moneyline",
+    "pick": "Athletics ML",
+    "team": "Athletics",
+    "matchup": "Athletics @ Kansas City Royals",
+    "odds": 142,
+    "our_prob": 0.473,
+    "market_prob": 0.413,
+    "edge": 0.06,
+    "market_line": null,
+    "closing_odds": 144,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Spread:Washington Nationals @ Texas Rangers:Texas Rangers -1.5 (bovada)": {
+    "bet_type": "Spread",
+    "pick": "Texas Rangers -1.5 (bovada)",
+    "team": "Texas Rangers",
+    "matchup": "Washington Nationals @ Texas Rangers",
+    "odds": 145,
+    "our_prob": 0.452,
+    "market_prob": 0.408,
+    "edge": 0.044,
+    "market_line": null,
+    "closing_odds": 138,
+    "result": "win",
+    "profit": 145
+   },
+   "Moneyline:Toronto Blue Jays @ Tampa Bay Rays:Toronto Blue Jays ML": {
+    "bet_type": "Moneyline",
+    "pick": "Toronto Blue Jays ML",
+    "team": "Toronto Blue Jays",
+    "matchup": "Toronto Blue Jays @ Tampa Bay Rays",
+    "odds": 187,
+    "our_prob": 0.395,
+    "market_prob": 0.348,
+    "edge": 0.047,
+    "market_line": null,
+    "closing_odds": 187,
+    "result": "win",
+    "profit": 187
+   }
+  },
+  "props": {
+   "665161": {
+    "name": "Jeremy Pe\u00f1a",
+    "team": "Houston Astros",
+    "matchup": "Los Angeles Angels @ Houston Astros",
+    "hit_probability": 0.7402,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "677951": {
+    "name": "Bobby Witt Jr.",
+    "team": "Kansas City Royals",
+    "matchup": "Athletics @ Kansas City Royals",
+    "hit_probability": 0.7384,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "678882": {
+    "name": "Ceddanne Rafaela",
+    "team": "Boston Red Sox",
+    "matchup": "Arizona Diamondbacks @ Boston Red Sox",
+    "hit_probability": 0.7354,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "682928": {
+    "name": "CJ Abrams",
+    "team": "Washington Nationals",
+    "matchup": "Washington Nationals @ Texas Rangers",
+    "hit_probability": 0.7314,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   },
+   "686948": {
+    "name": "Drake Baldwin",
+    "team": "Atlanta Braves",
+    "matchup": "Atlanta Braves @ Minnesota Twins",
+    "hit_probability": 0.7251,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   },
+   "607043": {
+    "name": "Brandon Nimmo",
+    "team": "Texas Rangers",
+    "matchup": "Washington Nationals @ Texas Rangers",
+    "hit_probability": 0.7225,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   },
+   "643446": {
+    "name": "Jeff McNeil",
+    "team": "Athletics",
+    "matchup": "Athletics @ Kansas City Royals",
+    "hit_probability": 0.7152,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   },
+   "677649": {
+    "name": "Ezequiel Duran",
+    "team": "Texas Rangers",
+    "matchup": "Washington Nationals @ Texas Rangers",
+    "hit_probability": 0.697,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "703607": {
+    "name": "Henry Bolte",
+    "team": "Athletics",
+    "matchup": "Athletics @ Kansas City Royals",
+    "hit_probability": 0.6952,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "694673": {
+    "name": "Abimelec Ortiz",
+    "team": "Washington Nationals",
+    "matchup": "Washington Nationals @ Texas Rangers",
+    "hit_probability": 0.7076,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "693304": {
+    "name": "Nick Gonzales",
+    "team": "Pittsburgh Pirates",
+    "matchup": "Detroit Tigers @ Pittsburgh Pirates",
+    "hit_probability": 0.6951,
+    "prop_over_odds": -230,
+    "closing_over_odds": -230,
+    "result": "void",
+    "profit": 0.0
+   },
+   "691718": {
+    "name": "Pete Crow-Armstrong",
+    "team": "Chicago Cubs",
+    "matchup": "Chicago White Sox @ Chicago Cubs",
+    "hit_probability": 0.6938,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "671739": {
+    "name": "Michael Harris II",
+    "team": "Atlanta Braves",
+    "matchup": "Atlanta Braves @ Minnesota Twins",
+    "hit_probability": 0.7389,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 3,
+    "profit": null
+   },
+   "545121": {
+    "name": "Ildemaro Vargas",
+    "team": "Arizona Diamondbacks",
+    "matchup": "Arizona Diamondbacks @ Boston Red Sox",
+    "hit_probability": 0.7193,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "695506": {
+    "name": "Jac Caglianone",
+    "team": "Kansas City Royals",
+    "matchup": "Athletics @ Kansas City Royals",
+    "hit_probability": 0.7189,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   },
+   "681624": {
+    "name": "Andy Pages",
+    "team": "Los Angeles Dodgers",
+    "matchup": "Los Angeles Dodgers @ Colorado Rockies",
+    "hit_probability": 0.7529,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "500743": {
+    "name": "Miguel Rojas",
+    "team": "Los Angeles Dodgers",
+    "matchup": "Los Angeles Dodgers @ Colorado Rockies",
+    "hit_probability": 0.7168,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "671277": {
+    "name": "Luis Garc\u00eda Jr.",
+    "team": "New York Yankees",
+    "matchup": "New York Yankees @ Baltimore Orioles",
+    "hit_probability": 0.7071,
+    "prop_over_odds": -226,
+    "closing_over_odds": -226,
+    "result": "loss",
+    "hits": 0,
+    "profit": -100.0
+   },
+   "669743": {
+    "name": "Alex Call",
+    "team": "Los Angeles Dodgers",
+    "matchup": "Los Angeles Dodgers @ Colorado Rockies",
+    "hit_probability": 0.7068,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "void",
+    "profit": 0.0
+   },
+   "694192": {
+    "name": "Jackson Chourio",
+    "team": "Milwaukee Brewers",
+    "matchup": "Seattle Mariners @ Milwaukee Brewers",
+    "hit_probability": 0.7007,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "686765": {
+    "name": "Nick Sogard",
+    "team": "Boston Red Sox",
+    "matchup": "Arizona Diamondbacks @ Boston Red Sox",
+    "hit_probability": 0.691,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   }
+  }
+ },
+ "2026-08-24": {
+  "bets": {
+   "Moneyline:Cleveland Guardians @ Los Angeles Angels:Los Angeles Angels ML": {
+    "bet_type": "Moneyline",
+    "pick": "Los Angeles Angels ML",
+    "team": "Los Angeles Angels",
+    "matchup": "Cleveland Guardians @ Los Angeles Angels",
+    "odds": 122,
+    "our_prob": 0.518,
+    "market_prob": 0.45,
+    "edge": 0.068,
+    "market_line": null,
+    "closing_odds": 122,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Minnesota Twins @ Athletics:Athletics ML": {
+    "bet_type": "Moneyline",
+    "pick": "Athletics ML",
+    "team": "Athletics",
+    "matchup": "Minnesota Twins @ Athletics",
+    "odds": 135,
+    "our_prob": 0.472,
+    "market_prob": 0.426,
+    "edge": 0.046,
+    "market_line": null,
+    "closing_odds": 135,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:Pittsburgh Pirates @ San Diego Padres:Over 7.5 (lowvig)": {
+    "bet_type": "Total",
+    "pick": "Over 7.5 (lowvig)",
+    "team": "Pittsburgh Pirates vs San Diego Padres",
+    "matchup": "Pittsburgh Pirates @ San Diego Padres",
+    "odds": 107,
+    "our_prob": 0.533,
+    "market_prob": 0.467,
+    "edge": 0.066,
+    "market_line": 7.5,
+    "closing_odds": -101,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:Chicago Cubs @ Arizona Diamondbacks:Over 8.5 (draftkings)": {
+    "bet_type": "Total",
+    "pick": "Over 8.5 (draftkings)",
+    "team": "Chicago Cubs vs Arizona Diamondbacks",
+    "matchup": "Chicago Cubs @ Arizona Diamondbacks",
+    "odds": -102,
+    "our_prob": 0.544,
+    "market_prob": 0.483,
+    "edge": 0.062,
+    "market_line": 8.5,
+    "closing_odds": -102,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:Cleveland Guardians @ Los Angeles Angels:Over 7.5 (lowvig)": {
+    "bet_type": "Total",
+    "pick": "Over 7.5 (lowvig)",
+    "team": "Cleveland Guardians vs Los Angeles Angels",
+    "matchup": "Cleveland Guardians @ Los Angeles Angels",
+    "odds": -107,
+    "our_prob": 0.553,
+    "market_prob": 0.5,
+    "edge": 0.053,
+    "market_line": 7.5,
+    "closing_odds": -110,
+    "result": "loss",
+    "profit": -100.0
+   }
+  },
+  "props": {
+   "807712": {
+    "name": "Luke Keaschall",
+    "team": "Minnesota Twins",
+    "matchup": "Minnesota Twins @ Athletics",
+    "hit_probability": 0.7335,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   },
+   "650333": {
+    "name": "Luis Arraez",
+    "team": "Philadelphia Phillies",
+    "matchup": "Philadelphia Phillies @ Seattle Mariners",
+    "hit_probability": 0.7182,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "672515": {
+    "name": "Gabriel Moreno",
+    "team": "Arizona Diamondbacks",
+    "matchup": "Chicago Cubs @ Arizona Diamondbacks",
+    "hit_probability": 0.7164,
+    "prop_over_odds": -256,
+    "closing_over_odds": -256,
+    "result": "loss",
+    "hits": 0,
+    "profit": -100.0
+   },
+   "693304": {
+    "name": "Nick Gonzales",
+    "team": "Pittsburgh Pirates",
+    "matchup": "Pittsburgh Pirates @ San Diego Padres",
+    "hit_probability": 0.7146,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   },
+   "680777": {
+    "name": "Ryan Jeffers",
+    "team": "Minnesota Twins",
+    "matchup": "Minnesota Twins @ Athletics",
+    "hit_probability": 0.7095,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   }
+  }
+ },
+ "2026-08-25": {
+  "bets": {
+   "Total:Pittsburgh Pirates @ San Diego Padres:Over 8.5 (fanduel)": {
+    "bet_type": "Total",
+    "pick": "Over 8.5 (fanduel)",
+    "team": "Pittsburgh Pirates vs San Diego Padres",
+    "matchup": "Pittsburgh Pirates @ San Diego Padres",
+    "odds": -110,
+    "our_prob": 0.604,
+    "market_prob": 0.5,
+    "edge": 0.104,
+    "market_line": 8.5,
+    "closing_odds": -110,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Spread:Kansas City Royals @ Toronto Blue Jays:Toronto Blue Jays -1.5 (lowvig)": {
+    "bet_type": "Spread",
+    "pick": "Toronto Blue Jays -1.5 (lowvig)",
+    "team": "Toronto Blue Jays",
+    "matchup": "Kansas City Royals @ Toronto Blue Jays",
+    "odds": 166,
+    "our_prob": 0.429,
+    "market_prob": 0.376,
+    "edge": 0.053,
+    "market_line": null,
+    "closing_odds": 160,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Milwaukee Brewers @ New York Mets:New York Mets ML": {
+    "bet_type": "Moneyline",
+    "pick": "New York Mets ML",
+    "team": "New York Mets",
+    "matchup": "Milwaukee Brewers @ New York Mets",
+    "odds": 145,
+    "our_prob": 0.464,
+    "market_prob": 0.408,
+    "edge": 0.056,
+    "market_line": null,
+    "closing_odds": 140,
+    "result": "win",
+    "profit": 145
+   },
+   "Moneyline:Boston Red Sox @ Miami Marlins:Miami Marlins ML": {
+    "bet_type": "Moneyline",
+    "pick": "Miami Marlins ML",
+    "team": "Miami Marlins",
+    "matchup": "Boston Red Sox @ Miami Marlins",
+    "odds": 139,
+    "our_prob": 0.471,
+    "market_prob": 0.418,
+    "edge": 0.053,
+    "market_line": null,
+    "closing_odds": 139,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:Philadelphia Phillies @ Seattle Mariners:Over 7.0 (lowvig)": {
+    "bet_type": "Total",
+    "pick": "Over 7.0 (lowvig)",
+    "team": "Philadelphia Phillies vs Seattle Mariners",
+    "matchup": "Philadelphia Phillies @ Seattle Mariners",
+    "odds": 106,
+    "our_prob": 0.543,
+    "market_prob": 0.47,
+    "edge": 0.073,
+    "market_line": 7.0,
+    "closing_odds": -105,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Spread:Kansas City Royals @ Toronto Blue Jays:Toronto Blue Jays -1.5 (bovada)": {
+    "bet_type": "Spread",
+    "pick": "Toronto Blue Jays -1.5 (bovada)",
+    "team": "Toronto Blue Jays",
+    "matchup": "Kansas City Royals @ Toronto Blue Jays",
+    "odds": 165,
+    "our_prob": 0.43,
+    "market_prob": 0.377,
+    "edge": 0.053,
+    "market_line": null,
+    "closing_odds": 160,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Los Angeles Dodgers @ Atlanta Braves:Atlanta Braves ML": {
+    "bet_type": "Moneyline",
+    "pick": "Atlanta Braves ML",
+    "team": "Atlanta Braves",
+    "matchup": "Los Angeles Dodgers @ Atlanta Braves",
+    "odds": 111,
+    "our_prob": 0.51,
+    "market_prob": 0.474,
+    "edge": 0.036,
+    "market_line": null,
+    "closing_odds": 111,
+    "result": "win",
+    "profit": 111
+   },
+   "Moneyline:Minnesota Twins @ Athletics:Athletics ML": {
+    "bet_type": "Moneyline",
+    "pick": "Athletics ML",
+    "team": "Athletics",
+    "matchup": "Minnesota Twins @ Athletics",
+    "odds": 121,
+    "our_prob": 0.483,
+    "market_prob": 0.452,
+    "edge": 0.031,
+    "market_line": null,
+    "closing_odds": 121,
+    "result": "win",
+    "profit": 121
+   }
+  },
+  "props": {
+   "693304": {
+    "name": "Nick Gonzales",
+    "team": "Pittsburgh Pirates",
+    "matchup": "Pittsburgh Pirates @ San Diego Padres",
+    "hit_probability": 0.7605,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "663968": {
+    "name": "Jake Mangum",
+    "team": "Pittsburgh Pirates",
+    "matchup": "Pittsburgh Pirates @ San Diego Padres",
+    "hit_probability": 0.7294,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "672640": {
+    "name": "Otto Lopez",
+    "team": "Miami Marlins",
+    "matchup": "Boston Red Sox @ Miami Marlins",
+    "hit_probability": 0.7211,
+    "prop_over_odds": -238,
+    "closing_over_odds": -238,
+    "result": "win",
+    "hits": 1,
+    "profit": 42.02
+   },
+   "686527": {
+    "name": "Dominic Canzone",
+    "team": "Seattle Mariners",
+    "matchup": "Philadelphia Phillies @ Seattle Mariners",
+    "hit_probability": 0.7082,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "647304": {
+    "name": "Josh Naylor",
+    "team": "Seattle Mariners",
+    "matchup": "Philadelphia Phillies @ Seattle Mariners",
+    "hit_probability": 0.7061,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "676475": {
+    "name": "Alec Burleson",
+    "team": "St. Louis Cardinals",
+    "matchup": "Baltimore Orioles @ St. Louis Cardinals",
+    "hit_probability": 0.7715,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "691023": {
+    "name": "Jordan Walker",
+    "team": "St. Louis Cardinals",
+    "matchup": "Baltimore Orioles @ St. Louis Cardinals",
+    "hit_probability": 0.7339,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "677951": {
+    "name": "Bobby Witt Jr.",
+    "team": "Kansas City Royals",
+    "matchup": "Kansas City Royals @ Toronto Blue Jays",
+    "hit_probability": 0.7321,
+    "prop_over_odds": -258,
+    "closing_over_odds": -258,
+    "result": "loss",
+    "hits": 0,
+    "profit": -100.0
+   },
+   "682928": {
+    "name": "CJ Abrams",
+    "team": "Washington Nationals",
+    "matchup": "Colorado Rockies @ Washington Nationals",
+    "hit_probability": 0.7242,
+    "prop_over_odds": -257,
+    "closing_over_odds": -257,
+    "result": "loss",
+    "hits": 0,
+    "profit": -100.0
+   }
+  }
+ },
+ "2026-08-26": {
+  "bets": {
+   "Moneyline:Milwaukee Brewers @ New York Mets:New York Mets ML": {
+    "bet_type": "Moneyline",
+    "pick": "New York Mets ML",
+    "team": "New York Mets",
+    "matchup": "Milwaukee Brewers @ New York Mets",
+    "odds": 190,
+    "our_prob": 0.398,
+    "market_prob": 0.345,
+    "edge": 0.053,
+    "market_line": null,
+    "closing_odds": 190,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Spread:Houston Astros @ New York Yankees:New York Yankees -1.5 (bovada)": {
+    "bet_type": "Spread",
+    "pick": "New York Yankees -1.5 (bovada)",
+    "team": "New York Yankees",
+    "matchup": "Houston Astros @ New York Yankees",
+    "odds": 135,
+    "our_prob": 0.489,
+    "market_prob": 0.426,
+    "edge": 0.063,
+    "market_line": null,
+    "closing_odds": 136,
+    "result": "win",
+    "profit": 135
+   },
+   "Moneyline:Colorado Rockies @ Washington Nationals:Washington Nationals ML": {
+    "bet_type": "Moneyline",
+    "pick": "Washington Nationals ML",
+    "team": "Washington Nationals",
+    "matchup": "Colorado Rockies @ Washington Nationals",
+    "odds": -110,
+    "our_prob": 0.585,
+    "market_prob": 0.524,
+    "edge": 0.061,
+    "market_line": null,
+    "closing_odds": -115,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:Los Angeles Dodgers @ Atlanta Braves:Over 7.0 (lowvig)": {
+    "bet_type": "Total",
+    "pick": "Over 7.0 (lowvig)",
+    "team": "Los Angeles Dodgers vs Atlanta Braves",
+    "matchup": "Los Angeles Dodgers @ Atlanta Braves",
+    "odds": -107,
+    "our_prob": 0.575,
+    "market_prob": 0.5,
+    "edge": 0.075,
+    "market_line": 7.0,
+    "closing_odds": -115,
+    "result": "win",
+    "profit": 93.46
+   },
+   "Total:Milwaukee Brewers @ New York Mets:Over 7.0 (lowvig)": {
+    "bet_type": "Total",
+    "pick": "Over 7.0 (lowvig)",
+    "team": "Milwaukee Brewers vs New York Mets",
+    "matchup": "Milwaukee Brewers @ New York Mets",
+    "odds": -113,
+    "our_prob": 0.583,
+    "market_prob": 0.512,
+    "edge": 0.071,
+    "market_line": 7.0,
+    "closing_odds": -122,
+    "result": "win",
+    "profit": 88.5
+   }
+  },
+  "props": {
+   "676475": {
+    "name": "Alec Burleson",
+    "team": "St. Louis Cardinals",
+    "matchup": "Baltimore Orioles @ St. Louis Cardinals",
+    "hit_probability": 0.7398,
+    "prop_over_odds": null,
+    "closing_over_odds": 130,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "703607": {
+    "name": "Henry Bolte",
+    "team": "Athletics",
+    "matchup": "Minnesota Twins @ Athletics",
+    "hit_probability": 0.7226,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "624413": {
+    "name": "Pete Alonso",
+    "team": "Baltimore Orioles",
+    "matchup": "Baltimore Orioles @ St. Louis Cardinals",
+    "hit_probability": 0.7196,
+    "prop_over_odds": null,
+    "closing_over_odds": 210,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "703520": {
+    "name": "Brett Bateman",
+    "team": "Toronto Blue Jays",
+    "matchup": "Kansas City Royals @ Toronto Blue Jays",
+    "hit_probability": 0.7188,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "807712": {
+    "name": "Luke Keaschall",
+    "team": "Minnesota Twins",
+    "matchup": "Minnesota Twins @ Athletics",
+    "hit_probability": 0.7107,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "682928": {
+    "name": "CJ Abrams",
+    "team": "Washington Nationals",
+    "matchup": "Colorado Rockies @ Washington Nationals",
+    "hit_probability": 0.7701,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "518692": {
+    "name": "Freddie Freeman",
+    "team": "Los Angeles Dodgers",
+    "matchup": "Los Angeles Dodgers @ Atlanta Braves",
+    "hit_probability": 0.7348,
+    "prop_over_odds": null,
+    "closing_over_odds": 225,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   },
+   "695734": {
+    "name": "Daylen Lile",
+    "team": "Washington Nationals",
+    "matchup": "Colorado Rockies @ Washington Nationals",
+    "hit_probability": 0.7335,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "694673": {
+    "name": "Abimelec Ortiz",
+    "team": "Washington Nationals",
+    "matchup": "Colorado Rockies @ Washington Nationals",
+    "hit_probability": 0.7235,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   }
+  }
+ },
+ "2026-08-30": {
+  "bets": {
+   "Spread:Cincinnati Reds @ Chicago Cubs:Chicago Cubs -1.5 (lowvig)": {
+    "bet_type": "Spread",
+    "pick": "Chicago Cubs -1.5 (lowvig)",
+    "team": "Chicago Cubs",
+    "matchup": "Cincinnati Reds @ Chicago Cubs",
+    "odds": 141,
+    "our_prob": 0.467,
+    "market_prob": 0.415,
+    "edge": 0.052,
+    "market_line": null,
+    "closing_odds": 122,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:Cincinnati Reds @ Chicago Cubs:Over 9.5 (draftkings)": {
+    "bet_type": "Total",
+    "pick": "Over 9.5 (draftkings)",
+    "team": "Cincinnati Reds vs Chicago Cubs",
+    "matchup": "Cincinnati Reds @ Chicago Cubs",
+    "odds": 102,
+    "our_prob": 0.514,
+    "market_prob": 0.473,
+    "edge": 0.041,
+    "market_line": 9.5,
+    "closing_odds": 102,
+    "result": "win",
+    "profit": 102
+   },
+   "Moneyline:Cincinnati Reds @ Chicago Cubs:Chicago Cubs ML": {
+    "bet_type": "Moneyline",
+    "pick": "Chicago Cubs ML",
+    "team": "Chicago Cubs",
+    "matchup": "Cincinnati Reds @ Chicago Cubs",
+    "odds": -149,
+    "our_prob": 0.603,
+    "market_prob": 0.598,
+    "edge": 0.005,
+    "market_line": null,
+    "closing_odds": -149,
+    "result": "loss",
+    "profit": -100.0
+   }
+  },
+  "props": {
+   "682829": {
+    "name": "Elly De La Cruz",
+    "team": "Cincinnati Reds",
+    "matchup": "Cincinnati Reds @ Chicago Cubs",
+    "hit_probability": 0.7078,
+    "prop_over_odds": -244,
+    "closing_over_odds": -244,
+    "result": "win",
+    "hits": 2,
+    "profit": 40.98
+   },
+   "691718": {
+    "name": "Pete Crow-Armstrong",
+    "team": "Chicago Cubs",
+    "matchup": "Cincinnati Reds @ Chicago Cubs",
+    "hit_probability": 0.6931,
+    "prop_over_odds": -240,
+    "closing_over_odds": -240,
+    "result": "win",
+    "hits": 2,
+    "profit": 41.67
+   },
+   "701398": {
+    "name": "Sal Stewart",
+    "team": "Cincinnati Reds",
+    "matchup": "Cincinnati Reds @ Chicago Cubs",
+    "hit_probability": 0.6917,
+    "prop_over_odds": -238,
+    "closing_over_odds": -238,
+    "result": "win",
+    "hits": 2,
+    "profit": 42.02
+   },
+   "667472": {
+    "name": "Dane Myers",
+    "team": "Cincinnati Reds",
+    "matchup": "Cincinnati Reds @ Chicago Cubs",
+    "hit_probability": 0.6833,
+    "prop_over_odds": -216,
+    "closing_over_odds": -216,
+    "result": "win",
+    "hits": 1,
+    "profit": 46.3
+   },
+   "673548": {
+    "name": "Seiya Suzuki",
+    "team": "Chicago Cubs",
+    "matchup": "Cincinnati Reds @ Chicago Cubs",
+    "hit_probability": 0.6813,
+    "prop_over_odds": -222,
+    "closing_over_odds": -222,
+    "result": "loss",
+    "hits": 0,
+    "profit": -100.0
+   }
+  }
+ },
+ "2026-09-05": {
+  "bets": {
+   "Moneyline:Athletics @ Seattle Mariners:Athletics ML": {
+    "bet_type": "Moneyline",
+    "pick": "Athletics ML",
+    "team": "Athletics",
+    "matchup": "Athletics @ Seattle Mariners",
+    "odds": 208,
+    "our_prob": 0.404,
+    "market_prob": 0.325,
+    "edge": 0.079,
+    "market_line": null,
+    "closing_odds": 208,
+    "result": "win",
+    "profit": 208
+   },
+   "Moneyline:Washington Nationals @ Los Angeles Dodgers:Washington Nationals ML": {
+    "bet_type": "Moneyline",
+    "pick": "Washington Nationals ML",
+    "team": "Washington Nationals",
+    "matchup": "Washington Nationals @ Los Angeles Dodgers",
+    "odds": 200,
+    "our_prob": 0.394,
+    "market_prob": 0.333,
+    "edge": 0.061,
+    "market_line": null,
+    "closing_odds": 200,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Spread:Arizona Diamondbacks @ Houston Astros:Houston Astros -1.5 (lowvig)": {
+    "bet_type": "Spread",
+    "pick": "Houston Astros -1.5 (lowvig)",
+    "team": "Houston Astros",
+    "matchup": "Arizona Diamondbacks @ Houston Astros",
+    "odds": 179,
+    "our_prob": 0.415,
+    "market_prob": 0.358,
+    "edge": 0.057,
+    "market_line": null,
+    "closing_odds": -176,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:San Francisco Giants @ New York Mets:San Francisco Giants ML": {
+    "bet_type": "Moneyline",
+    "pick": "San Francisco Giants ML",
+    "team": "San Francisco Giants",
+    "matchup": "San Francisco Giants @ New York Mets",
+    "odds": 155,
+    "our_prob": 0.451,
+    "market_prob": 0.392,
+    "edge": 0.059,
+    "market_line": null,
+    "closing_odds": 155,
+    "result": "win",
+    "profit": 155
+   },
+   "Total:Tampa Bay Rays @ Texas Rangers:Over 7.0 (lowvig)": {
+    "bet_type": "Total",
+    "pick": "Over 7.0 (lowvig)",
+    "team": "Tampa Bay Rays vs Texas Rangers",
+    "matchup": "Tampa Bay Rays @ Texas Rangers",
+    "odds": 103,
+    "our_prob": 0.553,
+    "market_prob": 0.476,
+    "edge": 0.077,
+    "market_line": 7.0,
+    "closing_odds": -104,
+    "result": "win",
+    "profit": 103
+   }
+  },
+  "props": {
+   "676475": {
+    "name": "Alec Burleson",
+    "team": "St. Louis Cardinals",
+    "matchup": "St. Louis Cardinals @ Colorado Rockies",
+    "hit_probability": 0.7667,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "703520": {
+    "name": "Brett Bateman",
+    "team": "Toronto Blue Jays",
+    "matchup": "Toronto Blue Jays @ Kansas City Royals",
+    "hit_probability": 0.7636,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "677942": {
+    "name": "Blaze Alexander",
+    "team": "Baltimore Orioles",
+    "matchup": "Boston Red Sox @ Baltimore Orioles",
+    "hit_probability": 0.7552,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "691023": {
+    "name": "Jordan Walker",
+    "team": "St. Louis Cardinals",
+    "matchup": "St. Louis Cardinals @ Colorado Rockies",
+    "hit_probability": 0.7523,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "643446": {
+    "name": "Jeff McNeil",
+    "team": "Athletics",
+    "matchup": "Athletics @ Seattle Mariners",
+    "hit_probability": 0.7506,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   }
+  }
+ },
+ "2026-09-06": {
+  "bets": {
+   "Moneyline:Washington Nationals @ Los Angeles Dodgers:Washington Nationals ML": {
+    "bet_type": "Moneyline",
+    "pick": "Washington Nationals ML",
+    "team": "Washington Nationals",
+    "matchup": "Washington Nationals @ Los Angeles Dodgers",
+    "odds": 180,
+    "our_prob": 0.407,
+    "market_prob": 0.357,
+    "edge": 0.05,
+    "market_line": null,
+    "closing_odds": 180,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:St. Louis Cardinals @ Colorado Rockies:Colorado Rockies ML": {
+    "bet_type": "Moneyline",
+    "pick": "Colorado Rockies ML",
+    "team": "Colorado Rockies",
+    "matchup": "St. Louis Cardinals @ Colorado Rockies",
+    "odds": 120,
+    "our_prob": 0.507,
+    "market_prob": 0.455,
+    "edge": 0.052,
+    "market_line": null,
+    "closing_odds": 120,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Athletics @ Seattle Mariners:Athletics ML": {
+    "bet_type": "Moneyline",
+    "pick": "Athletics ML",
+    "team": "Athletics",
+    "matchup": "Athletics @ Seattle Mariners",
+    "odds": 175,
+    "our_prob": 0.397,
+    "market_prob": 0.364,
+    "edge": 0.033,
+    "market_line": null,
+    "closing_odds": 175,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:Washington Nationals @ Los Angeles Dodgers:Over 8.5 (lowvig)": {
+    "bet_type": "Total",
+    "pick": "Over 8.5 (lowvig)",
+    "team": "Washington Nationals vs Los Angeles Dodgers",
+    "matchup": "Washington Nationals @ Los Angeles Dodgers",
+    "odds": 103,
+    "our_prob": 0.522,
+    "market_prob": 0.476,
+    "edge": 0.045,
+    "market_line": 8.5,
+    "closing_odds": -102,
+    "result": "win",
+    "profit": 103
+   },
+   "Spread:Athletics @ Seattle Mariners:Seattle Mariners -1.5 (lowvig)": {
+    "bet_type": "Spread",
+    "pick": "Seattle Mariners -1.5 (lowvig)",
+    "team": "Seattle Mariners",
+    "matchup": "Athletics @ Seattle Mariners",
+    "odds": 113,
+    "our_prob": 0.496,
+    "market_prob": 0.469,
+    "edge": 0.027,
+    "market_line": null,
+    "closing_odds": 112,
+    "result": "win",
+    "profit": 113
+   }
+  },
+  "props": {
+   "664983": {
+    "name": "Jake McCarthy",
+    "team": "Colorado Rockies",
+    "matchup": "St. Louis Cardinals @ Colorado Rockies",
+    "hit_probability": 0.7561,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 3,
+    "profit": null
+   },
+   "687859": {
+    "name": "Troy Johnston",
+    "team": "Colorado Rockies",
+    "matchup": "St. Louis Cardinals @ Colorado Rockies",
+    "hit_probability": 0.754,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "681198": {
+    "name": "TJ Rumfield",
+    "team": "Colorado Rockies",
+    "matchup": "St. Louis Cardinals @ Colorado Rockies",
+    "hit_probability": 0.7312,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 3,
+    "profit": null
+   },
+   "643446": {
+    "name": "Jeff McNeil",
+    "team": "Athletics",
+    "matchup": "Athletics @ Seattle Mariners",
+    "hit_probability": 0.7198,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "703607": {
+    "name": "Henry Bolte",
+    "team": "Athletics",
+    "matchup": "Athletics @ Seattle Mariners",
+    "hit_probability": 0.7154,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   }
+  }
+ },
+ "2026-09-21": {
+  "bets": {
+   "Spread:Washington Nationals @ Detroit Tigers:Detroit Tigers -1.5 (bovada)": {
+    "bet_type": "Spread",
+    "pick": "Detroit Tigers -1.5 (bovada)",
+    "team": "Detroit Tigers",
+    "matchup": "Washington Nationals @ Detroit Tigers",
+    "odds": 150,
+    "our_prob": 0.447,
+    "market_prob": 0.4,
+    "edge": 0.047,
+    "market_line": null,
+    "closing_odds": 146,
+    "result": "win",
+    "profit": 150
+   },
+   "Total:Minnesota Twins @ San Francisco Giants:Over 7.5 (bovada)": {
+    "bet_type": "Total",
+    "pick": "Over 7.5 (bovada)",
+    "team": "Minnesota Twins vs San Francisco Giants",
+    "matchup": "Minnesota Twins @ San Francisco Giants",
+    "odds": -110,
+    "our_prob": 0.564,
+    "market_prob": 0.5,
+    "edge": 0.064,
+    "market_line": 7.5,
+    "closing_odds": -112,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:Toronto Blue Jays @ Baltimore Orioles:Over 8.0 (lowvig)": {
+    "bet_type": "Total",
+    "pick": "Over 8.0 (lowvig)",
+    "team": "Toronto Blue Jays vs Baltimore Orioles",
+    "matchup": "Toronto Blue Jays @ Baltimore Orioles",
+    "odds": -102,
+    "our_prob": 0.541,
+    "market_prob": 0.488,
+    "edge": 0.053,
+    "market_line": 8.0,
+    "closing_odds": -102,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:Washington Nationals @ Detroit Tigers:Over 8.5 (mybookieag)": {
+    "bet_type": "Total",
+    "pick": "Over 8.5 (mybookieag)",
+    "team": "Washington Nationals vs Detroit Tigers",
+    "matchup": "Washington Nationals @ Detroit Tigers",
+    "odds": -103,
+    "our_prob": 0.53,
+    "market_prob": 0.484,
+    "edge": 0.046,
+    "market_line": 8.5,
+    "closing_odds": -104,
+    "result": "win",
+    "profit": 97.09
+   },
+   "Moneyline:Minnesota Twins @ San Francisco Giants:San Francisco Giants ML": {
+    "bet_type": "Moneyline",
+    "pick": "San Francisco Giants ML",
+    "team": "San Francisco Giants",
+    "matchup": "Minnesota Twins @ San Francisco Giants",
+    "odds": 114,
+    "our_prob": 0.486,
+    "market_prob": 0.467,
+    "edge": 0.019,
+    "market_line": null,
+    "closing_odds": 114,
+    "result": "win",
+    "profit": 114
+   }
+  },
+  "props": {
+   "680664": {
+    "name": "Eduardo Valencia",
+    "team": "Detroit Tigers",
+    "matchup": "Washington Nationals @ Detroit Tigers",
+    "hit_probability": 0.6974,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 3,
+    "profit": null
+   },
+   "805808": {
+    "name": "Kevin McGonigle",
+    "team": "Detroit Tigers",
+    "matchup": "Washington Nationals @ Detroit Tigers",
+    "hit_probability": 0.6886,
+    "prop_over_odds": -211,
+    "closing_over_odds": -211,
+    "result": "void",
+    "profit": 0.0
+   },
+   "682985": {
+    "name": "Riley Greene",
+    "team": "Detroit Tigers",
+    "matchup": "Washington Nationals @ Detroit Tigers",
+    "hit_probability": 0.6841,
+    "prop_over_odds": -191,
+    "closing_over_odds": -191,
+    "result": "loss",
+    "hits": 0,
+    "profit": -100.0
+   },
+   "701678": {
+    "name": "Hao-Yu Lee",
+    "team": "Detroit Tigers",
+    "matchup": "Washington Nationals @ Detroit Tigers",
+    "hit_probability": 0.6743,
+    "prop_over_odds": -172,
+    "closing_over_odds": -172,
+    "result": "win",
+    "hits": 3,
+    "profit": 58.14
+   },
+   "650402": {
+    "name": "Gleyber Torres",
+    "team": "Detroit Tigers",
+    "matchup": "Washington Nationals @ Detroit Tigers",
+    "hit_probability": 0.6734,
+    "prop_over_odds": -202,
+    "closing_over_odds": -202,
+    "result": "loss",
+    "hits": 0,
+    "profit": -100.0
+   }
+  }
+ },
+ "2026-09-22": {
+  "bets": {
+   "Moneyline:Arizona Diamondbacks @ Colorado Rockies:Colorado Rockies ML": {
+    "bet_type": "Moneyline",
+    "pick": "Colorado Rockies ML",
+    "team": "Colorado Rockies",
+    "matchup": "Arizona Diamondbacks @ Colorado Rockies",
+    "odds": 170,
+    "our_prob": 0.448,
+    "market_prob": 0.37,
+    "edge": 0.078,
+    "market_line": null,
+    "closing_odds": 170,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:St. Louis Cardinals @ Pittsburgh Pirates:Over 7.5 (fanduel)": {
+    "bet_type": "Total",
+    "pick": "Over 7.5 (fanduel)",
+    "team": "St. Louis Cardinals vs Pittsburgh Pirates",
+    "matchup": "St. Louis Cardinals @ Pittsburgh Pirates",
+    "odds": 110,
+    "our_prob": 0.558,
+    "market_prob": 0.454,
+    "edge": 0.104,
+    "market_line": 7.5,
+    "closing_odds": 110,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Milwaukee Brewers @ Philadelphia Phillies:Milwaukee Brewers ML": {
+    "bet_type": "Moneyline",
+    "pick": "Milwaukee Brewers ML",
+    "team": "Milwaukee Brewers",
+    "matchup": "Milwaukee Brewers @ Philadelphia Phillies",
+    "odds": 120,
+    "our_prob": 0.525,
+    "market_prob": 0.455,
+    "edge": 0.07,
+    "market_line": null,
+    "closing_odds": 120,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Minnesota Twins @ San Francisco Giants:San Francisco Giants ML": {
+    "bet_type": "Moneyline",
+    "pick": "San Francisco Giants ML",
+    "team": "San Francisco Giants",
+    "matchup": "Minnesota Twins @ San Francisco Giants",
+    "odds": 123,
+    "our_prob": 0.507,
+    "market_prob": 0.448,
+    "edge": 0.059,
+    "market_line": null,
+    "closing_odds": 123,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:Houston Astros @ Seattle Mariners:Over 7.5 (fanduel)": {
+    "bet_type": "Total",
+    "pick": "Over 7.5 (fanduel)",
+    "team": "Houston Astros vs Seattle Mariners",
+    "matchup": "Houston Astros @ Seattle Mariners",
+    "odds": 104,
+    "our_prob": 0.553,
+    "market_prob": 0.466,
+    "edge": 0.087,
+    "market_line": 7.5,
+    "closing_odds": 104,
+    "result": "loss",
+    "profit": -100.0
+   }
+  },
+  "props": {
+   "665161": {
+    "name": "Jeremy Pe\u00f1a",
+    "team": "Houston Astros",
+    "matchup": "Houston Astros @ Seattle Mariners",
+    "hit_probability": 0.7143,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "670541": {
+    "name": "Yordan Alvarez",
+    "team": "Houston Astros",
+    "matchup": "Houston Astros @ Seattle Mariners",
+    "hit_probability": 0.7114,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   },
+   "518692": {
+    "name": "Freddie Freeman",
+    "team": "Los Angeles Dodgers",
+    "matchup": "San Diego Padres @ Los Angeles Dodgers",
+    "hit_probability": 0.7091,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   },
+   "680664": {
+    "name": "Eduardo Valencia",
+    "team": "Detroit Tigers",
+    "matchup": "Washington Nationals @ Detroit Tigers",
+    "hit_probability": 0.7067,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "665487": {
+    "name": "Fernando Tatis Jr.",
+    "team": "San Diego Padres",
+    "matchup": "San Diego Padres @ Los Angeles Dodgers",
+    "hit_probability": 0.7043,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   }
+  }
+ },
+ "2026-09-23": {
+  "bets": {
+   "Moneyline:San Diego Padres @ Los Angeles Dodgers:San Diego Padres ML": {
+    "bet_type": "Moneyline",
+    "pick": "San Diego Padres ML",
+    "team": "San Diego Padres",
+    "matchup": "San Diego Padres @ Los Angeles Dodgers",
+    "odds": 192,
+    "our_prob": 0.429,
+    "market_prob": 0.342,
+    "edge": 0.087,
+    "market_line": null,
+    "closing_odds": 192,
+    "result": "win",
+    "profit": 192
+   },
+   "Total:Milwaukee Brewers @ Philadelphia Phillies:Over 7.5 (fanduel)": {
+    "bet_type": "Total",
+    "pick": "Over 7.5 (fanduel)",
+    "team": "Milwaukee Brewers vs Philadelphia Phillies",
+    "matchup": "Milwaukee Brewers @ Philadelphia Phillies",
+    "odds": 112,
+    "our_prob": 0.544,
+    "market_prob": 0.449,
+    "edge": 0.096,
+    "market_line": 7.5,
+    "closing_odds": 112,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Minnesota Twins @ San Francisco Giants:San Francisco Giants ML": {
+    "bet_type": "Moneyline",
+    "pick": "San Francisco Giants ML",
+    "team": "San Francisco Giants",
+    "matchup": "Minnesota Twins @ San Francisco Giants",
+    "odds": 144,
+    "our_prob": 0.465,
+    "market_prob": 0.41,
+    "edge": 0.055,
+    "market_line": null,
+    "closing_odds": 144,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Cincinnati Reds @ Atlanta Braves:Cincinnati Reds ML": {
+    "bet_type": "Moneyline",
+    "pick": "Cincinnati Reds ML",
+    "team": "Cincinnati Reds",
+    "matchup": "Cincinnati Reds @ Atlanta Braves",
+    "odds": 233,
+    "our_prob": 0.34,
+    "market_prob": 0.3,
+    "edge": 0.04,
+    "market_line": null,
+    "closing_odds": 233,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Moneyline:Tampa Bay Rays @ New York Yankees:Tampa Bay Rays ML": {
+    "bet_type": "Moneyline",
+    "pick": "Tampa Bay Rays ML",
+    "team": "Tampa Bay Rays",
+    "matchup": "Tampa Bay Rays @ New York Yankees",
+    "odds": 131,
+    "our_prob": 0.485,
+    "market_prob": 0.433,
+    "edge": 0.052,
+    "market_line": null,
+    "closing_odds": 131,
+    "result": "loss",
+    "profit": -100.0
+   }
+  },
+  "props": {
+   "670541": {
+    "name": "Yordan Alvarez",
+    "team": "Houston Astros",
+    "matchup": "Houston Astros @ Seattle Mariners",
+    "hit_probability": 0.727,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   },
+   "664983": {
+    "name": "Jake McCarthy",
+    "team": "Colorado Rockies",
+    "matchup": "Arizona Diamondbacks @ Colorado Rockies",
+    "hit_probability": 0.7215,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "673237": {
+    "name": "Yainer Diaz",
+    "team": "Houston Astros",
+    "matchup": "Houston Astros @ Seattle Mariners",
+    "hit_probability": 0.712,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   },
+   "514888": {
+    "name": "Jose Altuve",
+    "team": "Houston Astros",
+    "matchup": "Houston Astros @ Seattle Mariners",
+    "hit_probability": 0.7084,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   },
+   "681198": {
+    "name": "TJ Rumfield",
+    "team": "Colorado Rockies",
+    "matchup": "Arizona Diamondbacks @ Colorado Rockies",
+    "hit_probability": 0.7006,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   }
+  }
+ },
+ "2026-09-25": {
+  "bets": {
+   "Moneyline:Los Angeles Dodgers @ San Francisco Giants:San Francisco Giants ML": {
+    "bet_type": "Moneyline",
+    "pick": "San Francisco Giants ML",
+    "team": "San Francisco Giants",
+    "matchup": "Los Angeles Dodgers @ San Francisco Giants",
+    "odds": 280,
+    "our_prob": 0.364,
+    "market_prob": 0.263,
+    "edge": 0.101,
+    "market_line": null,
+    "closing_odds": 280,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Spread:Baltimore Orioles @ New York Yankees:New York Yankees -1.5 (betus)": {
+    "bet_type": "Spread",
+    "pick": "New York Yankees -1.5 (betus)",
+    "team": "New York Yankees",
+    "matchup": "Baltimore Orioles @ New York Yankees",
+    "odds": 180,
+    "our_prob": 0.448,
+    "market_prob": 0.357,
+    "edge": 0.091,
+    "market_line": null,
+    "closing_odds": 180,
+    "result": "win",
+    "profit": 180
+   },
+   "Moneyline:Houston Astros @ Athletics:Athletics ML": {
+    "bet_type": "Moneyline",
+    "pick": "Athletics ML",
+    "team": "Athletics",
+    "matchup": "Houston Astros @ Athletics",
+    "odds": 159,
+    "our_prob": 0.46,
+    "market_prob": 0.386,
+    "edge": 0.074,
+    "market_line": null,
+    "closing_odds": 159,
+    "result": "win",
+    "profit": 159
+   },
+   "Moneyline:Tampa Bay Rays @ Philadelphia Phillies:Tampa Bay Rays ML": {
+    "bet_type": "Moneyline",
+    "pick": "Tampa Bay Rays ML",
+    "team": "Tampa Bay Rays",
+    "matchup": "Tampa Bay Rays @ Philadelphia Phillies",
+    "odds": 154,
+    "our_prob": 0.459,
+    "market_prob": 0.394,
+    "edge": 0.065,
+    "market_line": null,
+    "closing_odds": 154,
+    "result": "win",
+    "profit": 154
+   },
+   "Moneyline:Colorado Rockies @ Chicago White Sox:Colorado Rockies ML": {
+    "bet_type": "Moneyline",
+    "pick": "Colorado Rockies ML",
+    "team": "Colorado Rockies",
+    "matchup": "Colorado Rockies @ Chicago White Sox",
+    "odds": 204,
+    "our_prob": 0.382,
+    "market_prob": 0.329,
+    "edge": 0.053,
+    "market_line": null,
+    "closing_odds": 204,
+    "result": "loss",
+    "profit": -100.0
+   }
+  },
+  "props": {
+   "672640": {
+    "name": "Otto Lopez",
+    "team": "Miami Marlins",
+    "matchup": "Atlanta Braves @ Miami Marlins",
+    "hit_probability": 0.7017,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "694192": {
+    "name": "Jackson Chourio",
+    "team": "Milwaukee Brewers",
+    "matchup": "St. Louis Cardinals @ Milwaukee Brewers",
+    "hit_probability": 0.6941,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 1,
+    "profit": null
+   },
+   "686948": {
+    "name": "Drake Baldwin",
+    "team": "Atlanta Braves",
+    "matchup": "Atlanta Braves @ Miami Marlins",
+    "hit_probability": 0.6915,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "668930": {
+    "name": "Brice Turang",
+    "team": "Milwaukee Brewers",
+    "matchup": "St. Louis Cardinals @ Milwaukee Brewers",
+    "hit_probability": 0.6911,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 3,
+    "profit": null
+   },
+   "691594": {
+    "name": "Javier Sanoja",
+    "team": "Miami Marlins",
+    "matchup": "Atlanta Braves @ Miami Marlins",
+    "hit_probability": 0.6886,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "win",
+    "hits": 2,
+    "profit": null
+   }
+  }
+ },
+ "2026-10-05": {
+  "bets": {
+   "Moneyline:New York Yankees @ Tampa Bay Rays:Tampa Bay Rays ML": {
+    "bet_type": "Moneyline",
+    "pick": "Tampa Bay Rays ML",
+    "team": "Tampa Bay Rays",
+    "matchup": "New York Yankees @ Tampa Bay Rays",
+    "odds": 109,
+    "our_prob": 0.526,
+    "market_prob": 0.478,
+    "edge": 0.048,
+    "market_line": null,
+    "closing_odds": 109,
+    "result": "win",
+    "profit": 109
+   },
+   "Spread:New York Yankees @ Tampa Bay Rays:Tampa Bay Rays +1.5 (lowvig)": {
+    "bet_type": "Spread",
+    "pick": "Tampa Bay Rays +1.5 (lowvig)",
+    "team": "Tampa Bay Rays",
+    "matchup": "New York Yankees @ Tampa Bay Rays",
+    "odds": -170,
+    "our_prob": 0.665,
+    "market_prob": 0.63,
+    "edge": 0.035,
+    "market_line": null,
+    "closing_odds": -178,
+    "result": "win",
+    "profit": 58.82
+   },
+   "Total:New York Yankees @ Tampa Bay Rays:Over 6.5 (bovada)": {
+    "bet_type": "Total",
+    "pick": "Over 6.5 (bovada)",
+    "team": "New York Yankees vs Tampa Bay Rays",
+    "matchup": "New York Yankees @ Tampa Bay Rays",
+    "odds": -105,
+    "our_prob": 0.535,
+    "market_prob": 0.489,
+    "edge": 0.045,
+    "market_line": 6.5,
+    "closing_odds": -108,
+    "result": "win",
+    "profit": 95.24
+   }
+  },
+  "props": {
+   "650490": {
+    "name": "Yandy D\u00edaz",
+    "team": "Tampa Bay Rays",
+    "matchup": "New York Yankees @ Tampa Bay Rays",
+    "hit_probability": 0.6645,
+    "prop_over_odds": -209,
+    "closing_over_odds": -209,
+    "result": "win",
+    "hits": 1,
+    "profit": 47.85
+   },
+   "802415": {
+    "name": "Chandler Simpson",
+    "team": "Tampa Bay Rays",
+    "matchup": "New York Yankees @ Tampa Bay Rays",
+    "hit_probability": 0.6581,
+    "prop_over_odds": -216,
+    "closing_over_odds": -216,
+    "result": "win",
+    "hits": 1,
+    "profit": 46.3
+   },
+   "671277": {
+    "name": "Luis Garc\u00eda Jr.",
+    "team": "New York Yankees",
+    "matchup": "New York Yankees @ Tampa Bay Rays",
+    "hit_probability": 0.6534,
+    "prop_over_odds": -207,
+    "closing_over_odds": -207,
+    "result": "loss",
+    "hits": 0,
+    "profit": -100.0
+   },
+   "700250": {
+    "name": "Ben Rice",
+    "team": "New York Yankees",
+    "matchup": "New York Yankees @ Tampa Bay Rays",
+    "hit_probability": 0.6517,
+    "prop_over_odds": -179,
+    "closing_over_odds": -179,
+    "result": "win",
+    "hits": 2,
+    "profit": 55.87
+   },
+   "641355": {
+    "name": "Cody Bellinger",
+    "team": "New York Yankees",
+    "matchup": "New York Yankees @ Tampa Bay Rays",
+    "hit_probability": 0.6374,
+    "prop_over_odds": -200,
+    "closing_over_odds": -200,
+    "result": "win",
+    "hits": 1,
+    "profit": 50.0
+   }
+  }
+ },
+ "2026-10-06": {
+  "bets": {},
+  "props": {}
+ },
+ "2026-10-11": {
+  "bets": {
+   "Total:Los Angeles Dodgers @ Milwaukee Brewers:Over 6.5 (fanduel)": {
+    "bet_type": "Total",
+    "pick": "Over 6.5 (fanduel)",
+    "team": "Los Angeles Dodgers vs Milwaukee Brewers",
+    "matchup": "Los Angeles Dodgers @ Milwaukee Brewers",
+    "odds": 114,
+    "our_prob": 0.524,
+    "market_prob": 0.445,
+    "edge": 0.08,
+    "market_line": 6.5,
+    "closing_odds": 114,
+    "result": "loss",
+    "profit": -100.0
+   }
+  },
+  "props": {
+   "694192": {
+    "name": "Jackson Chourio",
+    "team": "Milwaukee Brewers",
+    "matchup": "Los Angeles Dodgers @ Milwaukee Brewers",
+    "hit_probability": 0.6998,
+    "prop_over_odds": -202,
+    "closing_over_odds": -202,
+    "result": "win",
+    "hits": 2,
+    "profit": 49.5
+   },
+   "661388": {
+    "name": "William Contreras",
+    "team": "Milwaukee Brewers",
+    "matchup": "Los Angeles Dodgers @ Milwaukee Brewers",
+    "hit_probability": 0.6471,
+    "prop_over_odds": -166,
+    "closing_over_odds": -166,
+    "result": "loss",
+    "hits": 0,
+    "profit": -100.0
+   },
+   "518692": {
+    "name": "Freddie Freeman",
+    "team": "Los Angeles Dodgers",
+    "matchup": "Los Angeles Dodgers @ Milwaukee Brewers",
+    "hit_probability": 0.647,
+    "prop_over_odds": -145,
+    "closing_over_odds": -145,
+    "result": "win",
+    "hits": 1,
+    "profit": 68.97
+   },
+   "605141": {
+    "name": "Mookie Betts",
+    "team": "Los Angeles Dodgers",
+    "matchup": "Los Angeles Dodgers @ Milwaukee Brewers",
+    "hit_probability": 0.5701,
+    "prop_over_odds": -195,
+    "closing_over_odds": -195,
+    "result": "win",
+    "hits": 1,
+    "profit": 51.28
+   },
+   "668930": {
+    "name": "Brice Turang",
+    "team": "Milwaukee Brewers",
+    "matchup": "Los Angeles Dodgers @ Milwaukee Brewers",
+    "hit_probability": 0.5554,
+    "prop_over_odds": -158,
+    "closing_over_odds": -158,
+    "result": "win",
+    "hits": 1,
+    "profit": 63.29
+   }
+  }
+ },
+ "2026-10-12": {
+  "bets": {},
+  "props": {}
+ },
+ "2026-10-20": {
+  "bets": {},
+  "props": {}
+ },
+ "2026-10-22": {
+  "bets": {},
+  "props": {}
+ },
+ "2026-10-26": {
+  "bets": {
+   "Total:Milwaukee Brewers @ Tampa Bay Rays:Over 7.5 (fanduel)": {
+    "bet_type": "Total",
+    "pick": "Over 7.5 (fanduel)",
+    "team": "Milwaukee Brewers vs Tampa Bay Rays",
+    "matchup": "Milwaukee Brewers @ Tampa Bay Rays",
+    "odds": 112,
+    "our_prob": 0.549,
+    "market_prob": 0.449,
+    "edge": 0.1,
+    "market_line": 7.5,
+    "closing_odds": 112,
+    "result": "win",
+    "profit": 112
+   },
+   "Moneyline:Milwaukee Brewers @ Tampa Bay Rays:Milwaukee Brewers ML": {
+    "bet_type": "Moneyline",
+    "pick": "Milwaukee Brewers ML",
+    "team": "Milwaukee Brewers",
+    "matchup": "Milwaukee Brewers @ Tampa Bay Rays",
+    "odds": 105,
+    "our_prob": 0.489,
+    "market_prob": 0.488,
+    "edge": 0.001,
+    "market_line": null,
+    "closing_odds": 105,
+    "result": "win",
+    "profit": 105
+   }
+  },
+  "props": {
+   "802415": {
+    "name": "Chandler Simpson",
+    "team": "Tampa Bay Rays",
+    "matchup": "Milwaukee Brewers @ Tampa Bay Rays",
+    "hit_probability": 0.6889,
+    "prop_over_odds": -264,
+    "closing_over_odds": -264,
+    "result": "loss",
+    "hits": 0,
+    "profit": -100.0
+   },
+   "694192": {
+    "name": "Jackson Chourio",
+    "team": "Milwaukee Brewers",
+    "matchup": "Milwaukee Brewers @ Tampa Bay Rays",
+    "hit_probability": 0.6837,
+    "prop_over_odds": -238,
+    "closing_over_odds": -238,
+    "result": "win",
+    "hits": 4,
+    "profit": 42.02
+   },
+   "650490": {
+    "name": "Yandy D\u00edaz",
+    "team": "Tampa Bay Rays",
+    "matchup": "Milwaukee Brewers @ Tampa Bay Rays",
+    "hit_probability": 0.6584,
+    "prop_over_odds": -38,
+    "closing_over_odds": -38,
+    "result": "win",
+    "hits": 2,
+    "profit": 263.16
+   },
+   "666018": {
+    "name": "Jonathan Aranda",
+    "team": "Tampa Bay Rays",
+    "matchup": "Milwaukee Brewers @ Tampa Bay Rays",
+    "hit_probability": 0.6552,
+    "prop_over_odds": -186,
+    "closing_over_odds": -186,
+    "result": "loss",
+    "hits": 0,
+    "profit": -100.0
+   },
+   "691406": {
+    "name": "Junior Caminero",
+    "team": "Tampa Bay Rays",
+    "matchup": "Milwaukee Brewers @ Tampa Bay Rays",
+    "hit_probability": 0.652,
+    "prop_over_odds": -235,
+    "closing_over_odds": -235,
+    "result": "loss",
+    "hits": 0,
+    "profit": -100.0
+   }
+  }
+ },
+ "2026-10-27": {
+  "bets": {
+   "Total:Milwaukee Brewers @ Tampa Bay Rays:Over 7.5 (fanduel)": {
+    "bet_type": "Total",
+    "pick": "Over 7.5 (fanduel)",
+    "team": "Milwaukee Brewers vs Tampa Bay Rays",
+    "matchup": "Milwaukee Brewers @ Tampa Bay Rays",
+    "odds": 106,
+    "our_prob": 0.551,
+    "market_prob": 0.462,
+    "edge": 0.089,
+    "market_line": 7.5,
+    "closing_odds": 106,
+    "result": "loss",
+    "profit": -100.0
+   }
+  },
+  "props": {
+   "802415": {
+    "name": "Chandler Simpson",
+    "team": "Tampa Bay Rays",
+    "matchup": "Milwaukee Brewers @ Tampa Bay Rays",
+    "hit_probability": 0.7107,
+    "prop_over_odds": -247,
+    "closing_over_odds": -247,
+    "result": "win",
+    "hits": 3,
+    "profit": 40.49
+   },
+   "650490": {
+    "name": "Yandy D\u00edaz",
+    "team": "Tampa Bay Rays",
+    "matchup": "Milwaukee Brewers @ Tampa Bay Rays",
+    "hit_probability": 0.7041,
+    "prop_over_odds": -240,
+    "closing_over_odds": -240,
+    "result": "win",
+    "hits": 1,
+    "profit": 41.67
+   },
+   "683734": {
+    "name": "Andrew Vaughn",
+    "team": "Milwaukee Brewers",
+    "matchup": "Milwaukee Brewers @ Tampa Bay Rays",
+    "hit_probability": 0.6863,
+    "prop_over_odds": null,
+    "closing_over_odds": null,
+    "result": "loss",
+    "hits": 0,
+    "profit": null
+   },
+   "666018": {
+    "name": "Jonathan Aranda",
+    "team": "Tampa Bay Rays",
+    "matchup": "Milwaukee Brewers @ Tampa Bay Rays",
+    "hit_probability": 0.6699,
+    "prop_over_odds": -198,
+    "closing_over_odds": -198,
+    "result": "loss",
+    "hits": 0,
+    "profit": -100.0
+   },
+   "694192": {
+    "name": "Jackson Chourio",
+    "team": "Milwaukee Brewers",
+    "matchup": "Milwaukee Brewers @ Tampa Bay Rays",
+    "hit_probability": 0.6695,
+    "prop_over_odds": -27,
+    "closing_over_odds": -27,
+    "result": "win",
+    "hits": 2,
+    "profit": 370.37
+   }
+  }
+ },
+ "2026-10-28": {
+  "bets": {
+   "Moneyline:Milwaukee Brewers @ Tampa Bay Rays:Tampa Bay Rays ML": {
+    "bet_type": "Moneyline",
+    "pick": "Tampa Bay Rays ML",
+    "team": "Tampa Bay Rays",
+    "matchup": "Milwaukee Brewers @ Tampa Bay Rays",
+    "odds": 140,
+    "our_prob": 0.488,
+    "market_prob": 0.417,
+    "edge": 0.071,
+    "market_line": null,
+    "closing_odds": 140,
+    "result": "loss",
+    "profit": -100.0
+   },
+   "Total:Milwaukee Brewers @ Tampa Bay Rays:Over 6.5 (betrivers)": {
+    "bet_type": "Total",
+    "pick": "Over 6.5 (betrivers)",
+    "team": "Milwaukee Brewers vs Tampa Bay Rays",
+    "matchup": "Milwaukee Brewers @ Tampa Bay Rays",
+    "odds": -113,
+    "our_prob": 0.566,
+    "market_prob": 0.505,
+    "edge": 0.06,
+    "market_line": 6.5,
+    "closing_odds": -120,
+    "result": "loss",
+    "profit": -100.0
+   }
+  },
+  "props": {
+   "694192": {
+    "name": "Jackson Chourio",
+    "team": "Milwaukee Brewers",
+    "matchup": "Milwaukee Brewers @ Tampa Bay Rays",
+    "hit_probability": 0.6797,
+    "prop_over_odds": 188,
+    "closing_over_odds": 188,
+    "result": "win",
+    "hits": 1,
+    "profit": 188
+   },
+   "661388": {
+    "name": "William Contreras",
+    "team": "Milwaukee Brewers",
+    "matchup": "Milwaukee Brewers @ Tampa Bay Rays",
+    "hit_probability": 0.6718,
+    "prop_over_odds": -236,
+    "closing_over_odds": -236,
+    "result": "win",
+    "hits": 1,
+    "profit": 42.37
+   },
+   "668930": {
+    "name": "Brice Turang",
+    "team": "Milwaukee Brewers",
+    "matchup": "Milwaukee Brewers @ Tampa Bay Rays",
+    "hit_probability": 0.6671,
+    "prop_over_odds": -194,
+    "closing_over_odds": -194,
+    "result": "win",
+    "hits": 2,
+    "profit": 51.55
+   },
+   "641343": {
+    "name": "Jake Bauers",
+    "team": "Milwaukee Brewers",
+    "matchup": "Milwaukee Brewers @ Tampa Bay Rays",
+    "hit_probability": 0.6465,
+    "prop_over_odds": -152,
+    "closing_over_odds": -152,
+    "result": "loss",
+    "hits": 0,
+    "profit": -100.0
+   },
+   "592885": {
+    "name": "Christian Yelich",
+    "team": "Milwaukee Brewers",
+    "matchup": "Milwaukee Brewers @ Tampa Bay Rays",
+    "hit_probability": 0.6209,
+    "prop_over_odds": -187,
+    "closing_over_odds": -187,
+    "result": "loss",
+    "hits": 0,
+    "profit": -100.0
+   }
+  }
+ },
+ "2026-10-31": {
+  "bets": {},
+  "props": {}
+ },
+ "2026-11-01": {
+  "bets": {},
+  "props": {}
+ },
+ "2026-11-05": {
+  "bets": {},
+  "props": {}
+ },
+ "2026-11-06": {
+  "bets": {},
+  "props": {}
+ },
+ "2026-11-08": {
+  "bets": {},
+  "props": {}
+ },
+ "2026-11-09": {
+  "bets": {},
+  "props": {}
+ },
+ "2026-11-10": {
+  "bets": {},
+  "props": {}
+ },
+ "2026-11-11": {
+  "bets": {},
+  "props": {}
+ }
+}

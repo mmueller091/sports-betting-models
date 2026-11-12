@@ -1,6 +1,7 @@
 """Durable, first-seen recommendation ledger. No paid odds or baseball calls."""
 from __future__ import annotations
 import asyncio
+import copy
 import hashlib
 import json
 import re
@@ -78,7 +79,60 @@ def _normalized(sport, category, pick, games, generated):
             'details': pick, 'observed_at': observed.isoformat()}
 
 
+def _legacy_nhl_side_id(row, records):
+    """Resolve old team-name side keys without changing retained originals."""
+    if (row['sport'] != 'nhl' or row['category'] != 'bet'
+            or row['market'] not in ('moneyline', 'spread') or row['side'] not in ('home', 'away')):
+        return None
+    matches = []
+    for record_id, record in records.items():
+        original = record['original']
+        if record.get('alias_of') or original.get('side') in ('home', 'away'):
+            continue
+        if any(original.get(key) != row[key] for key in ('sport', 'game_id', 'category', 'market')):
+            continue
+        home, away = original.get('home_team'), original.get('away_team')
+        if ' @ ' in (original.get('matchup') or ''):
+            matchup_away, matchup_home = original['matchup'].split(' @ ', 1)
+            home, away = home or matchup_home, away or matchup_away
+        side = original.get('side')
+        if side not in ('home', 'away'):
+            resolved = [name for name, team in (('home', home), ('away', away))
+                        if team is not None and side == team]
+            side = resolved[0] if len(resolved) == 1 else None
+        if side == row['side']:
+            matches.append(record_id)
+    return matches[0] if len(matches) == 1 else None
+
+
+def reconcile_nhl_side_aliases(ledger):
+    """Retain accidentally duplicated canonical records as auditable aliases.
+
+    Only later, nonprimary records can be merged, so original selections,
+    settlements and simulated financial totals remain unchanged.
+    """
+    records = ledger['records']
+    for record_id, record in records.items():
+        if record.get('alias_of') or record['primary']:
+            continue
+        legacy_id = _legacy_nhl_side_id(record['original'], records)
+        if legacy_id is None:
+            continue
+        legacy = records[legacy_id]
+        if timestamp(legacy['original']['observed_at']) > timestamp(record['original']['observed_at']):
+            continue
+        for observation in [record['original'], *record['revisions']]:
+            revision = copy.deepcopy(observation)
+            revision.update(id=legacy_id, source_record_id=record_id)
+            legacy['revisions'].append(revision)
+        legacy['revisions'].sort(key=lambda row: timestamp(row['observed_at']))
+        legacy['last_seen'] = max((legacy['last_seen'], record['last_seen']), key=timestamp)
+        legacy['observations'] += record['observations']
+        record['alias_of'] = legacy_id
+
+
 def record_bundle(bundle, ledger, source_url=None):
+    reconcile_nhl_side_aliases(ledger)
     for sport in ('nfl', 'cfb', 'nhl'):
         block = bundle.get(sport, {})
         if block.get('status') not in ('ok', 'partial'):
@@ -98,6 +152,12 @@ def record_bundle(bundle, ledger, source_url=None):
                 row['model_version'] = weekly.get('model_version') or row.get('model_version') or 'nhl-existing-model'
                 records = ledger['records']
                 existing = records.get(row['id'])
+                legacy_id = (existing.get('alias_of') if existing else None)
+                if existing is None:
+                    legacy_id = _legacy_nhl_side_id(row, records)
+                if legacy_id is not None:
+                    row['id'] = legacy_id
+                    existing = records[legacy_id]
                 if existing:
                     if timestamp(row['observed_at']) <= timestamp(existing['last_seen']):
                         continue
@@ -206,9 +266,12 @@ async def fetch_result(client, sport, game_id):
 
 
 async def grade_ledger(ledger, now=None, fetcher=fetch_result):
+    reconcile_nhl_side_aliases(ledger)
     now = now or datetime.now(timezone.utc)
     pending = {}
     for record in ledger['records'].values():
+        if record.get('alias_of'):
+            continue
         row = record['original']
         checked = timestamp(record.get('last_checked'))
         if record['settlement'] or timestamp(row['game_time']) > now - timedelta(hours=2):
@@ -239,7 +302,9 @@ async def grade_ledger(ledger, now=None, fetcher=fetch_result):
 
 def audit_summary(ledger=None):
     ledger = ledger if ledger is not None else load_ledger()
-    records = list(ledger['records'].values())
+    reconcile_nhl_side_aliases(ledger)
+    records = [record for record in ledger['records'].values() if not record.get('alias_of')]
+    aliases = [record for record in ledger['records'].values() if record.get('alias_of')]
     counted = [r for r in records if r['primary'] and r['settlement'] and r['settlement']['profit'] is not None
                and r['settlement']['result'] != 'VOID']
     wins = sum(r['settlement']['result'] == 'WIN' for r in counted)
@@ -250,4 +315,5 @@ def audit_summary(ledger=None):
             'summary': {'records': len(records), 'pending': sum(not r['settlement'] for r in records), 'wins': wins,
                         'losses': losses, 'pushes': sum(r['settlement']['result'] == 'PUSH' for r in counted),
                         'profit': round(profit, 2), 'roi': round(profit / (100 * len(counted)) * 100, 2) if counted else None},
-            'records': sorted(records, key=lambda r: r['original']['observed_at'], reverse=True)}
+            'records': sorted(records, key=lambda r: r['original']['observed_at'], reverse=True),
+            'aliases': sorted(aliases, key=lambda r: r['original']['observed_at'], reverse=True)}

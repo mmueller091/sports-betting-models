@@ -105,6 +105,13 @@ def parser():
     normalize.add_argument('--games', required=True)
     normalize.add_argument('--output', required=True)
     normalize.add_argument('--aliases', help='Optional verified team-name mapping JSON.')
+    free = sub.add_parser('cfb-free-prices', help='Compare frozen CFB forecasts with free untimestamped archived prices, never T-60 bets.')
+    free.add_argument('--archive', required=True, help='SportsDataverse cfb_line_odds.csv.gz archive.')
+    free.add_argument('--games', nargs='+', required=True, help='Normalized CFB season JSONL files, 2021 through 2025.')
+    free.add_argument('--development-dir', required=True, help='Folder containing frozen 2021-2024 CFB forecast JSONL files.')
+    free.add_argument('--final-dir', required=True, help='Folder containing frozen 2025 CFB forecast JSONL files.')
+    free.add_argument('--output', required=True)
+    free.add_argument('--bootstrap-samples', type=int, default=500)
     return root
 
 
@@ -165,6 +172,21 @@ def main(argv=None):
         aliases = json.loads(Path(args.aliases).read_text()) if args.aliases else None
         print(json.dumps(normalize_fetched_manifest(manifest, read_normalized_games(args.games),
                                                     args.output, aliases=aliases), indent=2))
+    elif args.command == 'cfb-free-prices':
+        from research.free_cfb_odds import CANDIDATE_NAMES, run_study, write_study
+        frozen_paths = {
+            name: [Path(args.development_dir)/f'cfb_{name}_forecasts.jsonl',
+                   Path(args.final_dir)/f'cfb_{name}_forecasts.jsonl']
+            for name in CANDIDATE_NAMES
+        }
+        report = run_study(args.archive, args.games, frozen_paths, bootstrap_samples=args.bootstrap_samples)
+        hashes = write_study(report, args.output)
+        print(json.dumps({'pricing_basis': report['pricing_basis'],
+                          'asof_or_t60_returns_calculated': False,
+                          'coverage': report['source']['coverage'],
+                          'artifacts_sha256': hashes,
+                          'candidate_periods': {name: value['periods']
+                                                for name, value in report['candidate_reports'].items()}}, indent=2))
 
 
 if __name__ == '__main__':

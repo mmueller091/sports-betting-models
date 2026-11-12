@@ -4,14 +4,17 @@ import io
 import json
 import tempfile
 import unittest
+import urllib.error
 import urllib.parse
+from contextlib import redirect_stdout
 from pathlib import Path
+from unittest.mock import patch
 
 from research.datasets import (
     parse_cfb_schedule, parse_espn_scoreboard, parse_nflverse_schedule,
     read_normalized_games, write_normalized_games,
 )
-from research.downloads import CachedDownloader
+from research.downloads import CachedDownloader, DownloadRequestError
 from research.odds_history import (
     exact_contract_quote, fetch_historical_requests, normalize_fetched_manifest,
     normalize_historical_quotes, plan_historical_requests,
@@ -205,6 +208,111 @@ class HistoricalSourceTests(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 fetch_historical_requests(plan, directory, max_credits=30, allow_paid=True, api_key="test-secret")
             self.assertFalse((Path(directory) / ("odds_fetch_ledger_" + plan["manifest_id"] + ".json")).exists())
+
+    def test_paid_fetch_halts_on_http_error_and_cannot_resume_spending(self):
+        plan = plan_historical_requests([game_fixture()])
+        for status in (401, 402, 403, 429, 500):
+            with self.subTest(status=status), tempfile.TemporaryDirectory() as directory:
+                calls = []
+
+                def transport(url, headers, timeout, max_bytes):
+                    calls.append(url)
+                    raise urllib.error.HTTPError(url, status, "private-test-secret", {}, None)
+
+                downloader = CachedDownloader(Path(directory) / "odds_cache", retries=0, transport=transport)
+                ledger = fetch_historical_requests(plan, directory, max_credits=60, allow_paid=True,
+                                                   api_key="private-test-secret", downloader=downloader)
+                self.assertEqual(len(calls), 1)
+                self.assertEqual(ledger["reserved_credits"], 30)
+                self.assertEqual(ledger["remaining_planned_requests"], 1)
+                self.assertEqual(ledger["halted"]["http_status"], status)
+                self.assertEqual(len(ledger["results"]), 0)
+                self.assertEqual(next(iter(ledger["attempts"].values()))["status"], "failed")
+                repeated = fetch_historical_requests(plan, directory, max_credits=60, allow_paid=True,
+                                                     api_key="private-test-secret", downloader=downloader)
+                self.assertEqual(len(calls), 1)
+                self.assertEqual(repeated["halted"], ledger["halted"])
+                self.assertEqual(repeated["reserved_credits"], 30)
+                for path in Path(directory).rglob("*.json"):
+                    self.assertNotIn("private-test-secret", path.read_text())
+
+    def test_paid_fetch_halts_on_network_or_invalid_response_without_exposing_errors(self):
+        plan = plan_historical_requests([game_fixture()])
+        for failure in ("network", "schema", "non_object", "unknown", "unexpected"):
+            with self.subTest(failure=failure), tempfile.TemporaryDirectory() as directory:
+                calls = []
+
+                def transport(url, headers, timeout, max_bytes):
+                    calls.append(url)
+                    if failure == "network":
+                        raise urllib.error.URLError("private-test-secret")
+                    if failure == "unknown":
+                        raise RuntimeError("private-test-secret " + url)
+                    if failure == "unexpected":
+                        raise TypeError("private-test-secret " + url)
+                    if failure == "non_object":
+                        return b"[]", {}
+                    return json.dumps({"timestamp": "invalid", "data": []}).encode(), {}
+
+                downloader = CachedDownloader(Path(directory) / "odds_cache", retries=0, transport=transport)
+                ledger = fetch_historical_requests(plan, directory, max_credits=60, allow_paid=True,
+                                                   api_key="private-test-secret", downloader=downloader)
+                self.assertEqual(len(calls), 1)
+                self.assertEqual(ledger["reserved_credits"], 30)
+                self.assertEqual(ledger["remaining_planned_requests"], 1)
+                self.assertTrue(ledger["halted"])
+                self.assertNotIn("http_status", ledger["halted"])
+                self.assertNotIn("private-test-secret", json.dumps(ledger))
+
+    def test_download_transport_errors_are_typed_and_sanitized(self):
+        with tempfile.TemporaryDirectory() as directory:
+            def transport(url, headers, timeout, max_bytes):
+                raise urllib.error.HTTPError(url, 403, "private-test-secret", {}, None)
+
+            downloader = CachedDownloader(directory, retries=0, transport=transport)
+            with self.assertRaises(DownloadRequestError) as caught:
+                downloader.fetch("https://example.com/history?apiKey=private-test-secret")
+            self.assertIsInstance(caught.exception, RuntimeError)
+            self.assertEqual(caught.exception.http_status, 403)
+            self.assertEqual(str(caught.exception), "Historical source request failed (HTTP 403)")
+
+    def test_legacy_failed_ledger_halts_before_any_further_spending(self):
+        plan = plan_historical_requests([game_fixture()])
+        with tempfile.TemporaryDirectory() as directory:
+            request = plan["requests"][0]
+            ledger_path = Path(directory) / ("odds_fetch_ledger_" + plan["manifest_id"] + ".json")
+            ledger_path.write_text(json.dumps({
+                "manifest_id": plan["manifest_id"], "reserved_credits": 30, "results": [],
+                "attempts": {request["request_id"]: {"status": "failed", "reserved_credits": 30}},
+            }))
+            calls = []
+
+            def transport(url, headers, timeout, max_bytes):
+                calls.append(url)
+                return json.dumps(odds_fixture()).encode(), {}
+
+            downloader = CachedDownloader(Path(directory) / "odds_cache", retries=0, transport=transport)
+            ledger = fetch_historical_requests(plan, directory, max_credits=60, allow_paid=True,
+                                               api_key="test-secret", downloader=downloader)
+            self.assertEqual(calls, [])
+            self.assertEqual(ledger["reserved_credits"], 30)
+            self.assertEqual(ledger["halted"]["reason"], "prior_failed_request_requires_review")
+            self.assertEqual(json.loads(ledger_path.read_text())["halted"], ledger["halted"])
+
+    def test_paid_fetch_cli_exits_nonzero_when_halted(self):
+        from research.__main__ import main
+
+        with tempfile.TemporaryDirectory() as directory:
+            manifest_path = Path(directory) / "manifest.json"
+            manifest_path.write_text(json.dumps(plan_historical_requests([game_fixture()])))
+            report = {"halted": {"reason": "authentication_or_historical_entitlement", "http_status": 403}}
+            stdout = io.StringIO()
+            with patch("research.__main__.fetch_historical_requests", return_value=report), redirect_stdout(stdout):
+                with self.assertRaises(SystemExit) as caught:
+                    main(["odds-fetch", "--manifest", str(manifest_path), "--output", directory,
+                          "--max-credits", "60", "--allow-paid"])
+            self.assertTrue(caught.exception.code)
+            self.assertEqual(json.loads(stdout.getvalue()), report)
 
 
 if __name__ == "__main__":

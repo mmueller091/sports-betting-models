@@ -17,7 +17,7 @@ from datetime import timedelta
 from pathlib import Path
 
 from .datasets import parse_time
-from .downloads import CachedDownloader, utc_now
+from .downloads import CachedDownloader, DownloadRequestError, utc_now
 
 SPORT_KEYS = {"nfl": "americanfootball_nfl", "cfb": "americanfootball_ncaaf", "nhl": "icehockey_nhl"}
 MARKET_KEYS = {"moneyline": "h2h", "spread": "spreads", "total": "totals", "h2h": "h2h", "spreads": "spreads", "totals": "totals"}
@@ -236,6 +236,8 @@ def _fetch_historical_requests_locked(manifest, output_dir, *, max_credits, allo
     There are no automatic retries. Failed requests retain their reserved credit
     cost because a client cannot assume the provider did not charge them.
     Re-running resumes cached successes and skips prior attempts in this manifest.
+    Any failed request halts the entire manifest, including subsequent invocations,
+    until the failure and its credit reservation have been explicitly reviewed.
     """
     if allow_paid is not True:
         raise ValueError("Paid historical fetch requires explicit allow_paid=True and a credit budget")
@@ -270,6 +272,15 @@ def _fetch_historical_requests_locked(manifest, output_dir, *, max_credits, allo
         "manifest_id": manifest_id, "reserved_credits": 0, "attempts": {}, "results": []}
     if ledger["reserved_credits"] > max_credits:
         raise ValueError("Previously reserved credits exceed the supplied budget")
+    if not ledger.get("halted"):
+        previous_failure = next((request_id for request_id, attempt in ledger["attempts"].items()
+                                 if attempt.get("status") == "failed"), None)
+        if previous_failure is not None:
+            # Ledgers produced before fail-fast support may already contain a
+            # failure. Do not treat a software upgrade as permission to spend.
+            ledger["halted"] = {"request_id": previous_failure,
+                                "reason": "prior_failed_request_requires_review",
+                                "halted_at": utc_now()}
 
     def persist():
         temporary = ledger_path.with_suffix(".tmp")
@@ -277,6 +288,8 @@ def _fetch_historical_requests_locked(manifest, output_dir, *, max_credits, allo
         temporary.replace(ledger_path)
 
     for request in manifest["requests"]:
+        if ledger.get("halted"):
+            break
         request_id = request["request_id"]
         if request_id in ledger["attempts"]:
             continue
@@ -293,15 +306,35 @@ def _fetch_historical_requests_locked(manifest, output_dir, *, max_credits, allo
         try:
             resource = cached or downloader.fetch(authenticated_url)
             payload = json.loads(resource.read_bytes())
-            if parse_time(payload.get("timestamp")) is None or not isinstance(payload.get("data"), list):
+            if (not isinstance(payload, dict) or parse_time(payload.get("timestamp")) is None
+                    or not isinstance(payload.get("data"), list)):
                 raise ValueError("Historical response schema is invalid")
             ledger["attempts"][request_id]["status"] = "cached" if cached else "downloaded"
             ledger["results"].append({"request_id": request_id, "path": str(resource.path),
                                       "sha256": resource.sha256, "retrieved_at": resource.retrieved_at,
                                       "timestamp": payload["timestamp"], "targets": request["targets"]})
-        except (RuntimeError, ValueError, OSError):
+        except Exception as error:
             ledger["attempts"][request_id]["status"] = "failed"
             ledger["attempts"][request_id]["error"] = "Historical request failed; no unverified response used"
+            status = error.http_status if isinstance(error, DownloadRequestError) else None
+            if status in (401, 402, 403):
+                reason = "authentication_or_historical_entitlement"
+            elif status == 429:
+                reason = "provider_rate_limit_or_quota"
+            elif status is not None:
+                reason = "provider_http_error"
+            elif isinstance(error, DownloadRequestError):
+                reason = "network_or_timeout"
+            elif isinstance(error, ValueError):
+                reason = "invalid_response_or_cache"
+            else:
+                reason = "request_or_storage_error"
+            # Exception strings may contain authenticated URLs. Persist only
+            # categories we own and the transport's numeric HTTP status.
+            ledger["halted"] = {"request_id": request_id, "reason": reason,
+                                "halted_at": utc_now()}
+            if status is not None:
+                ledger["halted"]["http_status"] = status
         persist()
     ledger["max_credits"] = max_credits
     ledger["remaining_planned_requests"] = len(manifest["requests"]) - len(ledger["attempts"])

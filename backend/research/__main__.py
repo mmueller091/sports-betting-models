@@ -160,6 +160,8 @@ def main(argv=None):
         manifest = json.loads(Path(args.manifest).read_text())
         report = fetch_historical_requests(manifest, args.output, max_credits=args.max_credits, allow_paid=args.allow_paid)
         print(json.dumps(report, indent=2))
+        if report.get('halted'):
+            raise SystemExit('Historical odds fetch halted. Review the saved failure and credit reservation before any further paid requests.')
     elif args.command == 'odds-normalize':
         manifest = json.loads(Path(args.manifest).read_text())
         aliases = json.loads(Path(args.aliases).read_text()) if args.aliases else None

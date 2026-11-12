@@ -18,6 +18,19 @@ from pathlib import Path
 from typing import Callable
 
 
+class DownloadRequestError(RuntimeError):
+    """Sanitized transport failure with an optional numeric HTTP status."""
+
+    def __init__(self, *, http_status=None):
+        if http_status is not None and (isinstance(http_status, bool)
+                                        or not isinstance(http_status, int)
+                                        or not 100 <= http_status <= 599):
+            raise ValueError("Download failure HTTP status must be a numeric status code")
+        self.http_status = http_status
+        detail = f"HTTP {http_status}" if http_status is not None else "network or timeout"
+        super().__init__(f"Historical source request failed ({detail})")
+
+
 def utc_now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
@@ -108,14 +121,14 @@ class CachedDownloader:
             except urllib.error.HTTPError as error:
                 last_status = error.code
                 if error.code not in (408, 429, 500, 502, 503, 504) or attempt == self.retries:
-                    raise RuntimeError(f"Historical source request failed (HTTP {error.code})") from None
+                    raise DownloadRequestError(http_status=error.code) from None
             except (urllib.error.URLError, TimeoutError, OSError):
                 if attempt == self.retries:
-                    raise RuntimeError("Historical source request failed (network or timeout)") from None
+                    raise DownloadRequestError() from None
             if attempt < self.retries:
                 time.sleep(min(2 ** attempt, 2))
         else:
-            raise RuntimeError(f"Historical source request failed ({last_status})")
+            raise DownloadRequestError(http_status=last_status)
         if not isinstance(content, bytes) or len(content) > self.max_bytes:
             raise ValueError("Research download exceeds configured byte limit")
         digest = hashlib.sha256(content).hexdigest()

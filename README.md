@@ -70,6 +70,13 @@ Both NHL best bets and scorer recommendations stop after puck drop. Original
 audit selections remain immutable; model changes create new revisions with the
 new version identifier.
 
+Confirmed goalie reports are parsed from dated matchup records, with team,
+player and confirmation status bound to the same side. Source timestamps and
+provider identities remain attached. Missing bookmaker quote times produce a
+visible source warning. Legacy NHL team-name selection IDs reconcile with
+home/away IDs; duplicate transition records remain available as full aliases
+in audit JSON while contributing no extra displayed selection or return.
+
 ## Updates and data
 
 - Models refresh hourly, at 23 minutes past the hour. GitHub may delay scheduled jobs.

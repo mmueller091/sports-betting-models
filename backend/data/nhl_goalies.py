@@ -9,10 +9,12 @@ Confirmed starter vs "probable" can flip a bet's edge entirely.
 """
 
 import httpx
-import re
+import json
 import unicodedata
+from html.parser import HTMLParser
 from typing import Optional
-from datetime import date
+from datetime import date, datetime
+from zoneinfo import ZoneInfo
 from data.source_health import warn
 
 # Daily Faceoff headers to avoid bot detection
@@ -43,6 +45,7 @@ DF_TEAM_ALIASES = {
     "Kraken": "Seattle Kraken", "Blues": "St. Louis Blues",
     "Lightning": "Tampa Bay Lightning", "Maple Leafs": "Toronto Maple Leafs",
     "Hockey Club": "Utah Hockey Club", "Canucks": "Vancouver Canucks",
+    "Mammoth": "Utah Mammoth",
     "Golden Knights": "Vegas Golden Knights", "Capitals": "Washington Capitals",
     "Jets": "Winnipeg Jets",
 }
@@ -54,13 +57,15 @@ async def get_confirmed_goalies(game_date: Optional[date] = None) -> dict[str, d
     Returns {team_name: {name, confirmed, source}}
     """
     goalies = {}
-    if game_date is not None and game_date != date.today():
+    today = datetime.now(ZoneInfo("America/New_York")).date()
+    target_date = game_date or today
+    if target_date != today:
         warn("Historical or future starting-goalie confirmation unavailable from today's feed")
         return goalies
 
     # Try Daily Faceoff first
     try:
-        goalies = await _scrape_daily_faceoff()
+        goalies = await _scrape_daily_faceoff(target_date)
         if goalies:
             return goalies
     except Exception:
@@ -79,7 +84,7 @@ async def get_confirmed_goalies(game_date: Optional[date] = None) -> dict[str, d
     return goalies
 
 
-async def _scrape_daily_faceoff() -> dict[str, dict]:
+async def _scrape_daily_faceoff(game_date: Optional[date] = None) -> dict[str, dict]:
     """Scrape dailyfaceoff.com/starting-goalies/ for confirmed starters."""
     url = "https://www.dailyfaceoff.com/starting-goalies/"
     async with httpx.AsyncClient(
@@ -88,51 +93,90 @@ async def _scrape_daily_faceoff() -> dict[str, dict]:
         resp = await client.get(url)
         resp.raise_for_status()
 
-    html = resp.text
-    goalies = {}
+    target_date = game_date or datetime.now(ZoneInfo("America/New_York")).date()
+    return _parse_daily_faceoff_html(resp.text, target_date)
 
-    # Parse goalie cards — Daily Faceoff uses consistent class structure
-    # Pattern: find team name + goalie name + confirmed/expected status
-    # We use regex on the raw HTML since we're avoiding beautifulsoup dependency
 
-    # Match blocks like: team name → goalie name → confirmed/expected/probable
-    # Daily Faceoff structure: each matchup has two goalie sections
-    team_pattern = re.compile(
-        r'class="[^"]*team-name[^"]*"[^>]*>\s*([^<]+)\s*</[^>]+>',
-        re.IGNORECASE
-    )
-    goalie_pattern = re.compile(
-        r'class="[^"]*goalie-name[^"]*"[^>]*>\s*([^<]+)\s*</[^>]+>',
-        re.IGNORECASE
-    )
-    status_pattern = re.compile(
-        r'class="[^"]*goalie-status[^"]*"[^>]*>\s*([^<]+)\s*</[^>]+>',
-        re.IGNORECASE
-    )
+class _DailyFaceoffJSON(HTMLParser):
+    """Read the observed Next.js payload without executing page scripts."""
 
-    teams = team_pattern.findall(html)
-    goalie_names = goalie_pattern.findall(html)
-    statuses = status_pattern.findall(html)
+    def __init__(self):
+        super().__init__(convert_charrefs=False)
+        self.payloads = []
+        self.current = None
 
-    if not teams or len(teams) != len(goalie_names) or len(statuses) != len(teams):
-        warn("Starting-goalie page did not provide aligned team, player and status records")
+    def handle_starttag(self, tag, attrs):
+        attributes = dict(attrs)
+        if tag == "script" and attributes.get("id") == "__NEXT_DATA__":
+            self.current = []
+
+    def handle_data(self, value):
+        if self.current is not None:
+            self.current.append(value)
+
+    def handle_endtag(self, tag):
+        if tag == "script" and self.current is not None:
+            self.payloads.append("".join(self.current))
+            self.current = None
+
+
+def _parse_daily_faceoff_html(html: str, game_date: date) -> dict[str, dict]:
+    """Bind each goalie to its own team/status in an observed matchup object."""
+    parser = _DailyFaceoffJSON()
+    try:
+        parser.feed(html)
+        parser.close()
+        if len(parser.payloads) != 1:
+            raise ValueError("Missing or ambiguous Next.js payload")
+        props = json.loads(parser.payloads[0])["props"]["pageProps"]
+        rows = props["data"]
+        if not isinstance(rows, list):
+            raise ValueError("Missing matchup records")
+    except (ValueError, KeyError, TypeError):
+        warn("Starting-goalie page did not provide valid structured matchup records")
         return {}
-
-    for i, (team_raw, goalie_raw) in enumerate(zip(teams, goalie_names)):
-        team_raw = team_raw.strip()
-        goalie_raw = goalie_raw.strip()
-        status_raw = statuses[i].strip() if i < len(statuses) else "Expected"
-
-        team_full = _resolve_team(team_raw)
-        if team_full and goalie_raw and goalie_raw.lower() not in ("tbd", "tba", "unknown"):
-            confirmed = status_raw.lower().strip() == "confirmed"
-            goalies[team_full] = {
-                "name": goalie_raw,
-                "confirmed": confirmed,
-                "status": status_raw,
-                "source": "dailyfaceoff",
-            }
-
+    target = game_date.isoformat()
+    if props.get("date") != target:
+        warn("Starting-goalie page date does not match the requested game date")
+        return {}
+    goalies, conflicting = {}, set()
+    for row in rows:
+        if not isinstance(row, dict) or row.get("date") != target:
+            warn("Starting-goalie matchup date does not match the requested game date")
+            continue
+        try:
+            kickoff = datetime.fromisoformat(str(row["dateGmt"]).replace("Z", "+00:00"))
+            if kickoff.tzinfo is None or kickoff.astimezone(ZoneInfo("America/New_York")).date() != game_date:
+                raise ValueError("Kickoff date mismatch")
+        except (KeyError, TypeError, ValueError):
+            warn("Starting-goalie matchup has an invalid scheduled game time")
+            continue
+        for side in ("home", "away"):
+            team_raw, name = row.get(side + "TeamName"), row.get(side + "GoalieName")
+            status = row.get(side + "NewsStrengthName")
+            if not isinstance(team_raw, str) or not isinstance(name, str) or not name.strip() or name.strip().lower() in ("tbd", "tba", "unknown"):
+                warn("Starting-goalie matchup has a missing team or player identity")
+                continue
+            team = _resolve_team(team_raw)
+            if not team or (status is not None and not isinstance(status, str)):
+                warn("Starting-goalie matchup has an unrecognized team or status")
+                continue
+            status = status.strip() if status else "Unconfirmed"
+            record = {"name": name.strip(), "confirmed": status.casefold() == "confirmed", "status": status,
+                      "source": "dailyfaceoff", "game_date": target, "game_time": row["dateGmt"],
+                      "news_updated_at": row.get(side + "NewsCreatedAt"),
+                      "news_source_url": row.get(side + "NewsSourceUrl"),
+                      "news_source_name": row.get(side + "NewsSourceName"),
+                      "dailyfaceoff_goalie_id": row.get(side + "GoalieId"),
+                      "dailyfaceoff_team_id": row.get(side + "TeamId")}
+            if team in conflicting:
+                continue
+            if team in goalies and goalies[team] != record:
+                warn("Starting-goalie page contains conflicting records for the same team")
+                goalies.pop(team)
+                conflicting.add(team)
+                continue
+            goalies[team] = record
     return goalies
 
 
@@ -214,6 +258,9 @@ def apply_confirmed_goalies(games: list[dict], confirmed: dict[str, dict]) -> li
                     "confirmed": c["confirmed"],
                     "status": c.get("status", "Expected"),
                     "source": c.get("source", "dailyfaceoff"),
+                    **{key: c[key] for key in ("game_date", "game_time", "news_updated_at", "news_source_url",
+                                               "news_source_name", "dailyfaceoff_goalie_id", "dailyfaceoff_team_id")
+                       if key in c},
                 }
     return games
 

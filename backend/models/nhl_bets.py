@@ -15,6 +15,7 @@ from math import exp, isfinite
 from datetime import datetime, timezone
 
 from data.odds import american_to_implied_prob
+from data.source_health import warn
 
 MODEL_VERSION = "nhl-2026-11-12.correctness.1"
 LEAGUE_AVG_GOALS = 6.10
@@ -342,13 +343,16 @@ def find_nhl_best_bets(snapshot: dict, top_n: int = 5, now: datetime | None = No
                 return
             team = away if side == "away" else home
             market_key = {"moneyline": "h2h", "spread": "spreads", "total": "totals"}[market]
+            quote_at = odds.get("market_updated_at", {}).get(market_key, {}).get(book)
+            if not quote_at:
+                warn("NHL bookmaker quote timestamps unavailable; cached prices require confirmation")
             candidate = {
                 **common,
                 "_market_key": f"{market}:{game.get('game_id', matchup)}:{side}",
                 "bet_type": {"moneyline": "Moneyline", "spread": "Spread", "total": "Total"}[market],
                 "market": market, "side": side, "line": line,
                 "team": team, "odds": side_odds, "book": book,
-                "odds_updated_at": odds.get("market_updated_at", {}).get(market_key, {}).get(book),
+                "odds_updated_at": quote_at,
                 "our_prob": our_prob, "push_probability": push_prob, "loss_probability": loss_prob,
                 "market_prob": round(break_even, 6),
                 "quoted_implied_probability": round(implied, 6),

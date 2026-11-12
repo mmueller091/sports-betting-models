@@ -25,7 +25,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     env:
       TZ: America/New_York
-      ODDS_CACHE_HOURS: '12'
+      ODDS_CACHE_HOURS: '24'
       ENABLE_HIT_PROP_ODDS: 'false'
       SPORTS_DATA_DIR: ${{ github.workspace }}/.model-state/data_store
       BTS_ARTIFACT_PATH: ${{ github.workspace }}/.model-state/artifacts/bts_model.pkl

@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
+import os
 from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -18,7 +19,10 @@ from train_bts_model import train_if_ready
 ENDPOINTS = {
     "mlb": {"bets": "/api/best-bets", "hits": "/api/hit-props", "games": "/api/daily"},
     "nhl": {"bets": "/api/nhl/best-bets", "scorers": "/api/nhl/goal-scorers", "games": "/api/nhl/daily"},
+    "nfl": {"weekly": "/api/nfl/weekly"},
+    "cfb": {"weekly": "/api/cfb/weekly"},
 }
+ODDS_SPORTS = {"mlb": "baseball_mlb", "nhl": "icehockey_nhl", "nfl": "americanfootball_nfl", "cfb": "americanfootball_ncaaf"}
 
 def read_previous(path):
     try:
@@ -39,15 +43,17 @@ async def export_sport(client, sport, target_date, previous):
         failure = type(exc).__name__
     finally:
         warnings = end_collection(token)
-    schedule_source = "get_todays_games" if sport == "mlb" else "get_todays_nhl_games"
+    schedule_source = {"mlb": "get_todays_games", "nhl": "get_todays_nhl_games"}.get(sport, "build_football_snapshot")
     if failure or any(w.startswith(schedule_source + ":") for w in warnings):
         return {**previous, "status": "stale" if previous.get("data") else "unavailable",
                 "warnings": ["The latest update failed. Showing the last successful results, if available.", *warnings]}
+    if sport in ("nfl", "cfb"):
+        warnings = list(dict.fromkeys([*warnings, *data.get("weekly", {}).get("warnings", [])]))
     return {
         "status": "partial" if warnings else "ok",
         "generated_at": datetime.now(timezone.utc).isoformat(), "date": target_date,
         "warnings": warnings,
-        "odds": ODDS_STATUS.get("baseball_mlb" if sport == "mlb" else "icehockey_nhl", {}),
+        "odds": ODDS_STATUS.get(ODDS_SPORTS[sport], {}),
         "data": data,
     }
 
@@ -71,7 +77,7 @@ async def export(output, previous_path=None):
         ))
     bundle = {
         "generated_at": datetime.now(timezone.utc).isoformat(), "date": target_date,
-        "timezone": "America/New_York", "refresh_minutes": 60, "odds_cache_hours": 12,
+        "timezone": "America/New_York", "refresh_minutes": 60, "odds_cache_hours": float(os.getenv("ODDS_CACHE_HOURS", "24")),
         "performance": performance, **dict(zip(ENDPOINTS, sports)),
     }
     output.parent.mkdir(parents=True, exist_ok=True)

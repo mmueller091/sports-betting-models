@@ -54,6 +54,7 @@ from models.bts_model import model_status
 from models.nhl_bets import find_nhl_best_bets
 from models.nhl_goals import find_nhl_goal_scorers
 from train_bts_model import train_if_ready
+from api.football import router as football_router
 
 # ─── Background prop polling ──────────────────────────────────────────────────
 
@@ -145,10 +146,11 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="Sports Betting Analyzer",
-    description="Daily MLB + NHL betting analysis",
-    version="2.0.0",
+    description="MLB, NHL, NFL and college football model analysis",
+    version="3.0.0",
     lifespan=lifespan,
 )
+app.include_router(football_router)
 
 app.add_middleware(
     CORSMiddleware,

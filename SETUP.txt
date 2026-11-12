@@ -1,7 +1,7 @@
 SPORTS BETTING ANALYZER - SETUP GUIDE
 ====================================
 
-This project is a local MLB + NHL betting dashboard.
+This project is a local and hosted MLB + NHL + NFL + CFB betting dashboard.
 Backend: FastAPI
 Frontend: React
 
@@ -57,8 +57,16 @@ HEALTH CHECKS
   - http://localhost:8000/api/nhl/best-bets
   - http://localhost:8000/api/nhl/goal-scorers
   - http://localhost:8000/api/nhl/daily
+  - http://localhost:8000/api/nfl/weekly
+  - http://localhost:8000/api/cfb/weekly
 
 WHAT THE APP SHOWS
+  NFL + COLLEGE FOOTBALL
+  - Weekly qualifying bets, watch list, and full upcoming slate
+  - Opponent-adjusted scoring models and chronological validation
+  - NFL play-by-play efficiency and explicit data coverage
+  - Model inputs and matchup comparison tables
+
   MLB
   - Best Bets
   - Beat the Streak hit probabilities

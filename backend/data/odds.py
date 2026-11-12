@@ -88,11 +88,15 @@ def _parse_odds_game(g: dict) -> dict:
         "best_moneyline_home": None,
         "consensus_total": None,
         "line_movement": None,
+        "market_updated_at": {},
+        "book_titles": {},
     }
 
     for bookmaker in g.get("bookmakers", []):
         book = bookmaker["key"]
+        game["book_titles"][book] = bookmaker.get("title", book)
         for market in bookmaker.get("markets", []):
+            game["market_updated_at"].setdefault(market["key"], {})[book] = market.get("last_update") or bookmaker.get("last_update")
             if market["key"] == "h2h":
                 ml = {}
                 for outcome in market["outcomes"]:

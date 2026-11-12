@@ -23,7 +23,7 @@ jobs:
       OPENBLAS_NUM_THREADS: '1'
       OMP_NUM_THREADS: '1'
       PYTHONUNBUFFERED: '1'
-      SPORTS_DATA_DIR: ${{ runner.temp }}/model-tests
+      SPORTS_DATA_DIR: ${{ github.workspace }}/.research-model-tests
     steps:
       - uses: actions/checkout@v4
         with:

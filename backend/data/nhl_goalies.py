@@ -68,8 +68,14 @@ async def get_confirmed_goalies(game_date: Optional[date] = None) -> dict[str, d
         goalies = await _scrape_daily_faceoff(target_date)
         if goalies:
             return goalies
-    except Exception:
-        pass
+    except httpx.HTTPStatusError as error:
+        warn(f"DailyFaceoff starting-goalie feed returned HTTP {error.response.status_code}")
+    except httpx.TimeoutException:
+        warn("DailyFaceoff starting-goalie feed timed out")
+    except httpx.RequestError as error:
+        warn(f"DailyFaceoff starting-goalie connection unavailable ({type(error).__name__})")
+    except Exception as error:
+        warn(f"DailyFaceoff starting-goalie processing unavailable ({type(error).__name__})")
 
     # Fallback: try ESPN NHL headlines for goalie news
     try:

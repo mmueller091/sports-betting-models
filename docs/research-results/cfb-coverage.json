@@ -1,0 +1,69 @@
+{
+  "availability_basis": "reconstructed_conservative_12h_after_start",
+  "errors": [],
+  "evidence_type": "reconstructed_prior_game_statistics",
+  "generated_at": "2026-11-12T17:16:55.864063+00:00",
+  "league": "cfb",
+  "seasons": [
+    {
+      "completed_games": 887,
+      "coverage_status": "source_rows_loaded_not_independently_certified",
+      "first_game": "2021-08-28T17:20:00+00:00",
+      "games": 887,
+      "last_game": "2022-01-11T01:00:00+00:00",
+      "output": "/workspace/scratch/05753d2df972/historical-data/normalized/cfb_2021.jsonl",
+      "postseason_completed": 38,
+      "regular_completed": 849,
+      "season": 2021,
+      "source_errors": 0
+    },
+    {
+      "completed_games": 896,
+      "coverage_status": "source_rows_loaded_not_independently_certified",
+      "first_game": "2022-08-27T16:00:00+00:00",
+      "games": 896,
+      "last_game": "2023-01-10T00:30:00+00:00",
+      "output": "/workspace/scratch/05753d2df972/historical-data/normalized/cfb_2022.jsonl",
+      "postseason_completed": 42,
+      "regular_completed": 854,
+      "season": 2022,
+      "source_errors": 0
+    },
+    {
+      "completed_games": 910,
+      "coverage_status": "source_rows_loaded_not_independently_certified",
+      "first_game": "2023-08-26T18:30:00+00:00",
+      "games": 910,
+      "last_game": "2024-01-09T00:30:00+00:00",
+      "output": "/workspace/scratch/05753d2df972/historical-data/normalized/cfb_2023.jsonl",
+      "postseason_completed": 42,
+      "regular_completed": 868,
+      "season": 2023,
+      "source_errors": 0
+    },
+    {
+      "completed_games": 919,
+      "coverage_status": "source_rows_loaded_not_independently_certified",
+      "first_game": "2024-08-24T16:00:00+00:00",
+      "games": 920,
+      "last_game": "2025-01-21T00:30:00+00:00",
+      "output": "/workspace/scratch/05753d2df972/historical-data/normalized/cfb_2024.jsonl",
+      "postseason_completed": 46,
+      "regular_completed": 873,
+      "season": 2024,
+      "source_errors": 0
+    },
+    {
+      "completed_games": 934,
+      "coverage_status": "source_rows_loaded_not_independently_certified",
+      "first_game": "2025-08-23T16:00:00+00:00",
+      "games": 934,
+      "last_game": "2026-01-20T00:30:00+00:00",
+      "output": "/workspace/scratch/05753d2df972/historical-data/normalized/cfb_2025.jsonl",
+      "postseason_completed": 46,
+      "regular_completed": 888,
+      "season": 2025,
+      "source_errors": 0
+    }
+  ]
+}

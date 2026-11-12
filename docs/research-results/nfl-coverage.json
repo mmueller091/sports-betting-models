@@ -1,0 +1,69 @@
+{
+  "availability_basis": "reconstructed_conservative_12h_after_start",
+  "errors": [],
+  "evidence_type": "reconstructed_prior_game_statistics",
+  "generated_at": "2026-11-12T17:13:47.500159+00:00",
+  "league": "nfl",
+  "seasons": [
+    {
+      "completed_games": 285,
+      "coverage_status": "source_rows_loaded_not_independently_certified",
+      "first_game": "2021-09-10T00:20:00+00:00",
+      "games": 285,
+      "last_game": "2022-02-13T23:30:00+00:00",
+      "output": "/workspace/scratch/05753d2df972/historical-data/normalized/nfl_2021.jsonl",
+      "postseason_completed": 13,
+      "regular_completed": 272,
+      "season": 2021,
+      "source_errors": 0
+    },
+    {
+      "completed_games": 284,
+      "coverage_status": "source_rows_loaded_not_independently_certified",
+      "first_game": "2022-09-09T00:20:00+00:00",
+      "games": 284,
+      "last_game": "2023-02-12T23:30:00+00:00",
+      "output": "/workspace/scratch/05753d2df972/historical-data/normalized/nfl_2022.jsonl",
+      "postseason_completed": 13,
+      "regular_completed": 271,
+      "season": 2022,
+      "source_errors": 0
+    },
+    {
+      "completed_games": 285,
+      "coverage_status": "source_rows_loaded_not_independently_certified",
+      "first_game": "2023-09-08T00:20:00+00:00",
+      "games": 285,
+      "last_game": "2024-02-11T23:30:00+00:00",
+      "output": "/workspace/scratch/05753d2df972/historical-data/normalized/nfl_2023.jsonl",
+      "postseason_completed": 13,
+      "regular_completed": 272,
+      "season": 2023,
+      "source_errors": 0
+    },
+    {
+      "completed_games": 285,
+      "coverage_status": "source_rows_loaded_not_independently_certified",
+      "first_game": "2024-09-06T00:20:00+00:00",
+      "games": 285,
+      "last_game": "2025-02-09T23:30:00+00:00",
+      "output": "/workspace/scratch/05753d2df972/historical-data/normalized/nfl_2024.jsonl",
+      "postseason_completed": 13,
+      "regular_completed": 272,
+      "season": 2024,
+      "source_errors": 0
+    },
+    {
+      "completed_games": 285,
+      "coverage_status": "source_rows_loaded_not_independently_certified",
+      "first_game": "2025-09-05T00:20:00+00:00",
+      "games": 285,
+      "last_game": "2026-02-08T23:30:00+00:00",
+      "output": "/workspace/scratch/05753d2df972/historical-data/normalized/nfl_2025.jsonl",
+      "postseason_completed": 13,
+      "regular_completed": 272,
+      "season": 2025,
+      "source_errors": 0
+    }
+  ]
+}

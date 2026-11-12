@@ -6,8 +6,14 @@ Uses the official NHL API (api-web.nhle.com) — free, no key required.
 import httpx
 from datetime import date, timedelta
 from typing import Optional
+from data.source_health import warn
 
 BASE = "https://api-web.nhle.com/v1"
+
+
+def season_start(game_date: Optional[date] = None) -> int:
+    target = game_date or date.today()
+    return target.year if target.month >= 7 else target.year - 1
 
 # Team abbreviation → full name map (for odds matching)
 TEAM_ABBREV = {
@@ -72,6 +78,7 @@ async def get_todays_nhl_games(game_date: Optional[date] = None) -> list[dict]:
     games = []
     for week in data.get("gameWeek", []):
         for g in week.get("games", []):
+            g = {**g, "gameDate": g.get("gameDate") or week.get("date")}
             parsed = _parse_nhl_game(g)
             if parsed and _game_belongs_to_requested_date(g, parsed, d):
                 games.append(parsed)
@@ -132,9 +139,10 @@ def _game_belongs_to_requested_date(raw_game: dict, parsed_game: dict, requested
         return False
 
 
-async def get_team_stats(team_abbrev: str, season: str = "20252026") -> dict:
+async def get_team_stats(team_abbrev: str, season: Optional[str] = None) -> dict:
     """Fetch team-level season stats (goals for/against, PP%, PK%, record)."""
-    url = f"{BASE}/club-stats/{team_abbrev}/now"
+    suffix = f"{season}/2" if season else "now"
+    url = f"{BASE}/club-stats/{team_abbrev}/{suffix}"
     try:
         async with httpx.AsyncClient(timeout=15, follow_redirects=True) as client:
             resp = await client.get(url)
@@ -142,6 +150,7 @@ async def get_team_stats(team_abbrev: str, season: str = "20252026") -> dict:
         data = resp.json()
         return _parse_team_stats(data)
     except Exception:
+        warn(f"NHL club statistics unavailable for {team_abbrev}; goalie and skater data missing")
         return {}
 
 
@@ -155,6 +164,7 @@ def _parse_team_stats(data: dict) -> dict:
         "goalie_count": len(goalie_stats),
         "top_scorers": _top_scorers(skater_stats, 5),
         "starting_goalie": _likely_starter(goalie_stats),
+        "goalies": [_parse_goalie(goalie) for goalie in goalie_stats],
     }
 
 
@@ -181,15 +191,24 @@ def _top_scorers(skaters: list, n: int) -> list[dict]:
 def _likely_starter(goalies: list) -> dict:
     """Pick the goalie with the most games played as likely starter."""
     if not goalies:
+        warn("NHL goalie statistics unavailable; starting goalie unknown")
         return {}
     starter = max(goalies, key=lambda g: g.get("gamesStarted", 0))
-    gp = max(starter.get("gamesPlayed", 1), 1)
+    parsed = _parse_goalie(starter)
+    if parsed["save_pct"] is None or parsed["gaa"] is None:
+        warn("NHL goalie save percentage or GAA unavailable; missing values are not measured averages")
+    return {**parsed, "confirmed": False, "status": "Unconfirmed", "source": "nhl_most_starts"}
+
+
+def _parse_goalie(starter: dict) -> dict:
+    """Club stats uses savePercentage/goalsAgainstAverage; landing has aliases."""
     return {
         "id": starter.get("playerId"),
         "name": f"{starter.get('firstName', {}).get('default', '')} {starter.get('lastName', {}).get('default', '')}".strip(),
         "games_started": starter.get("gamesStarted", 0),
-        "save_pct": starter.get("savePctg", 0.900),
-        "gaa": starter.get("goalsAgainstAvg", 3.00),
+        "games_played": starter.get("gamesPlayed"),
+        "save_pct": starter.get("savePercentage", starter.get("savePctg")),
+        "gaa": starter.get("goalsAgainstAverage", starter.get("goalsAgainstAvg")),
         "wins": starter.get("wins", 0),
         "losses": starter.get("losses", 0),
         "shutouts": starter.get("shutouts", 0),
@@ -236,15 +255,19 @@ def _parse_player_landing(data: dict) -> dict:
     }
 
 
-async def get_team_schedule_last_n(team_abbrev: str, n: int = 5) -> list[dict]:
+async def get_team_schedule_last_n(team_abbrev: str, n: int = 5, game_date: Optional[date] = None) -> list[dict]:
     """
     Fetch the last N completed games for a team to assess recent form.
     Returns list of {date, win, goals_for, goals_against}.
     """
     try:
-        data = await _get_club_schedule(team_abbrev)
+        target_date = game_date or date.today()
+        year = season_start(target_date)
+        data = await _get_club_schedule(team_abbrev, f"{year}{year + 1}")
         games = data.get("games", [])
-        completed = [g for g in games if g.get("gameState") in ("FINAL", "OFF")]
+        completed = [g for g in games if g.get("gameState") in ("FINAL", "OFF")
+                     and g.get("gameDate", "") < target_date.isoformat()]
+        completed.sort(key=lambda game: game.get("gameDate", ""))
         recent = completed[-n:] if len(completed) >= n else completed
         result = []
         for g in recent:
@@ -261,6 +284,7 @@ async def get_team_schedule_last_n(team_abbrev: str, n: int = 5) -> list[dict]:
             })
         return result
     except Exception:
+        warn(f"NHL recent form unavailable for {team_abbrev}")
         return []
 
 
@@ -268,9 +292,11 @@ async def get_schedule_spot_metrics(team_abbrev: str, game_date: Optional[date] 
     """Return rest/schedule density metrics for the upcoming game."""
     target_date = game_date or date.today()
     try:
-        data = await _get_club_schedule(team_abbrev)
+        year = season_start(target_date)
+        data = await _get_club_schedule(team_abbrev, f"{year}{year + 1}")
         games = data.get("games", [])
     except Exception:
+        warn(f"NHL schedule context unavailable for {team_abbrev}; neutral assumptions used")
         return {
             "rest_days": 1,
             "games_last_4": 0,
@@ -319,19 +345,21 @@ async def check_back_to_back(team_abbrev: str, game_date: Optional[date] = None)
         data = resp.json()
         for week in data.get("gameWeek", []):
             for g in week.get("games", []):
+                if (g.get("gameDate") or week.get("date")) != yesterday.isoformat():
+                    continue
                 if g.get("gameState") in ("FINAL", "OFF"):
                     if g.get("awayTeam", {}).get("abbrev") == team_abbrev:
                         return True
                     if g.get("homeTeam", {}).get("abbrev") == team_abbrev:
                         return True
     except Exception:
-        pass
+        warn(f"NHL back-to-back status unavailable for {team_abbrev}")
     return False
 
 
-async def get_standings() -> dict:
+async def get_standings(game_date: Optional[date] = None) -> dict:
     """Fetch current NHL standings for team win % context."""
-    url = f"{BASE}/standings/now"
+    url = f"{BASE}/standings/{game_date.isoformat() if game_date else 'now'}"
     try:
         async with httpx.AsyncClient(timeout=15, follow_redirects=True) as client:
             resp = await client.get(url)
@@ -350,21 +378,24 @@ async def get_standings() -> dict:
                 "win_pct": round(team.get("wins", 0) / gp, 3),
                 "goals_for_per_game": round(team.get("goalFor", 0) / gp, 2),
                 "goals_against_per_game": round(team.get("goalAgainst", 0) / gp, 2),
-                "pp_pct": team.get("powerPlayPct", 0.0),
-                "pk_pct": team.get("penaltyKillPct", 0.0),
+                "pp_pct": team.get("powerPlayPct"),
+                "pk_pct": team.get("penaltyKillPct"),
                 "home_wins": team.get("homeWins", 0),
                 "home_losses": team.get("homeLosses", 0),
                 "road_wins": team.get("roadWins", 0),
                 "road_losses": team.get("roadLosses", 0),
                 "l10_wins": team.get("l10Wins", 0),
             }
+        if standings and all(row["pp_pct"] is None for row in standings.values()):
+            warn("NHL power-play rates unavailable in standings; neutral special-team assumptions used")
         return standings
     except Exception:
+        warn("NHL standings unavailable; neutral team estimates used")
         return {}
 
 
-async def _get_club_schedule(team_abbrev: str) -> dict:
-    url = f"{BASE}/club-schedule-season/{team_abbrev}/now"
+async def _get_club_schedule(team_abbrev: str, season: Optional[str] = None) -> dict:
+    url = f"{BASE}/club-schedule-season/{team_abbrev}/{season or 'now'}"
     async with httpx.AsyncClient(timeout=15, follow_redirects=True) as client:
         resp = await client.get(url)
         resp.raise_for_status()

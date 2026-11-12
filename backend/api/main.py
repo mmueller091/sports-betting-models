@@ -51,7 +51,7 @@ from models.hit_props import (
     find_best_bts_pair,
 )
 from models.bts_model import model_status
-from models.nhl_bets import find_nhl_best_bets
+from models.nhl_bets import MODEL_VERSION as NHL_MODEL_VERSION, find_nhl_best_bets
 from models.nhl_goals import find_nhl_goal_scorers
 from train_bts_model import train_if_ready
 from api.football import router as football_router
@@ -429,7 +429,7 @@ async def nhl_best_bets(
     except Exception as e:
         raise HTTPException(status_code=502, detail=f"Data fetch failed: {e}")
     bets = find_nhl_best_bets(snapshot, top_n=top_n)
-    return {"date": snapshot["date"], "count": len(bets), "bets": bets}
+    return {"date": snapshot["date"], "model_version": NHL_MODEL_VERSION, "count": len(bets), "bets": bets}
 
 
 @app.get("/api/nhl/goal-scorers")
@@ -444,7 +444,7 @@ async def nhl_goal_scorers(
     except Exception as e:
         raise HTTPException(status_code=502, detail=f"Data fetch failed: {e}")
     scorers = find_nhl_goal_scorers(snapshot, top_n=top_n)
-    return {"date": snapshot["date"], "count": len(scorers), "players": scorers}
+    return {"date": snapshot["date"], "model_version": NHL_MODEL_VERSION, "count": len(scorers), "players": scorers}
 
 
 @app.post("/api/nhl/refresh")

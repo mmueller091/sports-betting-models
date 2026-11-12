@@ -16,4 +16,6 @@ backend/models/artifacts/
 .model-state/
 Fantasy football/
 *.log
+research-data/
+research-output/
 

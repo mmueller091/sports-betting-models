@@ -10,7 +10,10 @@ Rate limit: scrape at most once per day.
 
 import httpx
 import re
+from html import unescape
 from typing import Optional
+from data.nhl_stats import season_start as current_season_start
+from data.source_health import warn
 
 NST_BASE = "https://www.naturalstattrick.com"
 NST_HEADERS = {
@@ -40,12 +43,13 @@ NST_TEAM_MAP = {
     "Seattle Kraken": "Seattle Kraken", "St. Louis Blues": "St. Louis Blues",
     "Tampa Bay Lightning": "Tampa Bay Lightning", "Toronto Maple Leafs": "Toronto Maple Leafs",
     "Utah Hockey Club": "Utah Hockey Club", "Vancouver Canucks": "Vancouver Canucks",
+    "Utah Mammoth": "Utah Hockey Club",
     "Vegas Golden Knights": "Vegas Golden Knights", "Washington Capitals": "Washington Capitals",
     "Winnipeg Jets": "Winnipeg Jets",
 }
 
 
-async def get_team_corsi_xg(season_start: int = 2024, situation: str = "5on5") -> dict[str, dict]:
+async def get_team_corsi_xg(season_start: Optional[int] = None, situation: str = "5on5") -> dict[str, dict]:
     """
     Fetch team Corsi, Fenwick, and xGF% from Natural Stat Trick team table.
     situation: '5on5', 'all', 'pk', 'pp'
@@ -53,6 +57,7 @@ async def get_team_corsi_xg(season_start: int = 2024, situation: str = "5on5") -
     5-on-5 is most predictive (removes PP/PK quality effects).
     Returns {team_name: {cf_pct, ff_pct, xgf_pct, hdcf_pct, ...}}
     """
+    season_start = season_start if season_start is not None else current_season_start()
     season_str = f"{season_start}{season_start + 1}"
     url = f"{NST_BASE}/teamtable.php"
     params = {
@@ -71,8 +76,12 @@ async def get_team_corsi_xg(season_start: int = 2024, situation: str = "5on5") -
         ) as client:
             resp = await client.get(url, params=params)
             resp.raise_for_status()
-        return _parse_nst_table(resp.text)
+        parsed = _parse_nst_table(resp.text)
+        if not parsed:
+            warn(f"Natural Stat Trick {season_str} rows unavailable or table schema unrecognized")
+        return parsed
     except Exception:
+        warn(f"Natural Stat Trick {season_str} unavailable; advanced team inputs missing")
         return {}
 
 
@@ -94,7 +103,7 @@ def _parse_nst_table(html: str) -> dict[str, dict]:
 
     for row in rows:
         cells = cell_pattern.findall(row)
-        clean = [tag_strip.sub("", c).strip() for c in cells]
+        clean = [unescape(tag_strip.sub("", c)).strip() for c in cells]
 
         if not headers:
             if any("CF%" in c or "xGF%" in c for c in clean):
@@ -105,12 +114,13 @@ def _parse_nst_table(html: str) -> dict[str, dict]:
             continue
 
         try:
-            team_raw = clean[0]
-            team_name = NST_TEAM_MAP.get(team_raw, team_raw)
-
             row_data = {}
             for h, v in zip(headers, clean):
                 row_data[h] = v
+            team_raw = row_data.get("Team", row_data.get("Team Name", ""))
+            team_name = NST_TEAM_MAP.get(team_raw)
+            if not team_name or _pct(row_data.get("xGF%")) is None:
+                continue
 
             result[team_name] = {
                 "cf_pct": _pct(row_data.get("CF%")),
@@ -146,11 +156,11 @@ def _pct(val: Optional[str]) -> float:
     try:
         return round(float(val.replace("%", "")), 2)
     except Exception:
-        return 50.0
+        return None
 
 
 def _f(val: Optional[str]) -> float:
     try:
         return float(val)
     except Exception:
-        return 0.0
+        return None

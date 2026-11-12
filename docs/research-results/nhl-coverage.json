@@ -1,0 +1,69 @@
+{
+  "availability_basis": "reconstructed_conservative_12h_after_start",
+  "errors": [],
+  "evidence_type": "reconstructed_prior_game_statistics",
+  "generated_at": "2026-11-12T17:16:55.864463+00:00",
+  "league": "nhl",
+  "seasons": [
+    {
+      "completed_games": 1401,
+      "coverage_status": "source_rows_loaded_not_independently_certified",
+      "first_game": "2021-10-12T23:30:00+00:00",
+      "games": 1500,
+      "last_game": "2022-06-27T00:00:00+00:00",
+      "output": "/workspace/scratch/05753d2df972/historical-data/normalized/nhl_2021.jsonl",
+      "postseason_completed": 89,
+      "regular_completed": 1312,
+      "season": 2021,
+      "source_errors": 0
+    },
+    {
+      "completed_games": 1400,
+      "coverage_status": "source_rows_loaded_not_independently_certified",
+      "first_game": "2022-10-07T18:00:00+00:00",
+      "games": 1405,
+      "last_game": "2023-06-14T00:00:00+00:00",
+      "output": "/workspace/scratch/05753d2df972/historical-data/normalized/nhl_2022.jsonl",
+      "postseason_completed": 88,
+      "regular_completed": 1312,
+      "season": 2022,
+      "source_errors": 0
+    },
+    {
+      "completed_games": 1400,
+      "coverage_status": "source_rows_loaded_not_independently_certified",
+      "first_game": "2023-10-10T21:30:00+00:00",
+      "games": 1401,
+      "last_game": "2024-06-25T00:00:00+00:00",
+      "output": "/workspace/scratch/05753d2df972/historical-data/normalized/nhl_2023.jsonl",
+      "postseason_completed": 88,
+      "regular_completed": 1312,
+      "season": 2023,
+      "source_errors": 0
+    },
+    {
+      "completed_games": 1398,
+      "coverage_status": "source_rows_loaded_not_independently_certified",
+      "first_game": "2024-10-04T17:00:00+00:00",
+      "games": 1400,
+      "last_game": "2025-06-18T00:00:00+00:00",
+      "output": "/workspace/scratch/05753d2df972/historical-data/normalized/nhl_2024.jsonl",
+      "postseason_completed": 86,
+      "regular_completed": 1312,
+      "season": 2024,
+      "source_errors": 0
+    },
+    {
+      "completed_games": 1394,
+      "coverage_status": "source_rows_loaded_not_independently_certified",
+      "first_game": "2025-10-07T21:00:00+00:00",
+      "games": 1395,
+      "last_game": "2026-06-15T00:00:00+00:00",
+      "output": "/workspace/scratch/05753d2df972/historical-data/normalized/nhl_2025.jsonl",
+      "postseason_completed": 82,
+      "regular_completed": 1312,
+      "season": 2025,
+      "source_errors": 0
+    }
+  ]
+}

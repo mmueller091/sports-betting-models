@@ -322,8 +322,8 @@ def margin_settlement(mean_value, sigma, threshold, allow_ties=True):
 
 def _quote_time(game, snapshot, market, book):
     odds = game.get("odds", {})
-    value = odds.get("market_updated_at", {}).get(market, {}).get(book)
-    return value or odds.get("updated_at") or snapshot.get("odds_status", {}).get("updated_at")
+    # A cache retrieval time does not establish when this book quoted this market.
+    return odds.get("market_updated_at", {}).get(market, {}).get(book)
 
 
 def _qb_alerts(team):
@@ -395,6 +395,7 @@ def _candidates(game, snapshot, prediction, margin_sigma, total_sigma, now):
             "edge": round(conditional - break_even, 4), "expected_value": round(expected_value(win, loss, price), 2),
             "conservative_ev": round(expected_value(cw, cl, price), 2),
             "odds_updated_at": updated_at, "odds_age_hours": round(age, 2) if age is not None else None,
+            "odds_retrieved_at": odds.get("updated_at") or snapshot.get("odds_status", {}).get("updated_at"),
             "projected_home_score": round(prediction["home_score"], 1), "projected_away_score": round(prediction["away_score"], 1),
             "fair_home_spread": round(-prediction["margin"], 1), "fair_total": round(prediction["total"], 1),
             "confidence": "provisional",

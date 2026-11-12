@@ -10,8 +10,10 @@ Confirmed starter vs "probable" can flip a bet's edge entirely.
 
 import httpx
 import re
+import unicodedata
 from typing import Optional
 from datetime import date
+from data.source_health import warn
 
 # Daily Faceoff headers to avoid bot detection
 DF_HEADERS = {
@@ -52,6 +54,9 @@ async def get_confirmed_goalies(game_date: Optional[date] = None) -> dict[str, d
     Returns {team_name: {name, confirmed, source}}
     """
     goalies = {}
+    if game_date is not None and game_date != date.today():
+        warn("Historical or future starting-goalie confirmation unavailable from today's feed")
+        return goalies
 
     # Try Daily Faceoff first
     try:
@@ -69,6 +74,8 @@ async def get_confirmed_goalies(game_date: Optional[date] = None) -> dict[str, d
     except Exception:
         pass
 
+    if not goalies:
+        warn("NHL starting-goalie confirmations unavailable; likely starters remain unconfirmed")
     return goalies
 
 
@@ -107,6 +114,10 @@ async def _scrape_daily_faceoff() -> dict[str, dict]:
     goalie_names = goalie_pattern.findall(html)
     statuses = status_pattern.findall(html)
 
+    if not teams or len(teams) != len(goalie_names) or len(statuses) != len(teams):
+        warn("Starting-goalie page did not provide aligned team, player and status records")
+        return {}
+
     for i, (team_raw, goalie_raw) in enumerate(zip(teams, goalie_names)):
         team_raw = team_raw.strip()
         goalie_raw = goalie_raw.strip()
@@ -114,7 +125,7 @@ async def _scrape_daily_faceoff() -> dict[str, dict]:
 
         team_full = _resolve_team(team_raw)
         if team_full and goalie_raw and goalie_raw.lower() not in ("tbd", "tba", "unknown"):
-            confirmed = "confirm" in status_raw.lower()
+            confirmed = status_raw.lower().strip() == "confirmed"
             goalies[team_full] = {
                 "name": goalie_raw,
                 "confirmed": confirmed,
@@ -184,16 +195,29 @@ def apply_confirmed_goalies(games: list[dict], confirmed: dict[str, dict]) -> li
         for team_key, side in [(away, "away"), (home, "home")]:
             if team_key in confirmed:
                 c = confirmed[team_key]
+                if c.get("name", "").lower() in ("", "see news", "tbd", "tba", "unknown"):
+                    warn(f"Starting-goalie news for {team_key} does not identify a player")
+                    continue
                 stats_key = f"{side}_team_stats"
                 if stats_key not in game:
                     game[stats_key] = {}
                 current_goalie = game[stats_key].get("starting_goalie", {})
-                # Update name + confirmation status, keep existing sv%/GAA
+                available = game[stats_key].get("goalies", []) + [current_goalie]
+                matched = next((goalie for goalie in available
+                                if _player_name(goalie.get("name", "")) == _player_name(c["name"])), None)
+                if matched is None:
+                    warn(f"Statistics unavailable for announced goalie {c['name']}; prior starter statistics discarded")
+                    matched = {"id": None, "save_pct": None, "gaa": None, "games_started": None}
                 game[stats_key]["starting_goalie"] = {
-                    **current_goalie,
+                    **matched,
                     "name": c["name"],
                     "confirmed": c["confirmed"],
                     "status": c.get("status", "Expected"),
                     "source": c.get("source", "dailyfaceoff"),
                 }
     return games
+
+
+def _player_name(name: str) -> str:
+    return "".join(character for character in unicodedata.normalize("NFKD", name)
+                   if not unicodedata.combining(character)).casefold().strip()

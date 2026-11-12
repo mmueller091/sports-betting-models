@@ -11,6 +11,8 @@ Inputs:
 """
 
 import math
+from datetime import datetime, timezone
+from models.nhl_bets import MODEL_VERSION
 
 
 def prob_score_in_game(goals_per_game: float, shots_per_game: float, goalie_save_pct: float) -> float:
@@ -39,7 +41,8 @@ def score_goal_scorer(
     pp_pct = round(pp_goals / max(goals, 1), 2) if goals > 0 else 0.0
     shooting_pct = round(goals / max(shots, 1), 3) if shots > 0 else 0.0
 
-    goalie_sv = opposing_goalie.get("save_pct", 0.906)
+    measured_goalie_sv = opposing_goalie.get("save_pct")
+    goalie_sv = measured_goalie_sv if measured_goalie_sv is not None else 0.906
     goalie_name = opposing_goalie.get("name", "Unknown")
     goalie_xg = opposing_goalie.get("xg_stats", {})
     goalie_gsax = goalie_xg.get("gsax", 0.0)
@@ -48,7 +51,8 @@ def score_goal_scorer(
         f"Goals/G: {goals_per_game:.3f}",
         f"Shots/G: {shots_per_game:.2f}",
         f"Shooting%: {shooting_pct:.1%}",
-        f"vs {goalie_name} (.{int(goalie_sv*1000)} SV%)",
+        (f"vs {goalie_name} (.{int(goalie_sv*1000)} SV%)" if measured_goalie_sv is not None
+         else f"vs {goalie_name}: SV% unavailable; league-average assumption"),
     ]
     if goalie_gsax:
         factors.append(f"Goalie GSAx: {goalie_gsax:+.1f}")
@@ -121,15 +125,23 @@ def score_goal_scorer(
         "goal_probability": round(min(max(goal_prob, 0.02), 0.95), 4),
         "confidence": confidence,
         "opposing_goalie": goalie_name,
-        "opposing_goalie_sv": goalie_sv,
+        "opposing_goalie_sv": measured_goalie_sv,
+        "model_version": MODEL_VERSION,
         "factors": factors,
     }
 
 
-def find_nhl_goal_scorers(snapshot: dict, top_n: int = 5) -> list[dict]:
+def find_nhl_goal_scorers(snapshot: dict, top_n: int = 5, now: datetime | None = None) -> list[dict]:
     candidates = []
+    now = now or datetime.now(timezone.utc)
 
     for game in snapshot.get("games", []):
+        try:
+            start = datetime.fromisoformat(game["game_time"].replace("Z", "+00:00"))
+            if start.tzinfo is None or start <= now or game.get("status") in ("LIVE", "CRIT", "FINAL", "OFF"):
+                continue
+        except (KeyError, TypeError, ValueError):
+            continue
         away = game["away_team"]
         home = game["home_team"]
         game_time = game.get("game_time", "")

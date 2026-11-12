@@ -104,6 +104,18 @@ class FootballDataGatesTests(unittest.TestCase):
         self.assertIn("Bookmaker quote has an invalid future timestamp", reasons)
         self.assertIn("The latest odds refresh failed; cached prices need confirmation", reasons)
 
+    def test_retrieval_timestamp_does_not_impersonate_book_quote_timestamp(self):
+        state = snapshot()
+        state['odds_status'] = {'updated_at': '2026-11-11T16:59:00Z'}
+        state['games'][0]['odds'] = {
+            'moneylines': {'book': {'home': 200}}, 'updated_at': '2026-11-11T16:59:00Z'}
+        result = find_football_bets(state, now=NOW)
+        self.assertEqual(result['picks'], [])
+        pick = result['watchlist'][0]
+        self.assertIsNone(pick['odds_updated_at'])
+        self.assertEqual(pick['odds_retrieved_at'], '2026-11-11T16:59:00Z')
+        self.assertIn('Bookmaker quote timestamp is unavailable', pick['reasons'])
+
     def test_incomplete_history_blocks_an_otherwise_qualifying_pick(self):
         state = snapshot()
         start = datetime(2026, 8, 2, 18, tzinfo=timezone.utc)

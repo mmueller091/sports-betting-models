@@ -272,6 +272,12 @@ def _period_summary(rows, bets, archive, bootstrap_samples):
         'hypothetical_staked_units': len(bets),
         'hypothetical_profit_units_at_archived_price': profit,
         'hypothetical_roi_at_archived_price': profit / len(bets) if bets else None,
+        'selected_mean_model_win_probability': mean(b['model_win_probability'] for b in bets) if bets else None,
+        'selected_observed_win_rate': mean(b['settlement'] == 'win' for b in bets) if bets else None,
+        'selected_mean_forecast_ev_units': mean(b['estimated_ev_units'] for b in bets) if bets else None,
+        'selected_observed_minus_model_win_probability_week_cluster_95pct_interval': (
+            cluster_interval(roi_rows, lambda b: float(b['settlement'] == 'win') - b['model_win_probability'],
+                             bootstrap_samples)),
         'hypothetical_positive_american_odds_bets': sum(b['american_odds'] > 0 for b in bets),
         'hypothetical_roi_excluding_largest_winner': (sum(b['profit_units'] for b in after_largest_win) / len(after_largest_win)
                                                       if after_largest_win else None),

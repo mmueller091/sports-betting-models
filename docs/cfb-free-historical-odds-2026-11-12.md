@@ -58,6 +58,18 @@ profit units. Removing it alone flips the entire year's hypothetical return
 to negative. Excluding the two largest winners gives -15.67% on the remaining
 79 bets. Neither exclusion is offered as a new strategy, only sensitivity.
 
+**A particularly important calibration failure:** on the 81 selected 2025
+calibrated-model bets, the model forecast a mean **52.8% win probability**, but
+only **34.6%** actually won. For its 363 selected bets in 2021-24, the same
+figures were **49.3% predicted versus 32.5% realized**. Selecting only games
+where the model strongly disagrees with the bookmaker appears to expose a
+weakness that overall Brier improvement does not solve. The model is especially
+attracted to underdogs: 68 of its 81 selected 2025 bets had positive American
+odds. The weekly-clustered 95% interval for the observed-minus-predicted win
+rate is **-25.8 to -11.6 percentage points** in 2025, and **-21.4 to -12.2
+points** for 2021-24. These are diagnostics on already-selected subsets, not
+new bet rules or validation of T-60 execution.
+
 ## Source and completeness
 
 - Source: [SportsDataverse cfbfastR betting archive](https://github.com/sportsdataverse/cfbfastR-data/blob/main/betting/csv/cfb_line_odds.csv.gz), `cfb_line_odds.csv.gz`.
@@ -161,9 +173,10 @@ priorities, in order:
    still requires old timestamped archives or a provider that preserves them.
 2. **Fix calibration before estimating edge.** The fixed-home candidate closes
    part of the margin gap, and prior-only calibration closes part of the Brier
-   gap. Both still trail the market on matched games. Compare residual errors
-   by conference, opponent strength, season and favorite/underdog probability,
-   strictly out of sample, before changing any weights.
+   gap. Both still trail the market on matched games, and the selected bets
+   exhibit substantial overconfidence. Compare residual errors by conference,
+   opponent strength, season, and favorite/underdog probability, strictly out
+   of sample, before changing any weights.
 3. **Model market agreement, with availability proven.** When an actual T-60
    price exists, compare the model estimate against same-time no-vig market
    probabilities or a market-derived margin. Do not inject closing lines as

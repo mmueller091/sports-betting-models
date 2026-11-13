@@ -1,5 +1,4 @@
 {
-  "2026-11-05": {},
   "2026-11-08": {},
   "2026-11-11": {
     "Tampa Bay Lightning@Buffalo Sabres": {
@@ -1415,6 +1414,96 @@
           "under": 6.0
         },
         "bovada": {
+          "over": 6.0,
+          "under": 6.0
+        }
+      }
+    }
+  },
+  "2026-11-13": {
+    "New York Rangers@Vancouver Canucks": {
+      "recorded_at": "2026-11-13T08:11:13.022107",
+      "moneyline_away": -215,
+      "moneyline_home": 200,
+      "consensus_total": 6.5,
+      "totals_by_book": {
+        "draftkings": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "lowvig": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betonlineag": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betmgm": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betrivers": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betus": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "fanduel": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "bovada": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "mybookieag": {
+          "over": 6.5,
+          "under": 6.5
+        }
+      }
+    },
+    "Nashville Predators@Vegas Golden Knights": {
+      "recorded_at": "2026-11-13T08:11:13.022138",
+      "moneyline_away": 158,
+      "moneyline_home": -180,
+      "consensus_total": 6.1,
+      "totals_by_book": {
+        "draftkings": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "lowvig": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "betonlineag": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "betmgm": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "betrivers": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betus": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "fanduel": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "bovada": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "mybookieag": {
           "over": 6.0,
           "under": 6.0
         }

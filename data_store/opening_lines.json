@@ -3710,5 +3710,491 @@
         }
       }
     }
+  },
+  "2026-11-17": {
+    "Montr\u00e9al Canadiens@New York Rangers": {
+      "recorded_at": "2026-11-17T14:42:26.778418",
+      "moneyline_away": -109,
+      "moneyline_home": 100,
+      "consensus_total": 6.2,
+      "totals_by_book": {
+        "fanduel": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "lowvig": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "betonlineag": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "draftkings": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betus": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "betrivers": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "bovada": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "betmgm": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "mybookieag": {
+          "over": 6.0,
+          "under": 6.0
+        }
+      }
+    },
+    "Vancouver Canucks@Utah Mammoth": {
+      "recorded_at": "2026-11-17T14:42:26.778448",
+      "moneyline_away": 290,
+      "moneyline_home": -330,
+      "consensus_total": 6.5,
+      "totals_by_book": {
+        "fanduel": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betonlineag": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "lowvig": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "draftkings": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betus": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betrivers": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "bovada": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betmgm": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "mybookieag": {
+          "over": 6.5,
+          "under": 6.5
+        }
+      }
+    },
+    "Los Angeles Kings@Boston Bruins": {
+      "recorded_at": "2026-11-17T14:42:26.778466",
+      "moneyline_away": 132,
+      "moneyline_home": -150,
+      "consensus_total": 5.8,
+      "totals_by_book": {
+        "draftkings": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "lowvig": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "betus": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "betonlineag": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "betrivers": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "fanduel": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "betmgm": {
+          "over": 6.0,
+          "under": 6.0
+        }
+      }
+    },
+    "Buffalo Sabres@Philadelphia Flyers": {
+      "recorded_at": "2026-11-17T14:42:26.778479",
+      "moneyline_away": -118,
+      "moneyline_home": 109,
+      "consensus_total": 5.7,
+      "totals_by_book": {
+        "draftkings": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "lowvig": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "betus": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "betonlineag": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "betrivers": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "fanduel": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "betmgm": {
+          "over": 6.0,
+          "under": 6.0
+        }
+      }
+    },
+    "Columbus Blue Jackets@New York Islanders": {
+      "recorded_at": "2026-11-17T14:42:26.778493",
+      "moneyline_away": 121,
+      "moneyline_home": -129,
+      "consensus_total": 5.5,
+      "totals_by_book": {
+        "draftkings": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "betonlineag": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "lowvig": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "betus": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "betrivers": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "fanduel": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "betmgm": {
+          "over": 5.5,
+          "under": 5.5
+        }
+      }
+    },
+    "Edmonton Oilers@Florida Panthers": {
+      "recorded_at": "2026-11-17T14:42:26.778503",
+      "moneyline_away": 107,
+      "moneyline_home": -113,
+      "consensus_total": 6.2,
+      "totals_by_book": {
+        "draftkings": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betonlineag": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "lowvig": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "betus": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "betrivers": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "fanduel": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betmgm": {
+          "over": 6.0,
+          "under": 6.0
+        }
+      }
+    },
+    "Ottawa Senators@Winnipeg Jets": {
+      "recorded_at": "2026-11-17T14:42:26.778514",
+      "moneyline_away": -117,
+      "moneyline_home": 110,
+      "consensus_total": 5.9,
+      "totals_by_book": {
+        "draftkings": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "betonlineag": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "lowvig": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "betus": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "betrivers": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "fanduel": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "betmgm": {
+          "over": 6.0,
+          "under": 6.0
+        }
+      }
+    },
+    "Toronto Maple Leafs@Chicago Blackhawks": {
+      "recorded_at": "2026-11-17T14:42:26.778523",
+      "moneyline_away": -139,
+      "moneyline_home": 133,
+      "consensus_total": 6.5,
+      "totals_by_book": {
+        "draftkings": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betonlineag": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "lowvig": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betus": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betrivers": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "fanduel": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betmgm": {
+          "over": 6.5,
+          "under": 6.5
+        }
+      }
+    },
+    "Washington Capitals@Tampa Bay Lightning": {
+      "recorded_at": "2026-11-17T14:42:26.778532",
+      "moneyline_away": 143,
+      "moneyline_home": -155,
+      "consensus_total": 6.5,
+      "totals_by_book": {
+        "draftkings": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betonlineag": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "lowvig": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betus": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betrivers": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "fanduel": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betmgm": {
+          "over": 6.5,
+          "under": 6.5
+        }
+      }
+    },
+    "Anaheim Ducks@St Louis Blues": {
+      "recorded_at": "2026-11-17T14:42:26.778543",
+      "moneyline_away": 122,
+      "moneyline_home": -132,
+      "consensus_total": 6.2,
+      "totals_by_book": {
+        "draftkings": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betonlineag": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "lowvig": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "betus": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "betrivers": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "fanduel": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betmgm": {
+          "over": 6.0,
+          "under": 6.0
+        }
+      }
+    },
+    "Nashville Predators@Minnesota Wild": {
+      "recorded_at": "2026-11-17T14:42:26.778552",
+      "moneyline_away": 168,
+      "moneyline_home": -190,
+      "consensus_total": 6.2,
+      "totals_by_book": {
+        "draftkings": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "lowvig": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "betus": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "betonlineag": {
+          "over": 6.0,
+          "under": 6.0
+        },
+        "fanduel": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betrivers": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betmgm": {
+          "over": 6.0,
+          "under": 6.0
+        }
+      }
+    },
+    "Calgary Flames@San Jose Sharks": {
+      "recorded_at": "2026-11-17T14:42:26.778563",
+      "moneyline_away": 115,
+      "moneyline_home": -120,
+      "consensus_total": 6.4,
+      "totals_by_book": {
+        "draftkings": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betonlineag": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "lowvig": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betus": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betrivers": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "fanduel": {
+          "over": 6.5,
+          "under": 6.5
+        },
+        "betmgm": {
+          "over": 6.0,
+          "under": 6.0
+        }
+      }
+    },
+    "Dallas Stars@Vegas Golden Knights": {
+      "recorded_at": "2026-11-17T14:42:26.778572",
+      "moneyline_away": 118,
+      "moneyline_home": -130,
+      "consensus_total": 5.5,
+      "totals_by_book": {
+        "draftkings": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "betonlineag": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "lowvig": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "betus": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "betrivers": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "fanduel": {
+          "over": 5.5,
+          "under": 5.5
+        },
+        "betmgm": {
+          "over": 5.5,
+          "under": 5.5
+        }
+      }
+    }
   }
 }
